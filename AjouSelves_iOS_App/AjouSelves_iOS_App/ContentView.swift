@@ -11,6 +11,10 @@ import KakaoSDKUser
 struct ContentView: View {
     var body: some View {
         VStack{
+            Image("Logo")
+                .resizable()
+                .scaledToFit()
+            Spacer()
             // KakaoLoginTestButton
             Button(action: {
                 if (UserApi.isKakaoTalkLoginAvailable()){
@@ -38,8 +42,15 @@ struct ContentView: View {
                             }
                         }
                 }
+            }){
+                Image("LoginButton")
+                    .resizable()
+                    .scaledToFit()
+            }
+            Button(action: {
+                print("구현중!")
             }, label: {
-                Text("KakaoLogin")
+                Text("Local_Login")
             })
         }
     }
