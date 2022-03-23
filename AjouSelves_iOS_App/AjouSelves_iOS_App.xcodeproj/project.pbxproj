@@ -14,9 +14,12 @@
 		869F06EB27D77F3F0034001A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869F06EA27D77F3F0034001A /* Assets.xcassets */; };
 		869F06EE27D77F3F0034001A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869F06ED27D77F3F0034001A /* Preview Assets.xcassets */; };
 		869F06F127D77F3F0034001A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869F06EF27D77F3F0034001A /* LaunchScreen.storyboard */; };
+		D74ECF0DF7170350588BA8B7 /* Pods_AjouSelves_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98107793F60A7248833C1CB2 /* Pods_AjouSelves_iOS_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D4F171ABA6C8BA0FB145BE4 /* Pods-AjouSelves_iOS_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.release.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.release.xcconfig"; sourceTree = "<group>"; };
+		36D59578DC964375D1E37FFB /* Pods-AjouSelves_iOS_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.debug.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.debug.xcconfig"; sourceTree = "<group>"; };
 		869F06DE27D77F3D0034001A /* AjouSelves_iOS_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AjouSelves_iOS_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869F06E127D77F3D0034001A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869F06E327D77F3D0034001A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		869F06ED27D77F3F0034001A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		869F06F027D77F3F0034001A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		869F06F227D77F3F0034001A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98107793F60A7248833C1CB2 /* Pods_AjouSelves_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AjouSelves_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D74ECF0DF7170350588BA8B7 /* Pods_AjouSelves_iOS_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E52CD3148F79C81CD0E465F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98107793F60A7248833C1CB2 /* Pods_AjouSelves_iOS_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		869F06D527D77F3D0034001A = {
 			isa = PBXGroup;
 			children = (
 				869F06E027D77F3D0034001A /* AjouSelves_iOS_App */,
 				869F06DF27D77F3D0034001A /* Products */,
+				AB37050CC8C2A4E50C0C08DD /* Pods */,
+				2E52CD3148F79C81CD0E465F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +93,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AB37050CC8C2A4E50C0C08DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36D59578DC964375D1E37FFB /* Pods-AjouSelves_iOS_App.debug.xcconfig */,
+				0D4F171ABA6C8BA0FB145BE4 /* Pods-AjouSelves_iOS_App.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 869F06F527D77F3F0034001A /* Build configuration list for PBXNativeTarget "AjouSelves_iOS_App" */;
 			buildPhases = (
+				20BABFB38C1BEF58CB0EEEA6 /* [CP] Check Pods Manifest.lock */,
 				869F06DA27D77F3D0034001A /* Sources */,
 				869F06DB27D77F3D0034001A /* Frameworks */,
 				869F06DC27D77F3D0034001A /* Resources */,
+				37EC846F13EC69638E47F824 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -142,6 +169,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20BABFB38C1BEF58CB0EEEA6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AjouSelves_iOS_App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37EC846F13EC69638E47F824 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		869F06DA27D77F3D0034001A /* Sources */ = {
@@ -287,6 +356,7 @@
 		};
 		869F06F627D77F3F0034001A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36D59578DC964375D1E37FFB /* Pods-AjouSelves_iOS_App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -308,6 +378,7 @@
 		};
 		869F06F727D77F3F0034001A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D4F171ABA6C8BA0FB145BE4 /* Pods-AjouSelves_iOS_App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
