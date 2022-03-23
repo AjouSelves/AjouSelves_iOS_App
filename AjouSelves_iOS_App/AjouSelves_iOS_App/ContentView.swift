@@ -6,11 +6,42 @@
 //
 
 import SwiftUI
+import KakaoSDKUser
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            // KakaoLoginTestButton
+            Button(action: {
+                if (UserApi.isKakaoTalkLoginAvailable()){
+                    UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                            if let error = error{
+                                print(error)
+                            }
+                            else{
+                                print("Success")
+                            
+                                _ = oauthToken
+                            }
+                        }
+                    }
+                else{
+                    UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                            if let error = error {
+                                print(error)
+                            }
+                            else {
+                                print("loginWithKakaoAccount() success.")
+
+                                //do something
+                                _ = oauthToken
+                            }
+                        }
+                }
+            }, label: {
+                Text("KakaoLogin")
+            })
+        }
     }
 }
 

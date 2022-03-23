@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -99,7 +99,6 @@
 				36D59578DC964375D1E37FFB /* Pods-AjouSelves_iOS_App.debug.xcconfig */,
 				0D4F171ABA6C8BA0FB145BE4 /* Pods-AjouSelves_iOS_App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
