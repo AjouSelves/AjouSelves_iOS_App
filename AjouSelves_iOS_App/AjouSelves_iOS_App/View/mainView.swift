@@ -11,6 +11,7 @@ struct mainView: View {
     var body: some View {
         //펀딩 목록 불러오기
         NavigationView{
+            
             //test List
             List(1...10, id: \.self) { index in
                 NavigationLink(
@@ -20,7 +21,17 @@ struct mainView: View {
                     })
             }
             //test code exit
-            .navigationTitle("홈화면")
+            
+            .navigationTitle("펀딩 목록")
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action: {
+                        print("Clicked")
+                    }, label: {
+                        Image(systemName: "person")
+                    })
+                }
+            }
         }
     }
 }
