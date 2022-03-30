@@ -25,20 +25,20 @@ struct mainView: View {
             .navigationBarTitleDisplayMode(.automatic)
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button(action: {
-                        print("Clicked")
-                    }, label: {
-                        Image(systemName: "magnifyingglass")
+                    NavigationLink(
+                        destination: Text("test"),
+                            label: {
+                                Image(systemName: "magnifyingglass")
                     })
-                    Button(action: {
-                        print("Clicked2")
-                    }, label: {
-                        Image(systemName: "line.3.horizontal.circle")
+                    NavigationLink(
+                        destination: Text("test"),
+                            label: {
+                                Image(systemName: "line.3.horizontal.circle")
                     })
-                    Button(action: {
-                        print("Clicked3")
-                    }, label: {
-                        Image(systemName: "bell")
+                    NavigationLink(
+                        destination: Text("test"),
+                            label: {
+                                Image(systemName: "bell")
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading){
