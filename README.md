@@ -1,2 +1,11 @@
 # AjouSelves_iOS_App
-Mobile_iOS_Part
+
+## 요구 명세서
+
+### dev stack:
+- Swift
+- SwiftUI
+- Combine
+- MVVM
+- Fastlane
+- Firebase
