@@ -8,5 +8,6 @@
 - Combine
 - MVVM
 - Fastlane
-- Firebase
 - AutoLayout
+- URLimage Library
+- Alamofire Library
