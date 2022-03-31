@@ -13,7 +13,8 @@ pod 'KakaoSDKTalk'  # 친구, 메시지(카카오톡)
 pod 'KakaoSDKStory'  # 카카오스토리 
 pod 'KakaoSDKLink'  # 메시지(카카오링크)
 pod 'KakaoSDKTemplate'  # 메시지 템플릿 
-pod 'KakaoSDKNavi'  # 카카오내비 
+pod 'KakaoSDKNavi'  # 카카오내비
+pod 'Alamofire', '~> 5.2'
 
   # Pods for AjouSelves_iOS_App
 
