@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8643110927F5D94600E2690E /* MainImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643110827F5D94600E2690E /* MainImgView.swift */; };
 		865D53A627F2F92000CE2258 /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D53A527F2F92000CE2258 /* mainView.swift */; };
 		865D53A827F2FE4100CE2258 /* communityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D53A727F2FE4100CE2258 /* communityView.swift */; };
 		865D53AA27F2FE4A00CE2258 /* mypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D53A927F2FE4A00CE2258 /* mypageView.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		0D4F171ABA6C8BA0FB145BE4 /* Pods-AjouSelves_iOS_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.release.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.release.xcconfig"; sourceTree = "<group>"; };
 		36D59578DC964375D1E37FFB /* Pods-AjouSelves_iOS_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.debug.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.debug.xcconfig"; sourceTree = "<group>"; };
+		8643110827F5D94600E2690E /* MainImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImgView.swift; sourceTree = "<group>"; };
 		865D53A527F2F92000CE2258 /* mainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
 		865D53A727F2FE4100CE2258 /* communityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityView.swift; sourceTree = "<group>"; };
 		865D53A927F2FE4A00CE2258 /* mypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mypageView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				865D53A927F2FE4A00CE2258 /* mypageView.swift */,
 				865D53AB27F2FE5300CE2258 /* settingView.swift */,
 				865D53B327F473C700CE2258 /* categoriesView.swift */,
+				8643110827F5D94600E2690E /* MainImgView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				865D53B027F2FEFC00CE2258 /* testView.swift in Sources */,
 				865D53AC27F2FE5300CE2258 /* settingView.swift in Sources */,
 				865D53B427F473C700CE2258 /* categoriesView.swift in Sources */,
+				8643110927F5D94600E2690E /* MainImgView.swift in Sources */,
 				869F06E627D77F3D0034001A /* ContentView.swift in Sources */,
 				865D53AA27F2FE4A00CE2258 /* mypageView.swift in Sources */,
 			);
