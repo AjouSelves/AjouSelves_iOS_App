@@ -6,20 +6,25 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct mainView: View {
+    
+    @ObservedObject var ProductDataViewModel = productDataViewModel()
+    
     var body: some View {
         //펀딩 목록 불러오기
         NavigationView{
-            //test List
-            List(1...30, id: \.self) { index in
+            List(ProductDataViewModel.productDatas) { adata in
                 NavigationLink(
-                    destination: Text("아이템 \(index) 번 의 세부사항"),
-                        label: {
-                            Text("아이템 \(index)")
-                        })
+                    destination: URLImage(URL(string: adata.photo.large)!) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }, label: {
+                        ListView(adata)
+                    })
             }
-            //test code exit
             
             //.navigationTitle("펀딩 목록")
             .navigationBarTitleDisplayMode(.automatic)
