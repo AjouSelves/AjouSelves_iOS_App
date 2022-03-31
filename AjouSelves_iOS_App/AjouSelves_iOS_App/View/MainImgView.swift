@@ -7,15 +7,27 @@
 
 import Foundation
 import SwiftUI
+import URLImage
 
 struct MainImgView: View {
+    
+    var imageUrl: URL
+    
     var body: some View {
-        Circle()
+        URLImage(imageUrl) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
+        .frame(width: 80, height: 80)
     }
 }
 
 struct MainImgView_Previews: PreviewProvider {
     static var previews: some View {
-        MainImgView()
+        
+        let url = URL(string: "https://randomuser.me/api/portraits/women/21.jpg")!
+        
+        MainImgView(imageUrl: url)
     }
 }
