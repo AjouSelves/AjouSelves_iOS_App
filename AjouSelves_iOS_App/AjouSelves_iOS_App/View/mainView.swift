@@ -11,6 +11,7 @@ import URLImage
 struct mainView: View {
     
     @ObservedObject var ProductDataViewModel = productDataViewModel()
+    @State var isPresent: Bool = false
     
     var body: some View {
         //펀딩 목록 불러오기
@@ -21,10 +22,18 @@ struct mainView: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .onTapGesture(count: 2, perform: {
+                                self.isPresent = true
+                                //여기에 좋아요 한 항목 추가
+                            })
                     }, label: {
                         ListView(adata)
                     })
             }
+            //.frame(height: 600)
+            .alert(isPresented: $isPresent, content: {
+                Alert(title: Text("좋아요"), message: Text("하셨습니다!"), dismissButton: .default(Text("OK")))
+            })
             
             //.navigationTitle("펀딩 목록")
             .navigationBarTitleDisplayMode(.automatic)
@@ -58,7 +67,7 @@ struct mainView: View {
                     })
                 }
             }
-            .frame(height: 700)
+            //.frame(height: 700)
             // .border(Color.blue) // Title밑 Tabview밑의 파란 줄
             .padding(-15)
         }
