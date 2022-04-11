@@ -16,11 +16,6 @@ struct testView: View {
                         Label("홈", systemImage: "house")
                     }
                 
-                BuyingView()
-                    .tabItem{
-                        Label("펀딩하기", systemImage: "gear")
-                    }
-    
                 communityView()
                     .tabItem{
                         Label("커뮤니티", systemImage: "person.3")
