@@ -40,17 +40,17 @@ struct mainView: View {
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
                     NavigationLink(
-                        destination: Text("test"),
+                        destination: Text("검색"),
                             label: {
                                 Image(systemName: "magnifyingglass")
                     })
                     NavigationLink(
-                        destination: Text("test"),
+                        destination: BuyingView(),
                             label: {
-                                Image(systemName: "line.3.horizontal.circle")
+                                Image(systemName: "plus")
                     })
                     NavigationLink(
-                        destination: Text("test"),
+                        destination: Text("알림센터"),
                             label: {
                                 Image(systemName: "bell")
                     })
