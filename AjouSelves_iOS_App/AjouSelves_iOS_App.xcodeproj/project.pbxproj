@@ -28,6 +28,7 @@
 		869F06EB27D77F3F0034001A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869F06EA27D77F3F0034001A /* Assets.xcassets */; };
 		869F06EE27D77F3F0034001A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869F06ED27D77F3F0034001A /* Preview Assets.xcassets */; };
 		869F06F127D77F3F0034001A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869F06EF27D77F3F0034001A /* LaunchScreen.storyboard */; };
+		86ECBA9328048363000E60EB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECBA9228048363000E60EB /* ImagePicker.swift */; };
 		D74ECF0DF7170350588BA8B7 /* Pods_AjouSelves_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98107793F60A7248833C1CB2 /* Pods_AjouSelves_iOS_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		869F06ED27D77F3F0034001A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		869F06F027D77F3F0034001A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		869F06F227D77F3F0034001A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86ECBA9228048363000E60EB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		98107793F60A7248833C1CB2 /* Pods_AjouSelves_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AjouSelves_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				8643110827F5D94600E2690E /* MainImgView.swift */,
 				8643111A27F5E40D00E2690E /* ListView.swift */,
 				86886E2C27FECD3F00B22E1D /* BuyingView.swift */,
+				86ECBA9228048363000E60EB /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				865D53B427F473C700CE2258 /* categoriesView.swift in Sources */,
 				8643111B27F5E40D00E2690E /* ListView.swift in Sources */,
 				8643110927F5D94600E2690E /* MainImgView.swift in Sources */,
+				86ECBA9328048363000E60EB /* ImagePicker.swift in Sources */,
 				869F06E627D77F3D0034001A /* ContentView.swift in Sources */,
 				865D53AA27F2FE4A00CE2258 /* mypageView.swift in Sources */,
 			);
