@@ -25,7 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
+        
+        // Kakao login view
         //let contentView = ContentView().environment(\.managedObjectContext, context)
+        // main view
         let contentView = testView().environment(\.managedObjectContext, context)
 
         // Use a UIHostingController as window root view controller.

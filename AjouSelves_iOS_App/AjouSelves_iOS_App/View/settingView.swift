@@ -8,15 +8,15 @@
 import SwiftUI
 import Combine
 
-var ver: String = "v0.01"
+var ver: String = "v0.0.1"
 struct settingView: View {
     var body: some View {
         NavigationView{
             VStack{
                 Button(action: {
-                    
+                    print("test")
                 }, label: {
-                    Image(systemName: "")
+                    Image(systemName: "bell")
                 })
                 NavigationLink(
                     destination: {
