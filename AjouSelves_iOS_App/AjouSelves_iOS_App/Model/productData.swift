@@ -84,3 +84,33 @@ struct productDataResponse: Codable, CustomStringConvertible {
         return "results.count: \(results.count) / info : \(info.seed)"
     }
 }
+
+struct userResponseData: Codable {
+    let userid: Int?
+    let email: String?
+    let password: String?
+    let salt: String?
+    let phonenumber: String?
+    let nickname: String?
+    let status: String?
+    let socialtype: String?
+    let sex: Int?
+    let birth: String?
+    let address: String?
+    let account: String?
+    let create_at: String?
+    let profilelink: String?
+    
+//    enum CodingKeys: CodingKey {
+//        case userid, email, password, salt, phonenumber
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        userid = (try? values.decode(String.self, forKey: .userid)) ?? nil
+//        email = (try? values.decode(Int.self, forKey: .email)) ?? nil
+//        password = (try? values.decode(String.self, forKey: .password)) ?? nil
+//        salt = (try? values.decode(String.self, forKey: .salt)) ?? nil
+//        phonenumber = (try? values.decode(String.self, forKey: .phonenumber)) ?? nil
+//    }
+}
