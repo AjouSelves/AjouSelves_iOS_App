@@ -16,18 +16,23 @@ class productDataViewModel: ObservableObject {
     var subscription = Set<AnyCancellable>() // 메모리 관리
     
     @Published var productDatas = [productData]()
-    
     @Published var userDatas = [userResponseData]()
     
-    //MARK: - randomuserapi_URL & projectserver_URL
+    //@Published var postDats
+    
+    //MARK: - URL
     var baseUrl = "https://randomuser.me/api/?results=100"
     var ASUserUrl = "http://44.202.49.100:3000/user"
-    var testUrl = "http://44.202.49.100:3000/user"
+    var ASPostUrl = "http://44.202.49.100:3000/post"
+    var userRegisterUrl = "http://44.202.49.100:3000/auth/register" // 유저 데이터 삽입
+    // var userAll = "http://44.202.49.100:3000/user/all" // 모든 유저 데이터 가져오기
+    
     
     init() {
         print(#fileID, #function, #line, "")
         fetchRandomUsers()
         fetchUserData()
+        addPostData()
     }
     
     func fetchRandomUsers(){
@@ -60,7 +65,7 @@ class productDataViewModel: ObservableObject {
 //    }
     
     func fetchUserData(){
-        AF.request(testUrl,
+        AF.request(ASUserUrl,
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
@@ -68,9 +73,35 @@ class productDataViewModel: ObservableObject {
         .validate(statusCode: 200..<300)
         .responseDecodable(of: [userResponseData].self) { response in
                 //.map{ $0.id }
-            print(response)
+            //print(response)
             //self.userDatas =
         }
+        .responseJSON(){ response in
+            print(response)
+        }
+    }
+    
+    func addPostData() {
+        let param: Parameters = [
+            "email" : "sisi@gmail.com",
+            "password" : "mhmh",
+            "phonenumber" : "01099999999",
+            "nickname" : "sisi",
+            "status" : "재학생",
+            "socialtype" : "local",
+            "sex" : 1,
+            "birth" : "1999-03-03",
+            "address" : "서울시 봉천동",
+            "account" : "110404",
+            "profilelink" : "kakako.com/113355"
+        ]
+        AF.request(userRegisterUrl, method: .post, parameters: param, encoding: JSONEncoding.default)
+            .responseString(){ response in
+                print(response)
+            }
+            .responseJSON(){ response in
+                print(param)
+            }
     }
 }
 
