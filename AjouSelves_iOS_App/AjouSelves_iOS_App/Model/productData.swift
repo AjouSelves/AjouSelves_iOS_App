@@ -100,17 +100,10 @@ struct userResponseData: Codable {
     let account: String?
     let create_at: String?
     let profilelink: String?
-    
-//    enum CodingKeys: CodingKey {
-//        case userid, email, password, salt, phonenumber
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        userid = (try? values.decode(String.self, forKey: .userid)) ?? nil
-//        email = (try? values.decode(Int.self, forKey: .email)) ?? nil
-//        password = (try? values.decode(String.self, forKey: .password)) ?? nil
-//        salt = (try? values.decode(String.self, forKey: .salt)) ?? nil
-//        phonenumber = (try? values.decode(String.self, forKey: .phonenumber)) ?? nil
-//    }
+}
+
+struct postResponseData: Codable {
+    var title: String
+    var price: String
+    var text: String
 }
