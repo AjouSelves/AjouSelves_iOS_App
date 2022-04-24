@@ -104,6 +104,8 @@ struct userResponseData: Codable {
 
 struct postResponseData: Codable {
     var title: String
-    var price: String
-    var text: String
+    var explaiend: String
+    var min_num: Int
+    var category: String
+    var required: [String]
 }
