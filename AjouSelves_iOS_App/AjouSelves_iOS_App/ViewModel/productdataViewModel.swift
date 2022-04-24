@@ -16,24 +16,44 @@ class productDataViewModel: ObservableObject {
     var subscription = Set<AnyCancellable>() // 메모리 관리
     
     @Published var productDatas = [productData]()
-    @Published var userDatas = [userResponseData]()
+    //@Published var userDatas = [userResponseData]()
     
     //@Published var postDats
     
     //MARK: - URL
     var baseUrl = "https://randomuser.me/api/?results=100"
-    var ASUserUrl = "http://44.202.49.100:3000/user"
+    var ASUserAllUrl = "http://44.202.49.100:3000/user/all"
     var ASPostUrl = "http://44.202.49.100:3000/post"
     var userRegisterUrl = "http://44.202.49.100:3000/auth/register" // 유저 데이터 삽입
-    // var userAll = "http://44.202.49.100:3000/user/all" // 모든 유저 데이터 가져오기
+    var pjorAllUrl = "http://44.202.49.100:3000/proj/"
     
+    var baseUrl2 = ["https://s3.marpple.co/files/u_1150555/2021/12/original/31eca686f0dd678adbd12faf5b1d5f693fb405791.jpg", "https://t1.daumcdn.net/cfile/tistory/9997C03E5C616C2720", "https://static.wixstatic.com/media/20259e_6e1bc381681c4f21a2415ea4fc5c2e6e~mv2.png/v1/crop/x_0,y_62,w_3456,h_4608/fill/w_272,h_300,al_c,usm_0.66_1.00_0.01,enc_auto/KakaoTalk_Photo_2021-09-01-17-28-22.png", "https://cdn.imweb.me/upload/S20200830244f269ed848e/656eb6ed91f12.jpg", "https://file.mk.co.kr/meet/neds/2020/11/image_readtop_2020_1174561_16054915004432908.jpg", "https://cdn.econovill.com/news/photo/202106/535189_445017_4134.jpg", "https://cdnweb01.wikitree.co.kr/webdata/editor/202010/24/img_20201024183026_60837f89.webp", "https://www.travelnbike.com/news/photo/202009/89970_176024_4744.jpg"] // For [Testing]
+    
+    var checkProjIndex: Int = 0
     
     init() {
         print(#fileID, #function, #line, "")
         fetchRandomUsers()
-        fetchUserData()
-        addPostData()
+        userAllData()
+        userRegisterData()
+        for i in 1...20{
+            projAllData(url:pjorAllUrl+"\(i)")
+        }
     }
+    
+//    func fetchRandomUsers(){
+//        print(#fileID, #function, #line, "")
+//        AF.request(baseUrl)
+//            .publishDecodable(type: productDataResponse.self)
+//            .compactMap{ $0.value }
+//            .map{ $0.results }
+//            .sink(receiveCompletion: { completion in
+//                print("데이터스트림 완료 ")
+//            }, receiveValue: { receivedValue in
+//                print("받은 값 : \(receivedValue.count)")
+//                self.productDatas = receivedValue
+//            }).store(in: &subscription)
+//    }
     
     func fetchRandomUsers(){
         print(#fileID, #function, #line, "")
@@ -49,39 +69,44 @@ class productDataViewModel: ObservableObject {
             }).store(in: &subscription)
     }
     
-//    func fetchUserData(){
-//        //print(#fileID, #function, #line, "")
-//        AF.request(testUrl)
-//            .publishDecodable(type: userResponseData.self)
-//            //.compactMap{ $0.value }
-//            //.map{ $0.results }
-//            .sink(receiveCompletion: { completion in
-//                print("데이터스트림 완료 ")
-//                print(completion)
-//            }, receiveValue: { receivedValue in
-//                //print("받은 값 : \(receivedValue.count)")
-//                //self.productDatas = receivedValue
-//            }).store(in: &subscription)
-//    }
+    func fetchtesting(){
+        //AF.request(baseUrl2)
+            //.publishDecodable(type:)
+    }
     
-    func fetchUserData(){
-        AF.request(ASUserUrl,
+    func userAllData(){ //
+        AF.request(ASUserAllUrl,
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
                    headers: ["Content-Type":"application/json", "Accept":"application/json"])
         .validate(statusCode: 200..<300)
         .responseDecodable(of: [userResponseData].self) { response in
-                //.map{ $0.id }
             //print(response)
-            //self.userDatas =
         }
         .responseJSON(){ response in
             print(response)
         }
     }
     
-    func addPostData() {
+    func projAllData(url:String){
+        AF.request(url,
+                   method: .get,
+                   parameters: nil,
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
+        .validate(statusCode: 200..<300)
+        .responseDecodable(of: [userResponseData].self) { response in
+            //print(response)
+        }
+        .responseJSON(){ response in
+            print(response)
+            print("\(self.checkProjIndex)번 째 proj") // checking index
+            self.checkProjIndex+=1 // checking index
+        }
+    }
+    
+    func userRegisterData() {
         let param: Parameters = [
             "email" : "sisi@gmail.com",
             "password" : "mhmh",
@@ -103,5 +128,6 @@ class productDataViewModel: ObservableObject {
                 print(param)
             }
     }
+    
 }
 
