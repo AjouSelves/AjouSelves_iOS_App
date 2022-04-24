@@ -45,7 +45,7 @@ struct mainView: View {
                                 Image(systemName: "magnifyingglass")
                     })
                     NavigationLink(
-                        destination: BuyingView(),
+                        destination: BuyingView(buyingVM: buyingViewModel()),
                             label: {
                                 Image(systemName: "plus")
                     })
