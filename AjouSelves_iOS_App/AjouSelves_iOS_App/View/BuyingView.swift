@@ -17,10 +17,20 @@ struct BuyingView : View {
     @State var pickedImage: Image?
     @State var isChecked: Bool = false
     
-    //MARK: - [Testing] String input Data
-    @State var title: String = "" //타이틀 State_Testing
-    @State var price: String = "" //가격 State_Testing
-    @State var text: String = "" //설명 State_Testing
+    //MARK: - [proj] pjor/add
+    @State var title: String = ""
+    @State var explained: String = ""
+    @State var min_num: Int = 0
+    @State var category: String = ""
+    @State var required: [String] = [""]
+    
+    @ObservedObject var buyingVM: buyingViewModel
+    
+    let numFormatter: NumberFormatter = {
+        let numFormatter = NumberFormatter()
+        numFormatter.numberStyle = .decimal
+        return numFormatter
+    }()
     
     //MARK: - mainView
     var body: some View {
@@ -43,24 +53,46 @@ struct BuyingView : View {
                 Section(header: Text("제목")) {
                     TextField("글 재목" , text: $title)
                         .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
                     //Text("\(title)")
                 }
-                Section(header: Text("가격")) {
-                    TextField("가격" , text: $price)
-                        .textFieldStyle(.roundedBorder)
-                    //Text("\(price)")
-                }
                 Section(header: Text("내용")) {
-                    TextField("게시글 내용을 작성해주세요." , text: $text)
+                    TextField("게시글 내용을 작성해주세요." , text: $explained)
                         .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
                     //Text("\(text)")
                 }
+                Section(header: Text("최소인원")) {
+                    TextField("펀딩 최소인원을 입력해 주세요." , value: $min_num, formatter: numFormatter)
+                        .textFieldStyle(.roundedBorder)
+                        .keyboardType(.decimalPad)
+                        .disableAutocorrection(true)
+                    //Text("\(price)")
+                }
+                Section(header: Text("카테고리")) {
+                    TextField("카테고리를 입력해 주세요. 예) 의류, 다이어리" , text: $category)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                    //Text("\(text)")
+                }
+//                Section(header: Text("조건")) {
+//                    TextField("조건을 작성해주세요. 예) 수량, 색상" , text: $required)
+//                        .textFieldStyle(.roundedBorder)
+//                        .disableAutocorrection(true)
+//                    //Text("\(text)")
+//                }
+                
                 Button {
                     print("펀딩 등록 버튼 clicked")
+                    buyingVM.title = title
+                    buyingVM.explained = explained
+                    buyingVM.min_num = min_num
+                    buyingVM.category = category
+                    buyingVM.required = required
+                    buyingVM.send()
                 } label: {
                     Text("등록")
                 }
-
             }
         }
     }
@@ -68,6 +100,6 @@ struct BuyingView : View {
 
 struct BuyingView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyingView()
+        BuyingView(buyingVM: buyingViewModel())
     }
 }
