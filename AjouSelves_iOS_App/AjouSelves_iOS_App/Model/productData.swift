@@ -109,3 +109,18 @@ struct postResponseData: Codable {
     var category: String
     var required: [String]
 }
+
+//MARK: - 프로젝트 데이터 파싱
+struct projectAllDataParcing: Codable {
+    let title: String?
+    let state: Int?
+    let category: String?
+    let min_num: Int?
+    let cur_num: Int?
+    let required: String?
+    let explained: String?
+    let nickname: String?
+    let userid: Int?
+    let profilelink: String?
+    let photos: [String]?
+}
