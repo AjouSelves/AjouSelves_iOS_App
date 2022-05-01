@@ -20,12 +20,12 @@ class productDataViewModel: ObservableObject {
     
     //@Published var postDats
     
-    //MARK: - URL
-    var baseUrl = "https://randomuser.me/api/?results=100"
-    var ASUserAllUrl = "http://44.202.49.100:3000/user/all"
-    var ASPostUrl = "http://44.202.49.100:3000/post"
-    var userRegisterUrl = "http://44.202.49.100:3000/auth/register" // 유저 데이터 삽입
-    var pjorAllUrl = "http://44.202.49.100:3000/proj/"
+    //MARK: - URL -> lowerCamelCase
+    var randomUserApi = "https://randomuser.me/api/?results=100"
+    var userAllUrl = "http://44.202.49.100:3000/user/all"
+    var postUrl = "http://44.202.49.100:3000/post"
+    var authRegisterUrl = "http://44.202.49.100:3000/auth/register" // 유저 데이터 삽입
+    var projUrl = "http://44.202.49.100:3000/proj/"
     
     //MARK: - For [Testing]
     var baseUrl2 = ["https://s3.marpple.co/files/u_1150555/2021/12/original/31eca686f0dd678adbd12faf5b1d5f693fb405791.jpg", "https://t1.daumcdn.net/cfile/tistory/9997C03E5C616C2720", "https://static.wixstatic.com/media/20259e_6e1bc381681c4f21a2415ea4fc5c2e6e~mv2.png/v1/crop/x_0,y_62,w_3456,h_4608/fill/w_272,h_300,al_c,usm_0.66_1.00_0.01,enc_auto/KakaoTalk_Photo_2021-09-01-17-28-22.png", "https://cdn.imweb.me/upload/S20200830244f269ed848e/656eb6ed91f12.jpg", "https://file.mk.co.kr/meet/neds/2020/11/image_readtop_2020_1174561_16054915004432908.jpg", "https://cdn.econovill.com/news/photo/202106/535189_445017_4134.jpg", "https://cdnweb01.wikitree.co.kr/webdata/editor/202010/24/img_20201024183026_60837f89.webp", "https://www.travelnbike.com/news/photo/202009/89970_176024_4744.jpg"]
@@ -34,17 +34,17 @@ class productDataViewModel: ObservableObject {
     
     init() {
         print(#fileID, #function, #line, "")
-        fetchRandomUsers()
-        userAllData()
-        userRegisterData()
+        fetchRandomUserApi()
+        fetchUserAllUrl()
+        fetchAuthRegisterUrl()
         for i in 1...20{
-            projAllData(url:pjorAllUrl+"\(i)")
+            fetchProjUrl(url:projUrl+"\(i)")
         }
     }
     
-//    func fetchRandomUsers(){
+//    func fetchRandomUserApi(){
 //        print(#fileID, #function, #line, "")
-//        AF.request(baseUrl)
+//        AF.request(randomUserApi)
 //            .publishDecodable(type: productDataResponse.self)
 //            .compactMap{ $0.value }
 //            .map{ $0.results }
@@ -56,9 +56,9 @@ class productDataViewModel: ObservableObject {
 //            }).store(in: &subscription)
 //    }
     
-    func fetchRandomUsers(){
+    func fetchRandomUserApi(){
         print(#fileID, #function, #line, "")
-        AF.request(baseUrl)
+        AF.request(randomUserApi)
             .publishDecodable(type: productDataResponse.self)
             .compactMap{ $0.value }
             .map{ $0.results }
@@ -75,8 +75,8 @@ class productDataViewModel: ObservableObject {
             //.publishDecodable(type:)
     }
     
-    func userAllData(){ //
-        AF.request(ASUserAllUrl,
+    func fetchUserAllUrl(){
+        AF.request(userAllUrl,
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
@@ -90,7 +90,7 @@ class productDataViewModel: ObservableObject {
         }
     }
     
-    func projAllData(url:String){
+    func fetchProjUrl(url:String){
         AF.request(url,
                    method: .get,
                    parameters: nil,
@@ -107,7 +107,7 @@ class productDataViewModel: ObservableObject {
         }
     }
     
-    func userRegisterData() {
+    func fetchAuthRegisterUrl() {
         let param: Parameters = [
             "email" : "sisi@gmail.com",
             "password" : "mhmh",
@@ -121,7 +121,7 @@ class productDataViewModel: ObservableObject {
             "account" : "110404",
             "profilelink" : "kakako.com/113355"
         ]
-        AF.request(userRegisterUrl, method: .post, parameters: param, encoding: JSONEncoding.default)
+        AF.request(authRegisterUrl, method: .post, parameters: param, encoding: JSONEncoding.default)
             .responseString(){ response in
                 print(response)
             }
@@ -130,4 +130,3 @@ class productDataViewModel: ObservableObject {
             }
     }
 }
-
