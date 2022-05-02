@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import Alamofire
 
-class buyingViewModel: ObservableObject {
+class sellingViewModel: ObservableObject {
     
     var projAddUrl = "http://44.202.49.100:3000/proj/add"
     

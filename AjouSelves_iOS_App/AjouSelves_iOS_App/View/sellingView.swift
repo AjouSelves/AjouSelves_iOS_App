@@ -11,7 +11,7 @@ import Combine // 바인딩
 
 //MARK: - 텍스트필드, 사진
 
-struct BuyingView : View {
+struct sellingView : View {
     
     @State private var showingImagePicker = false
     @State var pickedImage: Image?
@@ -24,7 +24,7 @@ struct BuyingView : View {
     @State var category: String = ""
     @State var required: [String] = [""]
     
-    @ObservedObject var buyingVM: buyingViewModel
+    @ObservedObject var buyingVM: sellingViewModel
     
     let numFormatter: NumberFormatter = {
         let numFormatter = NumberFormatter()
@@ -100,6 +100,6 @@ struct BuyingView : View {
 
 struct BuyingView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyingView(buyingVM: buyingViewModel())
+        sellingView(buyingVM: sellingViewModel())
     }
 }
