@@ -22,11 +22,15 @@ class productDataViewModel: ObservableObject {
     
     //MARK: - URL -> lowerCamelCase
     var randomUserApi = "https://randomuser.me/api/?results=100"
+    // RamdomUserApi를 불러옴
     var userAllUrl = "http://44.202.49.100:3000/user/all"
+    // 전체 유저 데이터 불러옴
     var postUrl = "http://44.202.49.100:3000/post"
-    var authRegisterUrl = "http://44.202.49.100:3000/auth/register" // 유저 데이터 삽입
+    //
+    var authRegisterUrl = "http://44.202.49.100:3000/auth/register"
+    // 유저 데이터 삽입
     var projUrl = "http://44.202.49.100:3000/proj/"
-    
+    // 프로젝트의 목록, 전체 불러오기X
     var checkProjIndex: Int = 0
     
     init() {
@@ -38,20 +42,6 @@ class productDataViewModel: ObservableObject {
             fetchProjUrl(url:projUrl+"\(i)")
         }
     }
-    
-//    func fetchRandomUserApi(){
-//        print(#fileID, #function, #line, "")
-//        AF.request(randomUserApi)
-//            .publishDecodable(type: productDataResponse.self)
-//            .compactMap{ $0.value }
-//            .map{ $0.results }
-//            .sink(receiveCompletion: { completion in
-//                print("데이터스트림 완료 ")
-//            }, receiveValue: { receivedValue in
-//                print("받은 값 : \(receivedValue.count)")
-//                self.productDatas = receivedValue
-//            }).store(in: &subscription)
-//    }
     
     func fetchRandomUserApi(){
         print(#fileID, #function, #line, "")
