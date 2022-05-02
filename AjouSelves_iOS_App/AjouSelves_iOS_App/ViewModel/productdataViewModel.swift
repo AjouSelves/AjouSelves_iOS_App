@@ -27,9 +27,6 @@ class productDataViewModel: ObservableObject {
     var authRegisterUrl = "http://44.202.49.100:3000/auth/register" // 유저 데이터 삽입
     var projUrl = "http://44.202.49.100:3000/proj/"
     
-    //MARK: - For [Testing]
-    var baseUrl2 = ["https://s3.marpple.co/files/u_1150555/2021/12/original/31eca686f0dd678adbd12faf5b1d5f693fb405791.jpg", "https://t1.daumcdn.net/cfile/tistory/9997C03E5C616C2720", "https://static.wixstatic.com/media/20259e_6e1bc381681c4f21a2415ea4fc5c2e6e~mv2.png/v1/crop/x_0,y_62,w_3456,h_4608/fill/w_272,h_300,al_c,usm_0.66_1.00_0.01,enc_auto/KakaoTalk_Photo_2021-09-01-17-28-22.png", "https://cdn.imweb.me/upload/S20200830244f269ed848e/656eb6ed91f12.jpg", "https://file.mk.co.kr/meet/neds/2020/11/image_readtop_2020_1174561_16054915004432908.jpg", "https://cdn.econovill.com/news/photo/202106/535189_445017_4134.jpg", "https://cdnweb01.wikitree.co.kr/webdata/editor/202010/24/img_20201024183026_60837f89.webp", "https://www.travelnbike.com/news/photo/202009/89970_176024_4744.jpg"]
-    
     var checkProjIndex: Int = 0
     
     init() {
