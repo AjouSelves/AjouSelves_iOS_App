@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8642C684282185520069FB46 /* ProjListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642C683282185520069FB46 /* ProjListView.swift */; };
 		8643110927F5D94600E2690E /* MainImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643110827F5D94600E2690E /* MainImgView.swift */; };
 		8643110C27F5DB3800E2690E /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8643110B27F5DB3800E2690E /* URLImage */; };
 		8643110E27F5DB3800E2690E /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 8643110D27F5DB3800E2690E /* URLImageStore */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		0D4F171ABA6C8BA0FB145BE4 /* Pods-AjouSelves_iOS_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.release.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.release.xcconfig"; sourceTree = "<group>"; };
 		36D59578DC964375D1E37FFB /* Pods-AjouSelves_iOS_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.debug.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.debug.xcconfig"; sourceTree = "<group>"; };
+		8642C683282185520069FB46 /* ProjListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjListView.swift; sourceTree = "<group>"; };
 		8643110827F5D94600E2690E /* MainImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImgView.swift; sourceTree = "<group>"; };
 		8643110F27F5DBBD00E2690E /* productData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productData.swift; sourceTree = "<group>"; };
 		8643111127F5DC1000E2690E /* productdataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productdataViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				865D53AB27F2FE5300CE2258 /* settingView.swift */,
 				8643110827F5D94600E2690E /* MainImgView.swift */,
 				8643111A27F5E40D00E2690E /* ListView.swift */,
+				8642C683282185520069FB46 /* ProjListView.swift */,
 				86886E2C27FECD3F00B22E1D /* sellingView.swift */,
 			);
 			path = View;
@@ -305,6 +308,7 @@
 				8643111B27F5E40D00E2690E /* ListView.swift in Sources */,
 				8643110927F5D94600E2690E /* MainImgView.swift in Sources */,
 				86ECBA9328048363000E60EB /* ImagePicker.swift in Sources */,
+				8642C684282185520069FB46 /* ProjListView.swift in Sources */,
 				869F06E627D77F3D0034001A /* ContentView.swift in Sources */,
 				865D53AA27F2FE4A00CE2258 /* mypageView.swift in Sources */,
 			);
@@ -375,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -430,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
