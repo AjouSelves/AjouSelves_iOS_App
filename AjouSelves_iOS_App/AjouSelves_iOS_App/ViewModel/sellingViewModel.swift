@@ -20,7 +20,7 @@ class sellingViewModel: ObservableObject {
     @Published var required: [String] = [""]
     
     func send() {
-        let param: Parameters = ["userid": 3, "title" : title, "explained" : explained, "min_num" : min_num, "category" : category, "required" : ["asd" : "asd", "fgh": "fgh"]] //dummyData in required
+        let param: Parameters = ["userid": 30, "title" : title, "explained" : explained, "min_num" : min_num, "category" : category, "required" : "test_required"] //dummyData in required
         print("buyingViewModel.send() method : \(title), \(explained), \(min_num), \(category), \(required)")
         print(param)
         AF.request(projAddUrl, method: .post, parameters: param, encoding: JSONEncoding.default)
