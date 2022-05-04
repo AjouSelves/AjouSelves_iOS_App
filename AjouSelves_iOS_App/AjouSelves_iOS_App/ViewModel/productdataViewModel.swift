@@ -17,6 +17,7 @@ class productDataViewModel: ObservableObject {
     
     @Published var productDatas = [productData]()
     //@Published var userDatas = [userResponseData]()
+    @Published var projectAllDataParcings = [projectAllDataParcing]()
     
     //@Published var postDats
     
@@ -35,16 +36,20 @@ class productDataViewModel: ObservableObject {
     
     init() {
         print(#fileID, #function, #line, "")
-        fetchRandomUserApi()
-        fetchUserAllUrl()
-        fetchAuthRegisterUrl()
-        for i in 1...20{
-            fetchProjUrl(url:projUrl+"\(i)")
-        }
+        //fetchRandomUserApi()
+        //fetchUserAllUrl()
+        //fetchAuthRegisterUrl()
+//        for i in 1...20{
+//            fetchProjUrl(url:projUrl+"\(i)")
+//        }
+        fetchProjUrl(url: projUrl)
+    }
+    
+    func refreshProj(){
+        fetchProjUrl(url: projUrl)
     }
     
     func fetchRandomUserApi(){
-        print(#fileID, #function, #line, "")
         AF.request(randomUserApi)
             .publishDecodable(type: productDataResponse.self)
             .compactMap{ $0.value }
@@ -55,11 +60,6 @@ class productDataViewModel: ObservableObject {
                 print("받은 값 : \(receivedValue.count)")
                 self.productDatas = receivedValue
             }).store(in: &subscription)
-    }
-    
-    func fetchtesting(){
-        //AF.request(baseUrl2)
-            //.publishDecodable(type:)
     }
     
     func fetchUserAllUrl(){
@@ -77,6 +77,7 @@ class productDataViewModel: ObservableObject {
         }
     }
     
+    // URL/proj/
     func fetchProjUrl(url:String){
         AF.request(url,
                    method: .get,
@@ -84,22 +85,51 @@ class productDataViewModel: ObservableObject {
                    encoding: URLEncoding.default,
                    headers: ["Content-Type":"application/json", "Accept":"application/json"])
         .validate(statusCode: 200..<300)
-        .responseDecodable(of: [userResponseData].self) { response in
-            //print(response)
+        //.compactMap { $0.value }
+        .responseDecodable(of: [projectAllDataParcing].self) { response in
+            switch response.result {
+            case .success(let value):
+                //print(value)
+                self.projectAllDataParcings = value
+                print(self.projectAllDataParcings)
+            case .failure(let error):
+                print(error)
+            }
         }
         .responseJSON(){ response in
-            print(response)
-            print("\(self.checkProjIndex)번 째 proj") // checking index
-            self.checkProjIndex+=1 // checking index
+            //print(response)
+            //print("\(self.checkProjIndex)번 째 proj") // checking index
+            //self.checkProjIndex+=1 // checking index
         }
     }
     
+//    func fetchProjUrl(url: String){
+//        let alamo = AF.request(url, method: .get).validate(statusCode: 200..<300)
+//
+//        alamo.responseJSON(completionHandler: { response in
+//            switch response.result{
+//            case .success:
+//                guard let result = response.data else { return }
+//
+//                do{
+//                    let decoder = JSONDecoder()
+//                    let json = try decoder.decode(projectAllDataParcing.self, from: result)
+//                    print(json)
+//                } catch {
+//                    print("error code: \(error)")
+//                }
+//            default:
+//                return
+//            }
+//        })
+//    }
+    
     func fetchAuthRegisterUrl() {
         let param: Parameters = [
-            "email" : "sisi@gmail.com",
+            "email" : "simh3077@gmail.com",
             "password" : "mhmh",
             "phonenumber" : "01099999999",
-            "nickname" : "sisi",
+            "nickname" : "조민현",
             "status" : "재학생",
             "socialtype" : "local",
             "sex" : 1,
