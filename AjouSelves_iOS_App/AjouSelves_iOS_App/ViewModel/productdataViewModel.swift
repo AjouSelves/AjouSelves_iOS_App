@@ -34,6 +34,8 @@ class productDataViewModel: ObservableObject {
     // 프로젝트의 목록, 전체 불러오기X
     var checkProjIndex: Int = 0
     
+    var projDeleteUrl = "http://44.202.49.100:3000/proj/41"
+    
     init() {
         print(#fileID, #function, #line, "")
         //fetchRandomUserApi()
@@ -43,6 +45,7 @@ class productDataViewModel: ObservableObject {
 //            fetchProjUrl(url:projUrl+"\(i)")
 //        }
         fetchProjUrl(url: projUrl)
+        projDelete(url: projDeleteUrl)
     }
     
     func refreshProj(){
@@ -91,7 +94,7 @@ class productDataViewModel: ObservableObject {
             case .success(let value):
                 //print(value)
                 self.projectAllDataParcings = value
-                print(self.projectAllDataParcings)
+                //print(self.projectAllDataParcings)
             case .failure(let error):
                 print(error)
             }
@@ -145,5 +148,9 @@ class productDataViewModel: ObservableObject {
             .responseJSON(){ response in
                 print(param)
             }
+    }
+    
+    func projDelete(url: String){
+        AF.request(url, method: .delete, parameters: nil, headers: nil).validate(statusCode: 200..<300)
     }
 }
