@@ -84,3 +84,58 @@ struct productDataResponse: Codable, CustomStringConvertible {
         return "results.count: \(results.count) / info : \(info.seed)"
     }
 }
+
+struct userResponseData: Codable {
+    let userid: Int?
+    let email: String?
+    let password: String?
+    let salt: String?
+    let phonenumber: String?
+    let nickname: String?
+    let status: String?
+    let socialtype: String?
+    let sex: Int?
+    let birth: String?
+    let address: String?
+    let account: String?
+    let create_at: String?
+    let profilelink: String?
+}
+
+struct postResponseData: Codable {
+    var title: String
+    var explaiend: String
+    var min_num: Int
+    var category: String
+    var required: [String]
+}
+
+// MARK: - 프로젝트 데이터 파싱
+// Dictionary타입 때문에 Hashable 프로토콜 채택
+struct projectAllDataParcing: Codable, Hashable {
+    let title: String?
+    let state: Int?
+    let category: String?
+    let min_num: Int?
+    let cur_num: Int?
+    let required: String?
+    let explained: String?
+    let nickname: String?
+    let userid: Int?
+    let profilelink: String?
+    let photos: [String]?
+    
+    var description_title: String {
+        return "제목: \(title!)"
+    }
+    var description_nickname: String {
+        return "글쓴이: \(nickname!)"
+    }
+    var description_category: String {
+        return "카테고리: \(category!)"
+    }
+    
+    static func getDummy() -> Self {
+        return projectAllDataParcing(title: "아주대학교 굿즈", state: 1, category: "의류", min_num: 1, cur_num: 1, required: "수량", explained: "설명임", nickname: "조민현", userid: 1, profilelink: "nil", photos: [""])
+    }
+}

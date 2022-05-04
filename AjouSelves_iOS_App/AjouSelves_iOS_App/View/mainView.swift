@@ -16,21 +16,39 @@ struct mainView: View {
     var body: some View {
         //펀딩 목록 불러오기
         NavigationView{
-            List(ProductDataViewModel.productDatas) { adata in
-                NavigationLink(
-                    destination: URLImage(URL(string: adata.photo.large)!) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .onTapGesture(count: 2, perform: {
-                                self.isPresent = true
-                                //여기에 좋아요 한 항목 추가
-                            })
-                    }, label: {
-                        ListView(adata)
-                    })
-            }
+//            List(ProductDataViewModel.productDatas) { adata in
+//                NavigationLink(
+//                    destination: URLImage(URL(string: adata.photo.large)!) { image in
+//                        image
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .onTapGesture(count: 2, perform: {
+//                                self.isPresent = true
+//                                //여기에 좋아요 한 항목 추가
+//                            })
+//                    }, label: {
+//                        ListView(adata)
+//                    })
+//            }
             //.frame(height: 600)
+            
+            
+            List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
+                //ProjListView(adata)
+                //print(adata)
+                NavigationLink(
+                    destination: Text("Test"),
+                        label: {
+                            //Text("Test")
+                            ProjListView(adata)
+                        })
+            }
+            // iOS 15부터 지원...
+            .refreshable {
+                productDataViewModel.init()
+                ProductDataViewModel.refreshProj()
+            }
+
             .alert(isPresented: $isPresent, content: {
                 Alert(title: Text("좋아요"), message: Text("하셨습니다!"), dismissButton: .default(Text("OK")))
             })
@@ -40,17 +58,17 @@ struct mainView: View {
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
                     NavigationLink(
-                        destination: Text("test"),
+                        destination: Text("검색"),
                             label: {
                                 Image(systemName: "magnifyingglass")
                     })
                     NavigationLink(
-                        destination: Text("test"),
+                        destination: sellingView(buyingVM: sellingViewModel()),
                             label: {
-                                Image(systemName: "line.3.horizontal.circle")
+                                Image(systemName: "plus")
                     })
                     NavigationLink(
-                        destination: Text("test"),
+                        destination: Text("알림센터"),
                             label: {
                                 Image(systemName: "bell")
                     })

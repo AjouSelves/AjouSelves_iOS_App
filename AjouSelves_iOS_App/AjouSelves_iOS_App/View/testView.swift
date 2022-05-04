@@ -16,11 +16,6 @@ struct testView: View {
                         Label("홈", systemImage: "house")
                     }
                 
-                BuyingView()
-                    .tabItem{
-                        Label("펀딩하기", systemImage: "gear")
-                    }
-    
                 communityView()
                     .tabItem{
                         Label("커뮤니티", systemImage: "person.3")
@@ -36,27 +31,6 @@ struct testView: View {
                         Label("설정", systemImage: "gear")
                     }
             }
-//            VStack{
-//                Spacer()
-//                HStack{
-//                    Spacer()
-//                    Button(action: {
-//                        BuyingView()
-//                        print("Testing Plus Button")
-//                    }, label: {
-//                        Text("+")
-//                            .font(.system(.largeTitle))
-//                            .frame(width: 77, height: 70)
-//                            .foregroundColor(Color.white)
-//                            .padding(.bottom, 7)
-//                    })
-//                    .background(Color.blue)
-//                    .cornerRadius(38.5)
-//                    .padding()
-//                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-//
-//                }
-//            }
         }
     }
 }
