@@ -16,10 +16,8 @@ class productDataViewModel: ObservableObject {
     var subscription = Set<AnyCancellable>() // 메모리 관리
     
     @Published var productDatas = [productData]()
-    //@Published var userDatas = [userResponseData]()
     @Published var projectAllDataParcings = [projectAllDataParcing]()
-    
-    //@Published var postDats
+    @Published var userToken: String = ""
     
     //MARK: - URL -> lowerCamelCase
     var randomUserApi = "https://randomuser.me/api/?results=100"
@@ -34,10 +32,14 @@ class productDataViewModel: ObservableObject {
     // 프로젝트의 목록, 전체 불러오기X
     var checkProjIndex: Int = 0
     
-    var projDeleteUrl = "http://44.202.49.100:3000/proj/41"
+    var projDeleteUrl = "http://44.202.49.100:3000/proj/delete/41"
+    
+    var authLoginUrl = "http://44.202.49.100:3000/auth/login"
     
     init() {
         print(#fileID, #function, #line, "")
+        print("init productdataViewModel")
+        authLogin(url: authLoginUrl)
         //fetchRandomUserApi()
         //fetchUserAllUrl()
         //fetchAuthRegisterUrl()
@@ -76,7 +78,7 @@ class productDataViewModel: ObservableObject {
             //print(response)
         }
         .responseJSON(){ response in
-            print(response)
+            //print(response)
         }
     }
     
@@ -89,21 +91,24 @@ class productDataViewModel: ObservableObject {
                    headers: ["Content-Type":"application/json", "Accept":"application/json"])
         .validate(statusCode: 200..<300)
         //.compactMap { $0.value }
+        .responseJSON{ response in
+            //print(response)
+        }
         .responseDecodable(of: [projectAllDataParcing].self) { response in
             switch response.result {
             case .success(let value):
-                //print(value)
+                //print("value!!!", value)
                 self.projectAllDataParcings = value
                 //print(self.projectAllDataParcings)
             case .failure(let error):
                 print(error)
             }
         }
-        .responseJSON(){ response in
-            //print(response)
-            //print("\(self.checkProjIndex)번 째 proj") // checking index
-            //self.checkProjIndex+=1 // checking index
-        }
+//        .responseJSON(){ response in
+//            //print(response)
+//            //print("\(self.checkProjIndex)번 째 proj") // checking index
+//            //self.checkProjIndex+=1 // checking index
+//        }
     }
     
 //    func fetchProjUrl(url: String){
@@ -151,6 +156,48 @@ class productDataViewModel: ObservableObject {
     }
     
     func projDelete(url: String){
-        AF.request(url, method: .delete, parameters: nil, headers: nil).validate(statusCode: 200..<300)
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(userToken)",
+                    "Accept": "application/json",
+                    "Content-Type": "application/json" ]
+        AF.request(url, method: .delete, parameters: nil, headers: tokenHeader).validate(statusCode: 200..<300)
+            .responseJSON { response in
+                print("delete!!!", response)
+            }
+    }
+    
+    func authLogin(url: String){
+        let param: Parameters = [
+            "email" : "simh3077@gmail.com",
+            "password" : "mhmh"
+        ]
+        AF.request(url,
+                   method: .post,
+                   parameters: param,
+                   encoding: URLEncoding.default,
+                   headers: nil)
+            .validate(statusCode: 200..<300)
+            .responseJSON(){ response in
+                print("response!!!",response)
+            }
+//            .responseDecodable(of: [userTokenDataParcing].self) { response in
+//                switch response.result {
+//                case .success(let value):
+//                    print("value!!!",value)
+//                    self.userTokenDataParcings = value
+//                    print(self.projectAllDataParcings)
+//                case .failure(let error):
+//                    print("error!!!", error)
+//                }
+//            }
+            // response로 날아온 userToken을 string으로 변환 후 잘라서 published 변수에 저장
+            .response{ response in
+                if let data = response.data, let success = String(data: data, encoding: .utf8) {
+                    let testText = success.split(separator: "\"")
+                    //print("split!!!",testText[9])
+                    self.userToken = String(testText[9])
+                }
+            }
+        
     }
 }

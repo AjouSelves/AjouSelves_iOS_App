@@ -19,14 +19,23 @@ class sellingViewModel: ObservableObject {
     @Published var category: String = ""
     @Published var required: [String] = [""]
     
+    var productdataViewModels = productDataViewModel()
+
     func send() {
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(productdataViewModels.userToken)",
+                    "Accept": "application/json",
+                    "Content-Type": "application/json" ]
+        
         let param: Parameters = ["userid": 30, "title" : title, "explained" : explained, "min_num" : min_num, "category" : category, "required" : "test_required"] //dummyData in required
         print("buyingViewModel.send() method : \(title), \(explained), \(min_num), \(category), \(required)")
-        print(param)
-        AF.request(projAddUrl, method: .post, parameters: param, encoding: JSONEncoding.default)
+        AF.request(projAddUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: tokenHeader)
             .responseJSON(){ json in
                 print(json)
-                print(param)
+                // 오류 메시지 변환
+//                if let data = json.data, let success = String(data: data, encoding: .utf8) {
+//                    print(success)
+//                }
             }
     }
 }
