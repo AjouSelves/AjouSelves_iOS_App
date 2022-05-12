@@ -24,7 +24,7 @@ struct sellingView : View {
     @State var category: String = ""
     @State var required: [String] = [""]
     
-    @ObservedObject var buyingVM: sellingViewModel
+    @ObservedObject var sellingVM: sellingViewModel
     
     let numFormatter: NumberFormatter = {
         let numFormatter = NumberFormatter()
@@ -84,12 +84,12 @@ struct sellingView : View {
                 
                 Button {
                     print("펀딩 등록 버튼 clicked")
-                    buyingVM.title = title
-                    buyingVM.explained = explained
-                    buyingVM.min_num = min_num
-                    buyingVM.category = category
-                    buyingVM.required = required
-                    buyingVM.send()
+                    sellingVM.title = title
+                    sellingVM.explained = explained
+                    sellingVM.min_num = min_num
+                    sellingVM.category = category
+                    sellingVM.required = required
+                    sellingVM.send()
                 } label: {
                     Text("등록")
                 }
@@ -100,6 +100,6 @@ struct sellingView : View {
 
 struct BuyingView_Previews: PreviewProvider {
     static var previews: some View {
-        sellingView(buyingVM: sellingViewModel())
+        sellingView(sellingVM: sellingViewModel())
     }
 }
