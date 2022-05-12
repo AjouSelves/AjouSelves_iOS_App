@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Alamofire
+import SwiftUI
 
 //class RandomUserViewModel: ObservableObject
 class productDataViewModel: ObservableObject {
@@ -19,6 +20,32 @@ class productDataViewModel: ObservableObject {
     @Published var projectAllDataParcings = [projectAllDataParcing]()
     @Published var postAllDatas = [postAllData]()
     @Published var userToken: String = ""
+    
+    //MARK: for register
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var name: String = ""
+    @Published var sex: Int  = 0
+    @Published var phonenumber: String = ""
+    @Published var nickname: String = ""
+    @Published var status: String = "재학생"
+    @Published var socialtype: String = ""
+    @Published var birth: String = ""
+    @Published var address: String = "dummy"
+    @Published var profilelink: String = "https://kakao.com/abcd"
+    @Published var bank: String = ""
+    @Published var account: String = ""
+    
+    @Published var loginEmail: String = ""
+    @Published var loginPassword: String = ""
+    
+    @Published var wakeUp = Date()
+    
+    //MARK: - 상태저장형재들
+    var registerCheck: Bool = false // 회원의 입력 항목중 빈 항목이 있다면 true로 체크
+    var registerisSuccess: Bool = false // 회원가입이 성공적으로 이루어져 success를 받으면 true
+    var registerFinish: Bool = false // 회원가입이 끝난 후 창이 꺼지면 안내 메시지 출력
+    var loginisSuccess: Bool = false // 로그인을 성공하면 true
     
     //MARK: - URL -> lowerCamelCase
     var randomUserApi = "https://randomuser.me/api/?results=100" // RamdomUserApi를 불러옴
@@ -40,7 +67,6 @@ class productDataViewModel: ObservableObject {
     var authLoginUrl = "http://44.202.49.100:3000/auth/login" // 로그인 토큰 발급
     
     init() {
-        print(#fileID, #function, #line, "")
         print("init productdataViewModel")
         authLogin(url: authLoginUrl) // 유저 로그인 -> 토큰 반환
         //fetchRandomUserApi() // 랜덤유저api
@@ -85,6 +111,7 @@ class productDataViewModel: ObservableObject {
     
     // URL/proj/
     func fetchProjUrl(url:String){
+        print("authLogin Activated")
         AF.request(url,
                    method: .get,
                    parameters: nil,
@@ -112,29 +139,6 @@ class productDataViewModel: ObservableObject {
 //        }
     }
     
-    func fetchAuthRegisterUrl() {
-        let param: Parameters = [
-            "email" : "simh3077@gmail.com",
-            "password" : "mhmh",
-            "phonenumber" : "01099999999",
-            "nickname" : "조민현",
-            "status" : "재학생",
-            "socialtype" : "local",
-            "sex" : 1,
-            "birth" : "1999-03-03",
-            "address" : "서울시 봉천동",
-            "account" : "110404",
-            "profilelink" : "kakako.com/113355"
-        ]
-        AF.request(authRegisterUrl, method: .post, parameters: param, encoding: JSONEncoding.default)
-            .responseString(){ response in
-                //print(response)
-            }
-            .responseJSON(){ response in
-                //print(param)
-            }
-    }
-    
     func projDelete(url: String){
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(userToken)",
@@ -147,9 +151,11 @@ class productDataViewModel: ObservableObject {
     }
     
     func authLogin(url: String){
+        print("authLogin Activated")
+        
         let param: Parameters = [
-            "email" : "simh3077@gmail.com",
-            "password" : "mhmh"
+            "email" : "\(loginEmail)",
+            "password" : "\(loginPassword)"
         ]
         AF.request(url,
                    method: .post,
@@ -157,17 +163,31 @@ class productDataViewModel: ObservableObject {
                    encoding: URLEncoding.default,
                    headers: nil)
             .validate(statusCode: 200..<300)
-            .responseJSON(){ response in
-                //print("response!!!",response)
-            }
+//            .responseJSON(){ response in
+//                print("response!!!",response)
+//            }
             // response로 날아온 userToken을 string으로 변환 후 잘라서 published 변수에 저장
             .response{ response in
-                if let data = response.data, let success = String(data: data, encoding: .utf8) {
-                    let testText = success.split(separator: "\"")
-                    //print(success)
-                    //print("split!!!",testText[9])
-                    self.userToken = String(testText[9])
+                switch response.result {
+                case .success(_):
+                    print("login success")
+                    self.loginisSuccess = true
+                    if let data = response.data, let success = String(data: data, encoding: .utf8) {
+                        let testText = success.split(separator: "\"")
+                        self.userToken = String(testText[9])
+                        print(self.userToken)
+                    }
+                    
+                case .failure(let error):
+                    print(error)
                 }
+//                if let data = response.data, let success = String(data: data, encoding: .utf8) {
+//                    let testText = success.split(separator: "\"")
+//                    //print(success)
+//                    //print("split!!!",testText[9])
+//                    print(response)
+//                    //self.userToken = String(testText[9])
+//                }
             }
     }
     
@@ -183,5 +203,81 @@ class productDataViewModel: ObservableObject {
                     print("postAllDatas!!!", error)
                 }
             }
+    }
+    
+    func emailConfirm(){
+        
+    }
+    
+    func registConfirm(){
+        // year, month, day
+        self.registerCheck = false
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateParser = dateFormatter.string(from: wakeUp)
+        birth = dateParser
+        
+        if email.isEmpty == true {
+            print("email is Empty")
+            self.registerCheck = true
+        }
+        else if password.isEmpty == true {
+            print("password is Empty")
+            self.registerCheck = true
+        }
+        else if name.isEmpty == true {
+            print("name is Empty")
+            self.registerCheck = true
+        }
+        else if phonenumber.isEmpty == true {
+            print("phonenumber is Empty")
+            self.registerCheck = true
+        }
+        else if nickname.isEmpty == true {
+            print("nickname is Empty")
+            self.registerCheck = true
+        }
+        else if birth.isEmpty == true {
+            print("birth is Empty")
+            self.registerCheck = true
+        }
+        else if bank.isEmpty == true {
+            print("bank is Empty")
+            self.registerCheck = true
+        }
+        else if account.isEmpty == true {
+            print("account is Empty")
+            self.registerCheck = true
+        }
+        
+        let param: Parameters = [
+            "email" : "\(email)",
+            "password" : "\(password)",
+            "name" : "\(name)",
+            "phonenumber" : "\(phonenumber)",
+            "nickname" : "\(nickname)",
+            "status" : "\(status)",
+            "socialtype" : "\(socialtype)",
+            "sex" : 0,
+            "birth" : "\(birth)",
+            "address" : "\(address)",
+            "account" : "\(account)",
+            "profilelink" : "\(profilelink)"
+        ]
+        
+        if registerCheck == false {
+            AF.request(authRegisterUrl, method: .post, parameters: param, headers: nil)
+                .validate(statusCode: 200..<300)
+                .responseJSON{ response in
+                    switch response.result {
+                    case .success(let value):
+                        self.registerisSuccess = true
+                        self.registerFinish = true
+                        print("success")
+                    case .failure(let error):
+                        print("fail", error)
+                    }
+                }
+        }
     }
 }
