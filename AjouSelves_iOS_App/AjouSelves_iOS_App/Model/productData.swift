@@ -139,3 +139,12 @@ struct projectAllDataParcing: Codable, Hashable {
         return projectAllDataParcing(title: "아주대학교 굿즈", state: 1, category: "의류", min_num: 1, cur_num: 1, required: "수량", explained: "설명임", nickname: "조민현", userid: 1, profilelink: "nil", photos: [""])
     }
 }
+
+struct postAllData: Codable {
+    let title: String?
+    let explained: String?
+    let created_at: String?
+    let userid: Int?
+    let nickname: String?
+    let url: String?
+}

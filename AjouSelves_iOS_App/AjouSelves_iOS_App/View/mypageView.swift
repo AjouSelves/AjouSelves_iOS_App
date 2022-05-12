@@ -9,15 +9,11 @@ import SwiftUI
 
 struct mypageView: View {
     var body: some View {
-        ZStack {
-            Circle()
-                .frame(width: 300, height: 300)
-                .foregroundColor(.black)
-            
-            Text("\(3)")
-                .font(.system(size: 70))
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+        NavigationView{
+            List{
+                Text("데이터데이터데이터데이터데이터데이터데이터")
+                Text("데이터데이터데이터데이터데이터데이터데이터")
+            }
         }
     }
 }
