@@ -19,25 +19,36 @@ struct ProjListView : View {
     
     var body: some View {
         HStack{
+            MainImgView(imageUrl: prdData.profileImgUrl)
             VStack(alignment: .leading, spacing: 5){
-                //MainImgView(imageUrl: prdData.profileImgUrl)
-                Text("\(prdData.description_title)")
-                    .fontWeight(.heavy)
-                    .font(.system(size: 50))
-                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-                    .minimumScaleFactor(0.5)
-                Text("\(prdData.description_nickname)")
-                    //.fontWeight(.heavy)
-                    .font(.system(size: 35))
-                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-                    .minimumScaleFactor(0.5)
                 Text("\(prdData.description_category)")
                     //.fontWeight(.heavy)
-                    .font(.system(size: 35))
+                    .font(.system(size: 15))
                     .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                     .minimumScaleFactor(0.5)
+                Text("\(prdData.description_title)")
+                    .fontWeight(.heavy)
+                    .font(.system(size: 20))
+                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                    .minimumScaleFactor(0.5)
+                Spacer()
+//                Text("\(prdData.description_nickname)")
+//                    //.fontWeight(.heavy)
+//                    .font(.system(size: 15))
+//                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+//                    .minimumScaleFactor(0.5)
+                HStack{
+                    Text("350%")
+                        .font(.system(size: 20))
+                        
+                    Text("\(prdData.description_minnum)명 참여") // 지금까지 몇명이 참여했는지에 대한 데이터 필요
+                        //.fontWeight(.heavy)
+                        .font(.system(size: 15))
+                        .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                        .minimumScaleFactor(0.5)
+                }
             }
-        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading).padding(.vertical)
+        }.frame(minWidth: 100, maxWidth: .infinity, minHeight: 0, maxHeight: 100, alignment: .leading).padding(.vertical)
     }
 }
 
