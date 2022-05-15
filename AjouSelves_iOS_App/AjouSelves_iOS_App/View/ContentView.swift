@@ -17,17 +17,16 @@ struct ContentView: View {
     @State private var willMoveToNextScreen = false
     
     @ObservedObject var productdataVM: productDataViewModel
+    @ObservedObject var viewrouter: viewRouter
     
     //var RegisterView = registerView()
     
     var body: some View {
         NavigationView {
             VStack{
-                Image("Logo")
+                Image("LogoImage")
                     .resizable()
                     .scaledToFit()
-                Spacer()
-                
                 HStack{
                     VStack{
                         TextField("ID", text: $userId)
@@ -40,38 +39,35 @@ struct ContentView: View {
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                     }
+                    .padding()
+                    Spacer()
                     Button(action: {
                         productdataVM.loginEmail = userId
                         productdataVM.loginPassword = userPassword
                         productdataVM.authLogin(url: productdataVM.authLoginUrl)
-//                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-//                            if productdataVM.loginisSuccess == true {
-//                                print("login!!!")
-//                                NavigationLink(destination: testView()){
-//                                    Text("메인")
-//                                        .navigationTitle("")
-//                                        .navigationBarHidden(true)
-//                                }
-//                            }
-//                        }
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                            if productdataVM.loginisSuccess == true {
+                                print("login!!!")
+                                self.viewrouter.currentPage = "testView"
+                            }
+                        }
                     }, label: {
                         Text("확인").frame(minWidth: 80, minHeight: 50).background(.black)
-                    }).frame(minWidth: 100, minHeight: 100)
+                    }).frame(minWidth: 90, minHeight: 100)
                 }
                 
-//                NavigationLink(destination: registerView(productdataVM: productDataViewModel())) {
-//                    Text("회원가입")
-//                        .navigationTitle("")
-//                        .navigationBarHidden(true)
-//                        .navigationBarBackButtonHidden(true)
-//                }
-                
-                NavigationLink(destination: testView()) {
+                NavigationLink(destination: registerView(productdataVM: productDataViewModel())) {
                     Text("회원가입")
                         .navigationTitle("")
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)
                 }
+//                NavigationLink(destination: testView()) {
+//                    Text("회원가입")
+//                        .navigationTitle("")
+//                        .navigationBarHidden(true)
+//                        .navigationBarBackButtonHidden(true)
+//                }
                 
                 // KakaoLoginTestButton
                 Button(action: {
@@ -104,6 +100,7 @@ struct ContentView: View {
                     Image("LoginButton")
                         .resizable()
                         .scaledToFit()
+                        .frame(width:150)
                 }
             }
             //성공
@@ -117,6 +114,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(productdataVM: productDataViewModel())
+        ContentView(productdataVM: productDataViewModel(), viewrouter: viewRouter())
     }
 }
