@@ -9,6 +9,7 @@ import SwiftUI
 
 struct communityView: View {
     
+    //MARK: 테스팅
     @ObservedObject var ProductDataViewModel = productDataViewModel()
     
     var body: some View {
@@ -23,6 +24,7 @@ struct communityView: View {
                             ProjListView(adata)
                         })
             }
+            .padding(-15)
         }
         
     }
