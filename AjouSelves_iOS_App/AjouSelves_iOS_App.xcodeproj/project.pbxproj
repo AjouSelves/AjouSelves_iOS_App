@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86372639282E45C3005AC48C /* projDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372638282E45C3005AC48C /* projDetailView.swift */; };
+		8637263F282E4EE4005AC48C /* viewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637263E282E4EE4005AC48C /* viewRouter.swift */; };
+		86372641282E5114005AC48C /* startView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372640282E5114005AC48C /* startView.swift */; };
 		8642C684282185520069FB46 /* ProjListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642C683282185520069FB46 /* ProjListView.swift */; };
 		8643110927F5D94600E2690E /* MainImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643110827F5D94600E2690E /* MainImgView.swift */; };
 		8643110C27F5DB3800E2690E /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8643110B27F5DB3800E2690E /* URLImage */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		0D4F171ABA6C8BA0FB145BE4 /* Pods-AjouSelves_iOS_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.release.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.release.xcconfig"; sourceTree = "<group>"; };
 		36D59578DC964375D1E37FFB /* Pods-AjouSelves_iOS_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AjouSelves_iOS_App.debug.xcconfig"; path = "Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App.debug.xcconfig"; sourceTree = "<group>"; };
+		86372638282E45C3005AC48C /* projDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projDetailView.swift; sourceTree = "<group>"; };
+		8637263E282E4EE4005AC48C /* viewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewRouter.swift; sourceTree = "<group>"; };
+		86372640282E5114005AC48C /* startView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startView.swift; sourceTree = "<group>"; };
 		8642C683282185520069FB46 /* ProjListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjListView.swift; sourceTree = "<group>"; };
 		8643110827F5D94600E2690E /* MainImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImgView.swift; sourceTree = "<group>"; };
 		8643110F27F5DBBD00E2690E /* productData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productData.swift; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 				869F06E327D77F3D0034001A /* SceneDelegate.swift */,
 				869F06E127D77F3D0034001A /* AppDelegate.swift */,
 				8643110F27F5DBBD00E2690E /* productData.swift */,
+				8637263E282E4EE4005AC48C /* viewRouter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +127,8 @@
 				8642C683282185520069FB46 /* ProjListView.swift */,
 				86886E2C27FECD3F00B22E1D /* sellingView.swift */,
 				86D15F8A282CF8BD00035DE1 /* registerView.swift */,
+				86372638282E45C3005AC48C /* projDetailView.swift */,
+				86372640282E5114005AC48C /* startView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,11 +313,14 @@
 				865D53A627F2F92000CE2258 /* mainView.swift in Sources */,
 				8643111227F5DC1000E2690E /* productdataViewModel.swift in Sources */,
 				86886E2D27FECD3F00B22E1D /* sellingView.swift in Sources */,
+				86372639282E45C3005AC48C /* projDetailView.swift in Sources */,
 				865D53A827F2FE4100CE2258 /* communityView.swift in Sources */,
 				865D53B027F2FEFC00CE2258 /* testView.swift in Sources */,
 				865D53AC27F2FE5300CE2258 /* settingView.swift in Sources */,
 				8668972D2806DAA40042ED35 /* sellingViewModel.swift in Sources */,
+				86372641282E5114005AC48C /* startView.swift in Sources */,
 				8643111B27F5E40D00E2690E /* ListView.swift in Sources */,
+				8637263F282E4EE4005AC48C /* viewRouter.swift in Sources */,
 				8643110927F5D94600E2690E /* MainImgView.swift in Sources */,
 				86ECBA9328048363000E60EB /* ImagePicker.swift in Sources */,
 				8642C684282185520069FB46 /* ProjListView.swift in Sources */,

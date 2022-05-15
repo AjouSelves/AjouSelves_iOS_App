@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct testView: View {
+    
+    @State var uiTabarController: UITabBarController?
+    @ObservedObject var viewrouter: viewRouter
+    
     var body: some View {
         ZStack{
             TabView{
@@ -21,7 +25,7 @@ struct testView: View {
                         Label("커뮤니티", systemImage: "person.3")
                     }
                 
-                mypageView()
+                mypageView(viewrouter: viewRouter())
                     .tabItem{
                         Label("마이페이지", systemImage: "person")
                     }
@@ -37,6 +41,6 @@ struct testView: View {
 
 struct testView_Previews: PreviewProvider {
     static var previews: some View {
-        testView()
+        testView(viewrouter: viewRouter())
     }
 }

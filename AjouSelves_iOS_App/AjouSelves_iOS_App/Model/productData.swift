@@ -123,20 +123,36 @@ struct projectAllDataParcing: Codable, Hashable {
     let nickname: String?
     let userid: Int?
     let profilelink: String?
-    let photos: [String]?
+    let url: String?
+    
+    var profileImgUrl : URL {
+//        get {
+//            URL(string: "https://randomuser.me/api/portraits/women/21.jpg")! ??
+//        }
+        get { // 수정 필요
+            URL(string: "http://44.202.49.100:3000\(url)" ?? "https://randomuser.me/api/portraits/women/21.jpg")!
+        }
+    }
+    
+    var description_photos: URL {
+        return profileImgUrl
+    }
     
     var description_title: String {
-        return "제목: \(title!)"
+        return "\(title!)"
     }
     var description_nickname: String {
-        return "글쓴이: \(nickname!)"
+        return "\(nickname!)"
     }
     var description_category: String {
-        return "카테고리: \(category!)"
+        return "\(category!)"
+    }
+    var description_minnum: String {
+        return "\(min_num!)"
     }
     
     static func getDummy() -> Self {
-        return projectAllDataParcing(title: "아주대학교 굿즈", state: 1, category: "의류", min_num: 1, cur_num: 1, required: "수량", explained: "설명임", nickname: "조민현", userid: 1, profilelink: "nil", photos: [""])
+        return projectAllDataParcing(title: "아주대학교 굿즈", state: 1, category: "의류", min_num: 1, cur_num: 1, required: "수량", explained: "설명임", nickname: "조민현", userid: 1, profilelink: "nil", url: "")
     }
 }
 

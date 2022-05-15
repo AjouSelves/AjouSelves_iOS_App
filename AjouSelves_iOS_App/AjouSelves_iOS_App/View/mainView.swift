@@ -72,14 +72,22 @@ struct mainView: View {
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading){
+//                    Button(action: {
+//                        print("Clicked4")
+//                    }, label: {
+//                        Text("아주대")
+//                            .font(.title2)
+//                            .bold()
+//                            .foregroundColor(Color.black)
+//
+//                    })
                     Button(action: {
                         print("Clicked4")
                     }, label: {
-                        Text("아주대")
-                            .font(.title2)
-                            .bold()
-                            .foregroundColor(Color.black)
-                        
+                        Image("LogoImage_png")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 170, height: 170, alignment: .leading)
                     })
                 }
             }

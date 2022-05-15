@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         
         // Kakao login view
-        let contentView = ContentView(productdataVM: productDataViewModel()).environment(\.managedObjectContext, context)
+        let contentView = startView(viewrouter: viewRouter()).environment(\.managedObjectContext, context)
         // main view
         //let contentView = testView().environment(\.managedObjectContext, context)
 
