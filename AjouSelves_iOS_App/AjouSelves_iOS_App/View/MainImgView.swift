@@ -19,7 +19,7 @@ struct MainImgView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
-        .frame(width: 80, height: 80)
+        .frame(width: 130, height: 130)
     }
 }
 
