@@ -30,8 +30,7 @@ struct mainView: View {
 //                        ListView(adata)
 //                    })
 //            }
-            //.frame(height: 600)
-            
+//            .frame(height: 600)
             
             List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
                 //ProjListView(adata)
@@ -49,12 +48,11 @@ struct mainView: View {
                 ProductDataViewModel.refreshProj()
             }
 
-            .alert(isPresented: $isPresent, content: {
-                Alert(title: Text("좋아요"), message: Text("하셨습니다!"), dismissButton: .default(Text("OK")))
-            })
-            
+//            .alert(isPresented: $isPresent, content: {
+//                Alert(title: Text("좋아요"), message: Text("하셨습니다!"), dismissButton: .default(Text("OK")))
+//            })
             //.navigationTitle("펀딩 목록")
-            .navigationBarTitleDisplayMode(.automatic)
+            //.navigationBarTitleDisplayMode(.automatic)
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
                     NavigationLink(
@@ -63,7 +61,7 @@ struct mainView: View {
                                 Image(systemName: "magnifyingglass")
                     })
                     NavigationLink(
-                        destination: sellingView(buyingVM: sellingViewModel()),
+                        destination: sellingView(sellingVM: sellingViewModel()),
                             label: {
                                 Image(systemName: "plus")
                     })
@@ -74,21 +72,32 @@ struct mainView: View {
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading){
+//                    Button(action: {
+//                        print("Clicked4")
+//                    }, label: {
+//                        Text("아주대")
+//                            .font(.title2)
+//                            .bold()
+//                            .foregroundColor(Color.black)
+//
+//                    })
                     Button(action: {
                         print("Clicked4")
                     }, label: {
-                        Text("아주대")
-                            .font(.title2)
-                            .bold()
-                            .foregroundColor(Color.black)
-                        
+                        Image("LogoImage_png")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 170, height: 170, alignment: .leading)
                     })
                 }
             }
             //.frame(height: 700)
-            // .border(Color.blue) // Title밑 Tabview밑의 파란 줄
+            // .border(Color.blue) // Title밑 Tabview밑의 파란 줄Spacer()
             .padding(-15)
         }
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

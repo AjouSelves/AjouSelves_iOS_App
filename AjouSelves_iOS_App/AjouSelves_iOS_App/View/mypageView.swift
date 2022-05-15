@@ -8,22 +8,30 @@
 import SwiftUI
 
 struct mypageView: View {
+    
+    @ObservedObject var viewrouter: viewRouter
+    
     var body: some View {
-        ZStack {
-            Circle()
-                .frame(width: 300, height: 300)
-                .foregroundColor(.black)
-            
-            Text("\(3)")
-                .font(.system(size: 70))
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+        VStack{
+            NavigationView{
+                List{
+                    Text("데이터데이터데이터데이터데이터데이터데이터")
+                    Text("데이터데이터데이터데이터데이터데이터데이터")
+                }
+                .padding(-15)
+            }
+            Button(action: {
+                self.viewrouter.currentPage = "ContentView"
+                startView(viewrouter: viewRouter())
+            }, label: {
+                Text("로그아웃 테스트")
+            })
         }
     }
 }
 
 struct mypageView_Previews: PreviewProvider {
     static var previews: some View {
-        mypageView()
+        mypageView(viewrouter: viewRouter())
     }
 }

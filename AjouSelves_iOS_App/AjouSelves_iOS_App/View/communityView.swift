@@ -8,17 +8,25 @@
 import SwiftUI
 
 struct communityView: View {
+    
+    //MARK: 테스팅
+    @ObservedObject var ProductDataViewModel = productDataViewModel()
+    
     var body: some View {
-        ZStack {
-            Circle()
-                .frame(width: 300, height: 300)
-                .foregroundColor(.red)
-            
-            Text("\(3)")
-                .font(.system(size: 70))
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+        NavigationView {
+            List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
+                //ProjListView(adata)
+                //print(adata)
+                NavigationLink(
+                    destination: Text("Test"),
+                        label: {
+                            //Text("Test")
+                            ProjListView(adata)
+                        })
+            }
+            .padding(-15)
         }
+        
     }
 }
 
