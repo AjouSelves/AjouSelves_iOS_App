@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct projDetailView: View {
+    var prdData: projectAllDataParcing
     
     var body: some View {
         VStack{
-            
+            Text("\(prdData.description_title)")
+            Text("Test2")
         }
-        
     }
 }
 
 struct projDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        projDetailView()
+        projDetailView(prdData: projectAllDataParcing.getDummy())
     }
 }
