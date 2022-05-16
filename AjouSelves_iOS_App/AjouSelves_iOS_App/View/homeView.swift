@@ -1,5 +1,5 @@
 //
-//  mainView.swift
+//  homeView.swift
 //  AjouSelves_iOS_App
 //
 //  Created by Minhyun Cho on 2022/03/29.
@@ -8,7 +8,7 @@
 import SwiftUI
 import URLImage
 
-struct mainView: View {
+struct homeView: View {
     
     @ObservedObject var ProductDataViewModel = productDataViewModel()
     @State var isPresent: Bool = false
@@ -103,6 +103,6 @@ struct mainView: View {
 
 struct mainView_Previews: PreviewProvider {
     static var previews: some View {
-        mainView()
+        homeView()
     }
 }
