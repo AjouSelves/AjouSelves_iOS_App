@@ -48,7 +48,7 @@ struct ContentView: View {
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                             if productdataVM.loginisSuccess == true {
                                 print("login!!!")
-                                self.viewrouter.currentPage = "testView"
+                                self.viewrouter.currentPage = "tabView"
                             }
                         }
                     }, label: {
@@ -62,7 +62,7 @@ struct ContentView: View {
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)
                 }
-//                NavigationLink(destination: testView()) {
+//                NavigationLink(destination: tabView()) {
 //                    Text("회원가입")
 //                        .navigationTitle("")
 //                        .navigationBarHidden(true)

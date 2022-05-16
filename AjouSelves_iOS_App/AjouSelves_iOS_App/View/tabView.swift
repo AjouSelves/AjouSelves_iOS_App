@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct testView: View {
+struct tabView: View {
     
     @State var uiTabarController: UITabBarController?
     @ObservedObject var viewrouter: viewRouter
@@ -41,6 +41,6 @@ struct testView: View {
 
 struct testView_Previews: PreviewProvider {
     static var previews: some View {
-        testView(viewrouter: viewRouter())
+        tabView(viewrouter: viewRouter())
     }
 }

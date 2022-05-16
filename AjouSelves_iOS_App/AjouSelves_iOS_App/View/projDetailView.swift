@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct projDetailView: View {
+    
     var body: some View {
         VStack{
             
