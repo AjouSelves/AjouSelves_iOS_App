@@ -20,9 +20,8 @@ struct homeView: View {
                 //ProjListView(adata)
                 //print(adata)
                 NavigationLink(
-                    destination: projDetailView(prdData: projectAllDataParcing.getDummy()),
+                    destination: projDetailView(adata),
                         label: {
-                            //Text("Test")
                             ProjListView(adata)
                         })
             }
