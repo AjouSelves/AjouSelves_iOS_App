@@ -32,7 +32,7 @@ struct sellingView : View {
         return numFormatter
     }()
     
-    //MARK: - mainView
+    //MARK: - homeView
     var body: some View {
         VStack {
             Form {

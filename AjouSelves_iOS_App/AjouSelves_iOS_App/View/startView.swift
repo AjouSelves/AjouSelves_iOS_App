@@ -15,8 +15,8 @@ struct startView: View {
         if viewrouter.currentPage == "ContentView"{
             ContentView(productdataVM: productDataViewModel(), viewrouter: viewrouter)
         }
-        else if viewrouter.currentPage == "testView"{
-            testView(viewrouter: viewrouter)
+        else if viewrouter.currentPage == "tabView"{
+            tabView(viewrouter: viewrouter)
         }
     }
 }

@@ -7,15 +7,21 @@
 
 import SwiftUI
 
-struct testView: View {
+struct tabView: View {
     
     @State var uiTabarController: UITabBarController?
     @ObservedObject var viewrouter: viewRouter
     
     var body: some View {
         ZStack{
+            NavigationView{
             TabView{
-                mainView()
+                List(1...10, id: \.self) { index in
+                    NavigationLink(destination: Text("아이템\(index)번의 세부사항"), label: {
+                        Text("아이템 \(index)")
+                    })
+                }
+                homeView()
                     .tabItem{
                         Label("홈", systemImage: "house")
                     }
@@ -35,12 +41,14 @@ struct testView: View {
                         Label("설정", systemImage: "gear")
                     }
             }
+            //.navigationBarTitleDisplayMode(<#T##displayMode: NavigationBarItem.TitleDisplayMode##NavigationBarItem.TitleDisplayMode#>)
+        }
         }
     }
 }
 
 struct testView_Previews: PreviewProvider {
     static var previews: some View {
-        testView(viewrouter: viewRouter())
+        tabView(viewrouter: viewRouter())
     }
 }

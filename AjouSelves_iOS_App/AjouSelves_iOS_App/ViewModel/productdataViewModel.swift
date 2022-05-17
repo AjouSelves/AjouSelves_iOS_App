@@ -35,10 +35,8 @@ class productDataViewModel: ObservableObject {
     @Published var profilelink: String = "https://kakao.com/abcd"
     @Published var bank: String = ""
     @Published var account: String = ""
-    
     @Published var loginEmail: String = ""
     @Published var loginPassword: String = ""
-    
     @Published var wakeUp = Date()
     
     //MARK: - 상태저장형재들

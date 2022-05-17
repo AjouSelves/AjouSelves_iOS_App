@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import URLImage
 
-struct MainImgView: View {
+struct thumbnailView: View {
     
     var imageUrl: URL
     
@@ -28,6 +28,6 @@ struct MainImgView_Previews: PreviewProvider {
         
         let url = URL(string: "https://randomuser.me/api/portraits/women/21.jpg")!
         
-        MainImgView(imageUrl: url)
+        thumbnailView(imageUrl: url)
     }
 }
