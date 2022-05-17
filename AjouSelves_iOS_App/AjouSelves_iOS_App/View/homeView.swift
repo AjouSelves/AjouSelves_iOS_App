@@ -17,8 +17,6 @@ struct homeView: View {
         //펀딩 목록 불러오기
         NavigationView{
             List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
-                //ProjListView(adata)
-                //print(adata)
                 NavigationLink(
                     destination: projDetailView(adata),
                         label: {
