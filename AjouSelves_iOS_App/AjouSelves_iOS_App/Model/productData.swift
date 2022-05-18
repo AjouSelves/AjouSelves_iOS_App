@@ -127,7 +127,7 @@ struct projectAllDataParcing: Codable, Hashable {
     
     var profileImgUrl : URL {
         get {
-            URL(string: "http://44.202.49.100:3000\(url ?? "/photo/1650014537158-aa.png")")!
+            URL(string: "http://52.206.105.200:3000\(url ?? "/photo/1650014537158-aa.png")")!
         }
     }
     

@@ -48,21 +48,21 @@ class productDataViewModel: ObservableObject {
     //MARK: - URL -> lowerCamelCase
     var randomUserApi = "https://randomuser.me/api/?results=100" // RamdomUserApi를 불러옴
     
-    var userAllUrl = "http://44.202.49.100:3000/user/all" // 전체 유저 데이터 불러옴
+    var userAllUrl = "http://52.206.105.200:3000/user/all" // 전체 유저 데이터 불러옴
     
-    var postAllUrl = "http://44.202.49.100:3000/post/all" // 커뮤니티 게시글 전체 조회
+    var postAllUrl = "http://52.206.105.200:3000/post/all" // 커뮤니티 게시글 전체 조회
     
-    var postAddUrl = "http://44.202.49.100:3000/post/add" // 커뮤니티 게시글 추가
+    var postAddUrl = "http://52.206.105.200:3000/post/add" // 커뮤니티 게시글 추가
     
-    var authRegisterUrl = "http://44.202.49.100:3000/auth/register" // 유저 데이터 삽입
+    var authRegisterUrl = "http://52.206.105.200:3000/auth/register" // 유저 데이터 삽입
     
-    var projUrl = "http://44.202.49.100:3000/proj/" // 프로젝트 목록
+    var projUrl = "http://52.206.105.200:3000/proj/" // 프로젝트 목록
     
     var checkProjIndex: Int = 0
     
-    var projDeleteUrl = "http://44.202.49.100:3000/proj/delete/41" // 특정 프로젝트 삭제
+    var projDeleteUrl = "http://52.206.105.200:3000/proj/delete/41" // 특정 프로젝트 삭제
     
-    var authLoginUrl = "http://44.202.49.100:3000/auth/login" // 로그인 토큰 발급
+    var authLoginUrl = "http://52.206.105.200:3000/auth/login" // 로그인 토큰 발급
     
     init() {
         print("init productdataViewModel")
