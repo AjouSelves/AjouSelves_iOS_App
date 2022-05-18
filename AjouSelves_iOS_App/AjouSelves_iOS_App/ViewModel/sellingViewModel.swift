@@ -11,7 +11,7 @@ import Alamofire
 
 class sellingViewModel: ObservableObject {
     
-    var projAddUrl = "http://44.202.49.100:3000/proj/add"
+    var projAddUrl = "http://52.206.105.200:3000/proj/add"
     
     @Published var title: String = ""
     @Published var explained: String = ""

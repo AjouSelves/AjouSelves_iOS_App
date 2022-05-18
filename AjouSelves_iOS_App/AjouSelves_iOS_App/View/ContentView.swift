@@ -28,6 +28,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                 Spacer()
+                Divider()
                 HStack{
                     VStack{
                         TextField("아이디", text: $userId)
@@ -58,7 +59,7 @@ struct ContentView: View {
                 }
                 Spacer()
                 HStack{
-                    Text("아직 굿즈바이어스 계정이 없으신가요?")
+                    Text("아직 굿즈바이어스 계정이 없으신가요?").foregroundColor(Color.gray)
                     NavigationLink(destination: registerView(productdataVM: productDataViewModel())) {
                         Text("회원가입")
                             .navigationTitle("")
@@ -74,6 +75,7 @@ struct ContentView: View {
 //                        .navigationBarBackButtonHidden(true)
 //                }
                 Divider()
+                
                 // KakaoLoginTestButton
                 Button(action: {
                     if (UserApi.isKakaoTalkLoginAvailable()){
@@ -107,6 +109,7 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(width:150)
                 }
+                Spacer()
             }
             //성공
             .navigationTitle("")
