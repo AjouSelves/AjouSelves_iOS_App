@@ -10,6 +10,9 @@
 		86372639282E45C3005AC48C /* projDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372638282E45C3005AC48C /* projDetailView.swift */; };
 		8637263F282E4EE4005AC48C /* viewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637263E282E4EE4005AC48C /* viewRouter.swift */; };
 		86372641282E5114005AC48C /* startView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372640282E5114005AC48C /* startView.swift */; };
+		86403192283654C70043B2A7 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86403191283654C70043B2A7 /* PhotoPicker.swift */; };
+		86403194283654EB0043B2A7 /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86403193283654EB0043B2A7 /* PhotoPickerModel.swift */; };
+		864031962836550F0043B2A7 /* ImgViewTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864031952836550F0043B2A7 /* ImgViewTesting.swift */; };
 		8642C684282185520069FB46 /* ProjListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642C683282185520069FB46 /* ProjListView.swift */; };
 		8643110927F5D94600E2690E /* thumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643110827F5D94600E2690E /* thumbnailView.swift */; };
 		8643110C27F5DB3800E2690E /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8643110B27F5DB3800E2690E /* URLImage */; };
@@ -32,8 +35,8 @@
 		869F06EE27D77F3F0034001A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869F06ED27D77F3F0034001A /* Preview Assets.xcassets */; };
 		869F06F127D77F3F0034001A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869F06EF27D77F3F0034001A /* LaunchScreen.storyboard */; };
 		86CED0C82832447F00CE295B /* projImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED0C72832447F00CE295B /* projImgView.swift */; };
+		86CED0CE2834D87200CE295B /* TabBarAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED0CD2834D87100CE295B /* TabBarAccessor.swift */; };
 		86D15F8B282CF8BD00035DE1 /* registerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D15F8A282CF8BD00035DE1 /* registerView.swift */; };
-		86ECBA9328048363000E60EB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECBA9228048363000E60EB /* ImagePicker.swift */; };
 		D74ECF0DF7170350588BA8B7 /* Pods_AjouSelves_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98107793F60A7248833C1CB2 /* Pods_AjouSelves_iOS_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,9 @@
 		86372638282E45C3005AC48C /* projDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projDetailView.swift; sourceTree = "<group>"; };
 		8637263E282E4EE4005AC48C /* viewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewRouter.swift; sourceTree = "<group>"; };
 		86372640282E5114005AC48C /* startView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startView.swift; sourceTree = "<group>"; };
+		86403191283654C70043B2A7 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		86403193283654EB0043B2A7 /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
+		864031952836550F0043B2A7 /* ImgViewTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgViewTesting.swift; sourceTree = "<group>"; };
 		8642C683282185520069FB46 /* ProjListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjListView.swift; sourceTree = "<group>"; };
 		8643110827F5D94600E2690E /* thumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thumbnailView.swift; sourceTree = "<group>"; };
 		8643110F27F5DBBD00E2690E /* productData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productData.swift; sourceTree = "<group>"; };
@@ -64,8 +70,8 @@
 		869F06F027D77F3F0034001A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		869F06F227D77F3F0034001A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86CED0C72832447F00CE295B /* projImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projImgView.swift; sourceTree = "<group>"; };
+		86CED0CD2834D87100CE295B /* TabBarAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAccessor.swift; sourceTree = "<group>"; };
 		86D15F8A282CF8BD00035DE1 /* registerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerView.swift; sourceTree = "<group>"; };
-		86ECBA9228048363000E60EB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		98107793F60A7248833C1CB2 /* Pods_AjouSelves_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AjouSelves_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,7 +101,6 @@
 		8643110727F5D69300E2690E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				86ECBA9228048363000E60EB /* ImagePicker.swift */,
 				8643111127F5DC1000E2690E /* productdataViewModel.swift */,
 				8668972C2806DAA40042ED35 /* sellingViewModel.swift */,
 			);
@@ -109,6 +114,9 @@
 				869F06E127D77F3D0034001A /* AppDelegate.swift */,
 				8643110F27F5DBBD00E2690E /* productData.swift */,
 				8637263E282E4EE4005AC48C /* viewRouter.swift */,
+				86CED0CD2834D87100CE295B /* TabBarAccessor.swift */,
+				86403191283654C70043B2A7 /* PhotoPicker.swift */,
+				86403193283654EB0043B2A7 /* PhotoPickerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 				86D15F8A282CF8BD00035DE1 /* registerView.swift */,
 				86372638282E45C3005AC48C /* projDetailView.swift */,
 				86372640282E5114005AC48C /* startView.swift */,
+				864031952836550F0043B2A7 /* ImgViewTesting.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,6 +323,7 @@
 				8643111227F5DC1000E2690E /* productdataViewModel.swift in Sources */,
 				86886E2D27FECD3F00B22E1D /* sellingView.swift in Sources */,
 				86372639282E45C3005AC48C /* projDetailView.swift in Sources */,
+				86403194283654EB0043B2A7 /* PhotoPickerModel.swift in Sources */,
 				865D53A827F2FE4100CE2258 /* communityView.swift in Sources */,
 				865D53B027F2FEFC00CE2258 /* tabView.swift in Sources */,
 				865D53AC27F2FE5300CE2258 /* settingView.swift in Sources */,
@@ -321,12 +331,14 @@
 				86372641282E5114005AC48C /* startView.swift in Sources */,
 				8637263F282E4EE4005AC48C /* viewRouter.swift in Sources */,
 				8643110927F5D94600E2690E /* thumbnailView.swift in Sources */,
-				86ECBA9328048363000E60EB /* ImagePicker.swift in Sources */,
+				86CED0CE2834D87200CE295B /* TabBarAccessor.swift in Sources */,
 				8642C684282185520069FB46 /* ProjListView.swift in Sources */,
 				86D15F8B282CF8BD00035DE1 /* registerView.swift in Sources */,
 				869F06E627D77F3D0034001A /* ContentView.swift in Sources */,
 				86CED0C82832447F00CE295B /* projImgView.swift in Sources */,
+				864031962836550F0043B2A7 /* ImgViewTesting.swift in Sources */,
 				865D53AA27F2FE4A00CE2258 /* mypageView.swift in Sources */,
+				86403192283654C70043B2A7 /* PhotoPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +490,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Jay5.AjouSelves-iOS-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -500,7 +512,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Jay5.AjouSelves-iOS-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
