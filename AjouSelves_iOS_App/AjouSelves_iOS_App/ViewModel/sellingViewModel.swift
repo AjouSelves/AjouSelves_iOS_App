@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 import Alamofire
+import BSImagePicker
+import Photos
 
 class sellingViewModel: ObservableObject {
     
@@ -22,12 +24,12 @@ class sellingViewModel: ObservableObject {
     @Published var required: [String] = [""]
     
     var productdataViewModels = productDataViewModel()
-
+    
     func send() {
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(productdataViewModels.userToken)",
-                    "Accept": "application/json",
-                    "Content-Type": "application/json" ]
+            "Accept": "application/json",
+            "Content-Type": "application/json" ]
         
         let param: Parameters = ["userid": 30, "title" : title, "explained" : explained, "min_num" : min_num, "category" : category, "required" : "test_required"] //dummyData in required
         print("buyingViewModel.send() method : \(title), \(explained), \(min_num), \(category), \(required)")
@@ -35,45 +37,9 @@ class sellingViewModel: ObservableObject {
             .responseJSON(){ json in
                 print(json)
                 // 오류 메시지 변환
-//                if let data = json.data, let success = String(data: data, encoding: .utf8) {
-//                    print(success)
-//                }
-            }
-    }
-    
-    func single() {
-        let tokenHeader: HTTPHeaders = [
-            "Authorization": "\(productdataViewModels.userToken)",
-                    "Accept": "application/json",
-                    "Content-Type": "application/json" ]
-        
-        let param: Parameters = ["userid": 30, "title" : title, "explained" : explained, "min_num" : min_num, "category" : category, "required" : "test_required"] //dummyData in required
-        print("buyingViewModel.send() method : \(title), \(explained), \(min_num), \(category), \(required)")
-        AF.request(projAddUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: tokenHeader)
-            .responseJSON(){ json in
-                print(json)
-                // 오류 메시지 변환
-//                if let data = json.data, let success = String(data: data, encoding: .utf8) {
-//                    print(success)
-//                }
-            }
-    }
-    
-    func multi() {
-        let tokenHeader: HTTPHeaders = [
-            "Authorization": "\(productdataViewModels.userToken)",
-                    "Accept": "application/json",
-                    "Content-Type": "application/json" ]
-        
-        let param: Parameters = ["userid": 30, "title" : title, "explained" : explained, "min_num" : min_num, "category" : category, "required" : "test_required"] //dummyData in required
-        print("buyingViewModel.send() method : \(title), \(explained), \(min_num), \(category), \(required)")
-        AF.request(projAddUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: tokenHeader)
-            .responseJSON(){ json in
-                print(json)
-                // 오류 메시지 변환
-//                if let data = json.data, let success = String(data: data, encoding: .utf8) {
-//                    print(success)
-//                }
+                //                if let data = json.data, let success = String(data: data, encoding: .utf8) {
+                //                    print(success)
+                //                }
             }
     }
 }
