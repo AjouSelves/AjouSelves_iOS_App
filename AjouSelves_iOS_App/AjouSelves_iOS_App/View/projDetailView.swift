@@ -41,6 +41,7 @@ struct projDetailView: View {
                 Text("펀딩참여")
             })
         }
+        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 

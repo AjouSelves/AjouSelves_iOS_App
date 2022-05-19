@@ -39,8 +39,10 @@ struct sellingView : View {
                 Section(header: Text("Photo")) {
                     Button(action: {
                         self.showingImagePicker.toggle()
+                        print(self.showingImagePicker.description)
+                        print(self.showingImagePicker.hashValue)
                     }, label: {
-                        Text("Image Picker")
+                        Image(systemName: "plus")
                     }).sheet(isPresented: $showingImagePicker) {
                         ImagePicker(sourceType: .photoLibrary) { (image) in
                             self.pickedImage = Image(uiImage: image)
@@ -48,7 +50,7 @@ struct sellingView : View {
                         }
                     }
                     pickedImage?.resizable()
-                        .frame(height:300)
+                        //.frame(height:300)
                 }
                 Section(header: Text("제목")) {
                     TextField("글 재목" , text: $title)
