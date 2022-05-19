@@ -39,22 +39,19 @@ struct registerView: View {
     
     var body: some View {
         VStack {
-            TextField("email", text: $email)
+            Text("이메일").frame(alignment:.leading)
+            TextField("이메일 주소를 입력해주세요.", text: $email)
                 .textFieldStyle(.roundedBorder)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
             
-            Spacer()
-            
-            TextField("PASSWORD", text: $password)
+            Text("비밀번호").frame(alignment:.leading)
+            TextField("사용하실 비밀번호를 입력해주세요.", text: $password)
                 .textFieldStyle(.roundedBorder)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
+
             
-            TextField("실명", text: $name)
-                .textFieldStyle(.roundedBorder)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
             
 //            TextField("성별", value: $sex, formatter: numFormatter)
 //                .textFieldStyle(.roundedBorder)

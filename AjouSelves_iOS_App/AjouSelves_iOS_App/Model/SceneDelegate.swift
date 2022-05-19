@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Kakao login view
         let contentView = startView(viewrouter: viewRouter()).environment(\.managedObjectContext, context)
         // main view
-        //let contentView = testView().environment(\.managedObjectContext, context)
+        //let contentView = tabView().environment(\.managedObjectContext, context)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

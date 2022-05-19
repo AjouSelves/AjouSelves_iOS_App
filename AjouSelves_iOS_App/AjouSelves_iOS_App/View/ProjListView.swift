@@ -19,7 +19,7 @@ struct ProjListView : View {
     
     var body: some View {
         HStack{
-            MainImgView(imageUrl: prdData.profileImgUrl)
+            thumbnailView(imageUrl: prdData.profileImgUrl)
             VStack(alignment: .leading, spacing: 5){
                 Text("\(prdData.description_category)")
                     //.fontWeight(.heavy)

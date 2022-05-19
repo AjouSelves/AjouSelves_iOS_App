@@ -126,11 +126,8 @@ struct projectAllDataParcing: Codable, Hashable {
     let url: String?
     
     var profileImgUrl : URL {
-//        get {
-//            URL(string: "https://randomuser.me/api/portraits/women/21.jpg")! ??
-//        }
-        get { // 수정 필요
-            URL(string: "http://44.202.49.100:3000\(url)" ?? "https://randomuser.me/api/portraits/women/21.jpg")!
+        get {
+            URL(string: "http://52.206.105.200:3000\(url ?? "/photo/1650014537158-aa.png")")!
         }
     }
     

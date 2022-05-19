@@ -27,14 +27,16 @@ struct ContentView: View {
                 Image("LogoImage")
                     .resizable()
                     .scaledToFit()
+                Spacer()
+                Divider()
                 HStack{
                     VStack{
-                        TextField("ID", text: $userId)
+                        TextField("아이디", text: $userId)
                             .textFieldStyle(.roundedBorder)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                         
-                        TextField("PASSWORD", text: $userPassword)
+                        TextField("비밀번호", text: $userPassword)
                             .textFieldStyle(.roundedBorder)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
@@ -48,26 +50,31 @@ struct ContentView: View {
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                             if productdataVM.loginisSuccess == true {
                                 print("login!!!")
-                                self.viewrouter.currentPage = "testView"
+                                self.viewrouter.currentPage = "tabView"
                             }
                         }
                     }, label: {
                         Text("확인").frame(minWidth: 80, minHeight: 50).background(.black)
                     }).frame(minWidth: 90, minHeight: 100)
                 }
-                
-                NavigationLink(destination: registerView(productdataVM: productDataViewModel())) {
-                    Text("회원가입")
-                        .navigationTitle("")
-                        .navigationBarHidden(true)
-                        .navigationBarBackButtonHidden(true)
+                Spacer()
+                HStack{
+                    Text("아직 굿즈바이어스 계정이 없으신가요?").foregroundColor(Color.gray)
+                    NavigationLink(destination: registerView(productdataVM: productDataViewModel())) {
+                        Text("회원가입")
+                            .navigationTitle("")
+                            .navigationBarHidden(true)
+                            .navigationBarBackButtonHidden(true)
+                    }
                 }
-//                NavigationLink(destination: testView()) {
+                
+//                NavigationLink(destination: tabView()) {
 //                    Text("회원가입")
 //                        .navigationTitle("")
 //                        .navigationBarHidden(true)
 //                        .navigationBarBackButtonHidden(true)
 //                }
+                Divider()
                 
                 // KakaoLoginTestButton
                 Button(action: {
@@ -102,6 +109,7 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(width:150)
                 }
+                Spacer()
             }
             //성공
             .navigationTitle("")
