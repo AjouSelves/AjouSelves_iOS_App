@@ -1,6 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-AjouSelves_iOS_App/Pods-AjouSelves_iOS_App-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKAuth/KakaoSDKAuth.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKCommon/KakaoSDKCommon.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKLink/KakaoSDKLink.framework
@@ -9,6 +8,3 @@ ${BUILT_PRODUCTS_DIR}/KakaoSDKStory/KakaoSDKStory.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKTalk/KakaoSDKTalk.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKTemplate/KakaoSDKTemplate.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKUser/KakaoSDKUser.framework
-${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework
-${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework
-${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework

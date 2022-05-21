@@ -39,33 +39,42 @@ struct registerView: View {
     
     var body: some View {
         VStack {
-            Text("이메일").frame(alignment:.leading)
-            TextField("이메일 주소를 입력해주세요.", text: $email)
-                .textFieldStyle(.roundedBorder)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-            
-            Text("비밀번호").frame(alignment:.leading)
-            TextField("사용하실 비밀번호를 입력해주세요.", text: $password)
-                .textFieldStyle(.roundedBorder)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
+            Group{
+                Text("성명").frame(alignment:.leading)
+                TextField("성명을 입력해주세요.", text: $name)
+                    .textFieldStyle(.roundedBorder)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                
+                Text("이메일").frame(alignment:.leading)
+                TextField("이메일 주소를 입력해주세요.", text: $email)
+                    .textFieldStyle(.roundedBorder)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+            }
+            Group{
+                Text("비밀번호").frame(alignment:.leading)
+                TextField("사용하실 비밀번호를 입력해주세요.", text: $password)
+                    .textFieldStyle(.roundedBorder)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
 
-            
-            
-//            TextField("성별", value: $sex, formatter: numFormatter)
-//                .textFieldStyle(.roundedBorder)
-//                .disableAutocorrection(true)
-            
-            TextField("휴대폰번호 - 빼고 입력해주세요", text: $phonenumber)
-                .textFieldStyle(.roundedBorder)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-            
-            TextField("닉네임", text: $nickname)
-                .textFieldStyle(.roundedBorder)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
+                
+                
+    //            TextField("성별", value: $sex, formatter: numFormatter)
+    //                .textFieldStyle(.roundedBorder)
+    //                .disableAutocorrection(true)
+                
+                TextField("휴대폰번호 - 빼고 입력해주세요", text: $phonenumber)
+                    .textFieldStyle(.roundedBorder)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                
+                TextField("닉네임", text: $nickname)
+                    .textFieldStyle(.roundedBorder)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+            }
             
 //            HStack{
 //                Button(action: {
@@ -114,9 +123,9 @@ struct registerView: View {
 //                .disableAutocorrection(true)
             
             Button(action: {
+                productdataVM.name = name
                 productdataVM.email = email
                 productdataVM.password = password
-                productdataVM.name = name
                 productdataVM.phonenumber = phonenumber
                 productdataVM.nickname = nickname
                 productdataVM.status = status
@@ -135,8 +144,6 @@ struct registerView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
-                
-                
             }, label: {
                 Text("등록").bold()
             }).alert(isPresented: $productdataVM.registerCheck, content: {
