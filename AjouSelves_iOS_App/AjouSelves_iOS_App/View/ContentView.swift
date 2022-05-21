@@ -24,7 +24,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack{
-                Image("LogoImage")
+                Image("")
                     .resizable()
                     .scaledToFit()
                 Spacer()
