@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 struct projDetailView: View {
+    @ObservedObject var productDataVM = productDataViewModel()
+    
+    var projDeleteUrl = "http://52.206.105.200:3000/proj/delete/" // 특정 프로젝트 삭제
+    
     var prdData: projectAllDataParcing
     
     init(_ prdData : projectAllDataParcing) {
@@ -17,6 +21,11 @@ struct projDetailView: View {
     
     var body: some View {
         VStack{
+            Button(action: {
+                productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
+            }, label:{
+                Image(systemName: "trash")
+            })
             ScrollView{
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
