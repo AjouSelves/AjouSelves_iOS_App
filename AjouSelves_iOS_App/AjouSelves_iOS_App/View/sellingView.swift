@@ -84,7 +84,7 @@ struct sellingView : View {
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .onAppear() {
-                                            sellingVM.projAddSingle(imageData: item.photo)
+                                            //sellingVM.projAddSingle(imageData: item.photo)
                                         }
                                 }
 //                                else if item.mediaType == .video {
@@ -166,9 +166,9 @@ struct sellingView : View {
                             sellingVM.min_num = min_num
                             sellingVM.category = category
                             sellingVM.required = required
-                            PhotoPicker(mediaItems: mediaItems) { didSelectItem in
-                                // Handle didSelectItems value here...
-                            }
+//                            PhotoPicker(mediaItems: mediaItems) { didSelectItem in
+//                                // Handle didSelectItems value here...
+//                            }
 //                            sellingVM.send()
                         } label: {
                             Text("사진등록")

@@ -66,7 +66,7 @@ struct homeView: View {
                     Button(action: {
                         print("Clicked4")
                     }, label: {
-                        Image("LogoImage_png")
+                        Image("")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 170, height: 170, alignment: .leading)

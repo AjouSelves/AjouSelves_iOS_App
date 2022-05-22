@@ -24,7 +24,7 @@ class sellingViewModel: ObservableObject {
     @Published var required: [String] = [""]
     
     //var productdataViewModels = productdataViewModel()
-    var productVM = productDataViewModel()
+    //var productVM = productDataViewModel()
     
     func send() {
         let token = "userToken"
