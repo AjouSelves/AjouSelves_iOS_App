@@ -172,8 +172,8 @@ class productDataViewModel: ObservableObject {
                     self.loginisSuccess = true
                     if let data = response.data, let success = String(data: data, encoding: .utf8) {
                         let testText = success.split(separator: "\"")
-                        self.userToken = String(testText[9]) // UserDefaults를 사용하기전 토큰 저장 레거시
-                        //UserDefaults.standard.set(String(testText[9]), forKey: "userToken")
+                        //self.userToken = String(testText[9]) // UserDefaults를 사용하기전 토큰 저장 레거시
+                        UserDefaults.standard.set(String(testText[9]), forKey: "userToken")
                         print("OriginUserToken: ", UserDefaults.standard.string(forKey: "userToken"))
                     }
                     

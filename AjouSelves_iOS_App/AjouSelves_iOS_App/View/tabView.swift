@@ -34,10 +34,6 @@ struct tabView: View {
                     .tabItem{
                         Label("설정", systemImage: "gear")
                     }
-                ImgViewTesting()
-                    .tabItem{
-                        Label("이미지", systemImage: "gear")
-                    }
             }
         }
     }
