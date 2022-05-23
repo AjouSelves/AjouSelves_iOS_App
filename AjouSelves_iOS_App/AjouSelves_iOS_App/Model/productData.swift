@@ -124,11 +124,15 @@ struct projectAllDataParcing: Codable, Hashable {
     let userid: Int?
     let profilelink: String?
     let url: String?
+    let projid: Int?
     
-    var profileImgUrl : URL {
+    var profileImgUrl : URL { // 연산 프로퍼티
         get {
             URL(string: "http://52.206.105.200:3000\(url ?? "/photo/1650014537158-aa.png")")!
         }
+//        get {
+//            URL(string: "http://52.206.105.200:3000/photo/1650014537158-aa.png")!
+//        }
     }
     
     var description_photos: URL {
@@ -147,9 +151,12 @@ struct projectAllDataParcing: Codable, Hashable {
     var description_minnum: String {
         return "\(min_num!)"
     }
+    var description_projid: String {
+        return "\(projid!)"
+    }
     
     static func getDummy() -> Self {
-        return projectAllDataParcing(title: "아주대학교 굿즈", state: 1, category: "의류", min_num: 1, cur_num: 1, required: "수량", explained: "설명임", nickname: "조민현", userid: 1, profilelink: "nil", url: "")
+        return projectAllDataParcing(title: "아주대학교 굿즈", state: 1, category: "의류", min_num: 1, cur_num: 1, required: "수량", explained: "설명임", nickname: "조민현", userid: 1, profilelink: "nil", url: "", projid: 1)
     }
 }
 

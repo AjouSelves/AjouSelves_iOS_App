@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (5.4.3)
-  - BSImagePicker (3.3.1)
   - KakaoSDK (2.7.1):
     - KakaoSDKAuth (= 2.7.1)
     - KakaoSDKCommon (= 2.7.1)
@@ -33,15 +32,9 @@ PODS:
     - KakaoSDKCommon/Common (= 2.7.1)
   - KakaoSDKUser (2.7.1):
     - KakaoSDKAuth (= 2.7.1)
-  - PryntTrimmerView (4.0.2)
-  - SteviaLayout (4.7.3)
-  - YPImagePicker (5.2.1):
-    - PryntTrimmerView (= 4.0.2)
-    - SteviaLayout (= 4.7.3)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
-  - BSImagePicker (~> 3.1)
   - KakaoSDK
   - KakaoSDKAuth
   - KakaoSDKCommon
@@ -51,12 +44,10 @@ DEPENDENCIES:
   - KakaoSDKTalk
   - KakaoSDKTemplate
   - KakaoSDKUser
-  - YPImagePicker
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - BSImagePicker
     - KakaoSDK
     - KakaoSDKAuth
     - KakaoSDKCommon
@@ -66,13 +57,9 @@ SPEC REPOS:
     - KakaoSDKTalk
     - KakaoSDKTemplate
     - KakaoSDKUser
-    - PryntTrimmerView
-    - SteviaLayout
-    - YPImagePicker
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
-  BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   KakaoSDK: 16f624b0bb273c9d42eb7a55f6e3cb84552fafab
   KakaoSDKAuth: 70cfb1e4e60f543fd5f0ece2995c3b0e879c532e
   KakaoSDKCommon: 48fe293e8970a8db8d10d5ca63600a7a8cc5f74c
@@ -82,10 +69,7 @@ SPEC CHECKSUMS:
   KakaoSDKTalk: 61ec48c0fd724191a08dbd94cbd2b913ffbd6cbe
   KakaoSDKTemplate: 7dd6755ae95c30355922105781dfd5c635348ff2
   KakaoSDKUser: 5609a2679b6beda86298d63c45961953c7203101
-  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
-  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
-  YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 5c445e3f365051b0552abeb2d069b72e8af1f96f
+PODFILE CHECKSUM: 30acd4d025bb0250a2c98c98cf3b60392ed50829
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

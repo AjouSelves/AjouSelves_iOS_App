@@ -26,7 +26,7 @@ struct homeView: View {
             .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
             // iOS 15부터 지원...
             .refreshable {
-                productDataViewModel.init()
+                //productDataViewModel.init()
                 ProductDataViewModel.refreshProj()
             }
 
@@ -66,7 +66,7 @@ struct homeView: View {
                     Button(action: {
                         print("Clicked4")
                     }, label: {
-                        Image("LogoImage_png")
+                        Image("")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 170, height: 170, alignment: .leading)

@@ -9,12 +9,13 @@ import SwiftUI
 import Combine
 
 var ver: String = "v0.0.2.5"
+
 struct settingView: View {
     var body: some View {
         NavigationView{
             VStack{
                 Button(action: {
-                    print("test")
+                    print("\(UserDefaults.standard.string(forKey: "userToken"))")
                 }, label: {
                     Image(systemName: "bell")
                 })

@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 import Alamofire
-import BSImagePicker
 import Photos
+import UIKit
 
 class sellingViewModel: ObservableObject {
     
@@ -22,24 +22,72 @@ class sellingViewModel: ObservableObject {
     @Published var min_num: Int = 0
     @Published var category: String = ""
     @Published var required: [String] = [""]
+    @Published var photoData: UIImage = UIImage()
     
-    var productdataViewModels = productDataViewModel()
+    //var productdataViewModels = productdataViewModel()
+    //var productVM = productDataViewModel()
     
     func send() {
+        let token = "userToken"
+        if UserDefaults.standard.string(forKey: token) != nil {
+            UserDefaults.standard.string(forKey: token)
+        } else {
+            print("\(token)에 nil")
+        }
         let tokenHeader: HTTPHeaders = [
-            "Authorization": "\(productdataViewModels.userToken)",
+            "Authorization": "\(UserDefaults.standard.string(forKey: token)!)", //UserDefaults에 저장한 토큰 불러오기
             "Accept": "application/json",
             "Content-Type": "application/json" ]
         
         let param: Parameters = ["userid": 30, "title" : title, "explained" : explained, "min_num" : min_num, "category" : category, "required" : "test_required"] //dummyData in required
         print("buyingViewModel.send() method : \(title), \(explained), \(min_num), \(category), \(required)")
         AF.request(projAddUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: tokenHeader)
-            .responseJSON(){ json in
-                print(json)
-                // 오류 메시지 변환
-                //                if let data = json.data, let success = String(data: data, encoding: .utf8) {
-                //                    print(success)
-                //                }
+            .responseString() { response in
+                print(response)
             }
     }
+    
+    func projAddSingle(){
+        
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
+            "Accept": "application/json",
+            "Content-Type": "multipart/form-data" ]
+
+        let param: [String: Any] = [
+            "userid": 30,
+            "title" : title,
+            "explained" : explained,
+            "min_num" : min_num,
+            "category" : category,
+            "required" : "test_required",
+            "photo" : "null"
+        ]
+        AF.upload(multipartFormData: { MultipartFormData in
+            for (key,value) in param {
+                MultipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+            }
+            
+//            if let image = imageData?.pngData() {
+//                MultipartFormData.append(image, withName: "photo", fileName: "\(image).png", mimeType: "image/png")
+//            }
+            
+            if let image = self.photoData.jpegData(compressionQuality: 0.1) {
+                MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
+            }
+            
+        }, to: projAddSingleUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
+            .responseString { response in
+            switch response.result {
+            case .success(_):
+                print(response)
+                print("photo send success")
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+        print("MultipartFormData",param)
+    }
+    
 }
