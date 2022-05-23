@@ -126,7 +126,7 @@ struct projectAllDataParcing: Codable, Hashable {
     let url: String?
     let projid: Int?
     
-    var profileImgUrl : URL {
+    var profileImgUrl : URL { // 연산 프로퍼티
         get {
             URL(string: "http://52.206.105.200:3000\(url ?? "/photo/1650014537158-aa.png")")!
         }
