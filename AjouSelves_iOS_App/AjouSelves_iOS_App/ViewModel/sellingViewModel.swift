@@ -22,6 +22,7 @@ class sellingViewModel: ObservableObject {
     @Published var min_num: Int = 0
     @Published var category: String = ""
     @Published var required: [String] = [""]
+    @Published var photoData: UIImage = UIImage()
     
     //var productdataViewModels = productdataViewModel()
     //var productVM = productDataViewModel()
@@ -46,27 +47,19 @@ class sellingViewModel: ObservableObject {
             }
     }
     
-    func projAddSingle(imageData: UIImage?){
+    func projAddSingle(){
         
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
             "Accept": "application/json",
             "Content-Type": "multipart/form-data" ]
-        
-//        let param: [String: Any] = [
-//            "userid": 30,
-//            "title" : title,
-//            "explained" : explained,
-//            "min_num" : min_num,
-//            "category" : category,
-//            "required" : "test_required"
-//        ]
+
         let param: [String: Any] = [
             "userid": 30,
-            "title" : "사진테스트",
-            "explained" : "explained",
-            "min_num" : 10,
-            "category" : "사진테스트",
+            "title" : title,
+            "explained" : explained,
+            "min_num" : min_num,
+            "category" : category,
             "required" : "test_required",
             "photo" : "null"
         ]
@@ -75,12 +68,12 @@ class sellingViewModel: ObservableObject {
                 MultipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
             }
             
-            if let image = imageData?.pngData() {
-                MultipartFormData.append(image, withName: "photo", fileName: "\(image).png", mimeType: "image/png")
-            }
+//            if let image = imageData?.pngData() {
+//                MultipartFormData.append(image, withName: "photo", fileName: "\(image).png", mimeType: "image/png")
+//            }
             
-            if let image = imageData?.jpegData(compressionQuality: 0.5) {
-                MultipartFormData.append(image, withName: "photo", fileName: "\(image).jpeg", mimeType: "image/jpeg")
+            if let image = self.photoData.jpegData(compressionQuality: 0.1) {
+                MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
             }
             
         }, to: projAddSingleUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
@@ -95,7 +88,6 @@ class sellingViewModel: ObservableObject {
             }
         }
         print("MultipartFormData",param)
-        
     }
     
 }
