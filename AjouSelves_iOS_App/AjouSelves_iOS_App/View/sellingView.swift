@@ -66,6 +66,8 @@ struct sellingView : View {
         return numFormatter
     }()
     
+    //@State var selectedPhoto: UIImage = UIImage(named: "")!
+    
     //MARK: - homeView
     var body: some View {
         VStack {
@@ -85,6 +87,7 @@ struct sellingView : View {
                                         .aspectRatio(contentMode: .fit)
                                         .onAppear() {
                                             //sellingVM.projAddSingle(imageData: item.photo)
+                                            sellingVM.photoData = item.photo!
                                         }
                                 }
 //                                else if item.mediaType == .video {
@@ -166,10 +169,9 @@ struct sellingView : View {
                             sellingVM.min_num = min_num
                             sellingVM.category = category
                             sellingVM.required = required
-//                            PhotoPicker(mediaItems: mediaItems) { didSelectItem in
-//                                // Handle didSelectItems value here...
-//                            }
-//                            sellingVM.send()
+                            //sellingVM.projAddSingle(imageData: selectedPhoto)
+                            sellingVM.projAddSingle()
+                            
                         } label: {
                             Text("사진등록")
                         }
