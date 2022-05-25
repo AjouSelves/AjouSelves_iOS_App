@@ -66,8 +66,6 @@ struct sellingView : View {
         return numFormatter
     }()
     
-    //@State var selectedPhoto: UIImage = UIImage(named: "")!
-    
     //MARK: - homeView
     var body: some View {
         VStack {
@@ -117,32 +115,34 @@ struct sellingView : View {
 //                            Image(systemName: "plus")
 //                        }))
                     }
+                    Group{
+                        Section(header: Text("제목")) {
+                            TextField("글 재목" , text: $title)
+                                .textFieldStyle(.roundedBorder)
+                                .disableAutocorrection(true)
+                            //Text("\(title)")
+                        }
+                        Section(header: Text("내용")) {
+                            TextEditor(text: $explained)
+                                .textFieldStyle(.roundedBorder)
+                                .disableAutocorrection(true)
+                            //Text("\(text)")
+                        }
+                        Section(header: Text("최소인원")) {
+                            TextField("펀딩 최소인원을 입력해 주세요." , value: $min_num, formatter: numFormatter)
+                                .textFieldStyle(.roundedBorder)
+                                .keyboardType(.decimalPad)
+                                .disableAutocorrection(true)
+                            //Text("\(price)")
+                        }
+                        Section(header: Text("카테고리")) {
+                            TextField("카테고리를 입력해 주세요. 예) 의류, 다이어리" , text: $category)
+                                .textFieldStyle(.roundedBorder)
+                                .disableAutocorrection(true)
+                            //Text("\(text)")
+                        }
+                    }
                     
-                    Section(header: Text("제목")) {
-                        TextField("글 재목" , text: $title)
-                            .textFieldStyle(.roundedBorder)
-                            .disableAutocorrection(true)
-                        //Text("\(title)")
-                    }
-                    Section(header: Text("내용")) {
-                        TextField("게시글 내용을 작성해주세요." , text: $explained)
-                            .textFieldStyle(.roundedBorder)
-                            .disableAutocorrection(true)
-                        //Text("\(text)")
-                    }
-                    Section(header: Text("최소인원")) {
-                        TextField("펀딩 최소인원을 입력해 주세요." , value: $min_num, formatter: numFormatter)
-                            .textFieldStyle(.roundedBorder)
-                            .keyboardType(.decimalPad)
-                            .disableAutocorrection(true)
-                        //Text("\(price)")
-                    }
-                    Section(header: Text("카테고리")) {
-                        TextField("카테고리를 입력해 주세요. 예) 의류, 다이어리" , text: $category)
-                            .textFieldStyle(.roundedBorder)
-                            .disableAutocorrection(true)
-                        //Text("\(text)")
-                    }
                     //                Section(header: Text("조건")) {
                     //                    TextField("조건을 작성해주세요. 예) 수량, 색상" , text: $required)
                     //                        .textFieldStyle(.roundedBorder)

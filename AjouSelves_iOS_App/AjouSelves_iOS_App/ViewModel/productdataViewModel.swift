@@ -64,6 +64,9 @@ class productDataViewModel: ObservableObject {
     
     var authLoginUrl = "http://52.206.105.200:3000/auth/login" // 로그인 토큰 발급
     
+    var userJoinDetailUrl = "http://52.206.105.200:3000/user/join_detail"
+    var userCreateDetailUrl = "http://52.206.105.200:3000/user/create_detail"
+    
     init() {
         print("init productdataViewModel")
         //authLogin(url: authLoginUrl) // 유저 로그인 -> 토큰 반환
@@ -278,5 +281,29 @@ class productDataViewModel: ObservableObject {
                     }
                 }
         }
+    }
+    
+    func userJoinDetail(){
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)", //UserDefaults에 저장한 토큰 불러오기
+            "Accept": "application/json",
+            "Content-Type": "application/json" ]
+        AF.request(userJoinDetailUrl, method: .get, parameters: nil, headers: tokenHeader)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                
+            }
+    }
+    
+    func userCreateDetail(){
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)", //UserDefaults에 저장한 토큰 불러오기
+            "Accept": "application/json",
+            "Content-Type": "application/json" ]
+        AF.request(userJoinDetailUrl, method: .get, parameters: nil, headers: tokenHeader)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                
+            }
     }
 }
