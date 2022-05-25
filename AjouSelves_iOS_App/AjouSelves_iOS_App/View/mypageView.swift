@@ -14,11 +14,19 @@ struct mypageView: View {
     var body: some View {
         VStack{
             NavigationView{
-                List{
-                    Text("데이터데이터데이터데이터데이터데이터데이터")
-                    Text("데이터데이터데이터데이터데이터데이터데이터")
+                VStack{
+                    NavigationLink(destination: {
+                        joinProjView()
+                    }, label: {
+                        Text("내가 생성한 굿즈")
+                    })
+                    
+                    NavigationLink(destination: {
+                        createProjView()
+                    }, label: {
+                        Text("내가 참여한 굿즈")
+                    })
                 }
-                .padding(-15)
             }
             Button(action: {
                 self.viewrouter.currentPage = "ContentView"
