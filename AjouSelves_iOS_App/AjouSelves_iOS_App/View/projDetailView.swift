@@ -20,23 +20,19 @@ struct projDetailView: View {
     }
     
     var body: some View {
-//        return GeometryReader { proxy in
-//                    ScrollView(.horizontal) {
-//                        HStack(spacing: 0) {
-//                            projImgView(imageUrl: prdData.profileImgUrl)
-//                            .frame(width: proxy.size.width, height: proxy.size.height)
-//                        }
-//                    }
-//        }
-////                    }.onAppear {
-////                        UIScrollView.appearance().isPagingEnabled = true
-////                    }
+        //        return GeometryReader { proxy in
+        //                    ScrollView(.horizontal) {
+        //                        HStack(spacing: 0) {
+        //                            projImgView(imageUrl: prdData.profileImgUrl)
+        //                            .frame(width: proxy.size.width, height: proxy.size.height)
+        //                        }
+        //                    }
+        //        }
+        ////                    }.onAppear {
+        ////                        UIScrollView.appearance().isPagingEnabled = true
+        ////                    }
+        
         VStack{
-            Button(action: {
-                productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
-            }, label:{
-                Image(systemName: "trash")
-            })
             ScrollView{
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
@@ -80,7 +76,10 @@ struct projDetailView: View {
                 Divider()
                 VStack(alignment: .leading){
                     Text("\(prdData.description_explained)")
-                }.frame(width: 350, height: 50, alignment: .leading).padding()
+                        .font(.system(size: 15))
+                        .minimumScaleFactor(0.5)
+                        .padding()
+                }
             }
             Spacer()
             Button(action:{
@@ -88,6 +87,15 @@ struct projDetailView: View {
             }, label: {
                 Text("이 펀딩에 참여하기")
             })
+            .toolbar{
+                ToolbarItemGroup(placement: .navigationBarTrailing){
+                    Button(action: {
+                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
+                    }, label:{
+                        Image(systemName: "trash")
+                    })
+                }
+            }
         }
         .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
