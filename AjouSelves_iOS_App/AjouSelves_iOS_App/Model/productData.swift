@@ -151,8 +151,14 @@ struct projectAllDataParcing: Codable, Hashable {
     var description_minnum: String {
         return "\(min_num!)"
     }
+    var description_curnum: String {
+        return "\(cur_num!)"
+    }
     var description_projid: String {
         return "\(projid!)"
+    }
+    var description_explained: String {
+        return "\(explained!)"
     }
     
     static func getDummy() -> Self {
