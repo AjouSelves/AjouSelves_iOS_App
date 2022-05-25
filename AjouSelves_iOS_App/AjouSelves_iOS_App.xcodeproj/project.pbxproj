@@ -131,8 +131,8 @@
 				86D15F8A282CF8BD00035DE1 /* registerView.swift */,
 				86372638282E45C3005AC48C /* projDetailView.swift */,
 				86372640282E5114005AC48C /* startView.swift */,
-				862452E0283E981000FBAE06 /* joinProjView.swift */,
 				862452E2283E996900FBAE06 /* createProjView.swift */,
+				862452E0283E981000FBAE06 /* joinProjView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

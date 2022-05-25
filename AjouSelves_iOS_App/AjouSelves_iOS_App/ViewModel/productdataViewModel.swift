@@ -133,18 +133,18 @@ class productDataViewModel: ObservableObject {
                 print(error)
             }
         }
-//        .responseJSON(){ response in
-//            //print(response)
-//            //print("\(self.checkProjIndex)번 째 proj") // checking index
-//            //self.checkProjIndex+=1 // checking index
-//        }
+        //        .responseJSON(){ response in
+        //            //print(response)
+        //            //print("\(self.checkProjIndex)번 째 proj") // checking index
+        //            //self.checkProjIndex+=1 // checking index
+        //        }
     }
     
     func projDelete(url: String){
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
-                    "Accept": "application/json",
-                    "Content-Type": "application/json" ]
+            "Accept": "application/json",
+            "Content-Type": "application/json" ]
         AF.request(url, method: .delete, parameters: nil, headers: tokenHeader).validate(statusCode: 200..<300)
             .responseString() { response in
                 print(response)
@@ -163,34 +163,34 @@ class productDataViewModel: ObservableObject {
                    parameters: param,
                    encoding: URLEncoding.default,
                    headers: nil)
-            .validate(statusCode: 200..<300)
-//            .responseJSON(){ response in
-//                print("response!!!",response)
-//            }
-            // response로 날아온 userToken을 string으로 변환 후 잘라서 published 변수에 저장
-            .response{ response in
-                switch response.result {
-                case .success(_):
-                    print("login success")
-                    self.loginisSuccess = true
-                    if let data = response.data, let success = String(data: data, encoding: .utf8) {
-                        let testText = success.split(separator: "\"")
-                        //self.userToken = String(testText[9]) // UserDefaults를 사용하기전 토큰 저장 레거시
-                        UserDefaults.standard.set(String(testText[9]), forKey: "userToken")
-                        print("OriginUserToken: ", UserDefaults.standard.string(forKey: "userToken"))
-                    }
-                    
-                case .failure(let error):
-                    print(error)
+        .validate(statusCode: 200..<300)
+        //            .responseJSON(){ response in
+        //                print("response!!!",response)
+        //            }
+        // response로 날아온 userToken을 string으로 변환 후 잘라서 published 변수에 저장
+        .response{ response in
+            switch response.result {
+            case .success(_):
+                print("login success")
+                self.loginisSuccess = true
+                if let data = response.data, let success = String(data: data, encoding: .utf8) {
+                    let testText = success.split(separator: "\"")
+                    //self.userToken = String(testText[9]) // UserDefaults를 사용하기전 토큰 저장 레거시
+                    UserDefaults.standard.set(String(testText[9]), forKey: "userToken")
+                    print("OriginUserToken: ", UserDefaults.standard.string(forKey: "userToken"))
                 }
-//                if let data = response.data, let success = String(data: data, encoding: .utf8) {
-//                    let testText = success.split(separator: "\"")
-//                    //print(success)
-//                    //print("split!!!",testText[9])
-//                    print(response)
-//                    //self.userToken = String(testText[9])
-//                }
+                
+            case .failure(let error):
+                print(error)
             }
+            //                if let data = response.data, let success = String(data: data, encoding: .utf8) {
+            //                    let testText = success.split(separator: "\"")
+            //                    //print(success)
+            //                    //print("split!!!",testText[9])
+            //                    print(response)
+            //                    //self.userToken = String(testText[9])
+            //                }
+        }
     }
     
     func fetchPostAll(url: String){
@@ -266,7 +266,6 @@ class productDataViewModel: ObservableObject {
             "account" : "\(account)",
             "profilelink" : "\(profilelink)"
         ]
-        
         if registerCheck == false {
             AF.request(authRegisterUrl, method: .post, parameters: param, headers: nil)
                 .validate(statusCode: 200..<300)
