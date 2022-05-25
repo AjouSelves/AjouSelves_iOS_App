@@ -174,3 +174,21 @@ struct postAllData: Codable {
     let nickname: String?
     let url: String?
 }
+
+struct userCreateDetail: Codable {
+    let projid: Int?
+    let userid: Int?
+    let title: String?
+    let state: Int?
+    let category: String?
+    let min_num: Int?
+    let cur_num: Int?
+    let required: String?
+    let explained: String?
+    let paylink: String?
+    let created_at: String?
+}
+
+struct userJoinDetail: Codable {
+    
+}
