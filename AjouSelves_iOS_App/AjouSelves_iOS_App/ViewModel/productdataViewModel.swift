@@ -300,5 +300,10 @@ class productDataViewModel: ObservableObject {
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)", //UserDefaults에 저장한 토큰 불러오기
             "Accept": "application/json",
             "Content-Type": "application/json" ]
+        AF.request(userJoinDetailUrl, method: .get, parameters: nil, headers: tokenHeader)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                
+            }
     }
 }
