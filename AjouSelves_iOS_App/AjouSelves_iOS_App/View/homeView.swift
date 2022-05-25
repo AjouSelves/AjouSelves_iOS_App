@@ -16,6 +16,9 @@ struct homeView: View {
     var body: some View {
         //펀딩 목록 불러오기
         NavigationView{
+//            Image("메인배너")
+//                .resizable()
+//                .scaledToFit()
             List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
                 NavigationLink(
                     destination: projDetailView(adata),
@@ -28,14 +31,7 @@ struct homeView: View {
             .refreshable {
                 //productDataViewModel.init()
                 ProductDataViewModel.refreshProj()
-            }
-
-//            .alert(isPresented: $isPresent, content: {
-//                Alert(title: Text("좋아요"), message: Text("하셨습니다!"), dismissButton: .default(Text("OK")))
-//            })
-            //.navigationTitle("펀딩 목록")
-            //.navigationBarTitleDisplayMode(.automatic)
-            .toolbar{
+            }.toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
                     NavigationLink(
                         destination: Text("검색"),
@@ -54,27 +50,16 @@ struct homeView: View {
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading){
-//                    Button(action: {
-//                        print("Clicked4")
-//                    }, label: {
-//                        Text("아주대")
-//                            .font(.title2)
-//                            .bold()
-//                            .foregroundColor(Color.black)
-//
-//                    })
                     Button(action: {
                         print("Clicked4")
                     }, label: {
-                        Image("")
+                        Image("로고_PNG2")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 170, height: 170, alignment: .leading)
                     })
                 }
             }
-            //.frame(height: 700)
-            // .border(Color.blue) // Title밑 Tabview밑의 파란 줄Spacer()
             .padding(-15)
         }
         .navigationBarTitle("", displayMode: .inline)
