@@ -24,10 +24,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack{
-                Image("")
+                Image("로고_PNG")
                     .resizable()
                     .scaledToFit()
-                Spacer()
+                    .padding(30)
                 Divider()
                 HStack{
                     VStack{
@@ -36,12 +36,11 @@ struct ContentView: View {
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                         
-                        TextField("비밀번호", text: $userPassword)
+                        SecureField("비밀번호", text: $userPassword)
                             .textFieldStyle(.roundedBorder)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
-                    }
-                    .padding()
+                    }.padding()
                     Spacer()
                     Button(action: {
                         productdataVM.loginEmail = userId
@@ -67,41 +66,30 @@ struct ContentView: View {
                             .navigationBarBackButtonHidden(true)
                     }
                 }
-                
-//                NavigationLink(destination: tabView()) {
-//                    Text("회원가입")
-//                        .navigationTitle("")
-//                        .navigationBarHidden(true)
-//                        .navigationBarBackButtonHidden(true)
-//                }
                 Divider()
                 
-                // KakaoLoginTestButton
+                //MARK: KakaoLoginTestButton
                 Button(action: {
                     if (UserApi.isKakaoTalkLoginAvailable()){
                         UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                                if let error = error{
-                                    print(error)
-                                }
-                                else{
-                                    print("Success")
+                            if let error = error{
+                                print(error)
+                            }
+                            else{
+                                print("Success")
                                 
-                                    _ = oauthToken
-                                }
+                                _ = oauthToken
                             }
                         }
-                    else{
+                    } else {
                         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                                if let error = error {
-                                    print(error)
-                                }
-                                else {
-                                    print("loginWithKakaoAccount() success.")
-
-                                    //do something
-                                    _ = oauthToken
-                                }
+                            if let error = error {
+                                print(error)
+                            } else {
+                                print("loginWithKakaoAccount() success.")
+                                _ = oauthToken
                             }
+                        }
                     }
                 }){
                     Image("LoginButton")
@@ -111,7 +99,6 @@ struct ContentView: View {
                 }
                 Spacer()
             }
-            //성공
             .navigationTitle("")
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
