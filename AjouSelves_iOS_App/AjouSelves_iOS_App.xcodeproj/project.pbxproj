@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		64C7FBCD44996556C6C2B2E1 /* Pods_AjouSelves_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4464B9CAD3A9F627DE948904 /* Pods_AjouSelves_iOS_App.framework */; };
+		862452E1283E981000FBAE06 /* joinProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862452E0283E981000FBAE06 /* joinProjView.swift */; };
+		862452E3283E996900FBAE06 /* createProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862452E2283E996900FBAE06 /* createProjView.swift */; };
 		86372639282E45C3005AC48C /* projDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372638282E45C3005AC48C /* projDetailView.swift */; };
 		8637263F282E4EE4005AC48C /* viewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637263E282E4EE4005AC48C /* viewRouter.swift */; };
 		86372641282E5114005AC48C /* startView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372640282E5114005AC48C /* startView.swift */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		4464B9CAD3A9F627DE948904 /* Pods_AjouSelves_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AjouSelves_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		862452E0283E981000FBAE06 /* joinProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = joinProjView.swift; sourceTree = "<group>"; };
+		862452E2283E996900FBAE06 /* createProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createProjView.swift; sourceTree = "<group>"; };
 		86372638282E45C3005AC48C /* projDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projDetailView.swift; sourceTree = "<group>"; };
 		8637263E282E4EE4005AC48C /* viewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewRouter.swift; sourceTree = "<group>"; };
 		86372640282E5114005AC48C /* startView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startView.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				86D15F8A282CF8BD00035DE1 /* registerView.swift */,
 				86372638282E45C3005AC48C /* projDetailView.swift */,
 				86372640282E5114005AC48C /* startView.swift */,
+				862452E0283E981000FBAE06 /* joinProjView.swift */,
+				862452E2283E996900FBAE06 /* createProjView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,8 +318,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				862452E3283E996900FBAE06 /* createProjView.swift in Sources */,
 				869F06E227D77F3D0034001A /* AppDelegate.swift in Sources */,
 				869F06E427D77F3D0034001A /* SceneDelegate.swift in Sources */,
+				862452E1283E981000FBAE06 /* joinProjView.swift in Sources */,
 				869F06E927D77F3D0034001A /* AjouSelves_iOS_App.xcdatamodeld in Sources */,
 				8643111027F5DBBD00E2690E /* productData.swift in Sources */,
 				865D53A627F2F92000CE2258 /* homeView.swift in Sources */,
