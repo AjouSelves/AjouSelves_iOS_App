@@ -12,8 +12,12 @@ struct homeView: View {
     
     @ObservedObject var ProductDataViewModel = productDataViewModel()
     @State var isPresent: Bool = false
-    
     @State var processImgDisabled: Bool = false
+    
+    init() {
+        ProductDataViewModel.refreshProj()
+    }
+    
     var body: some View {
         //펀딩 목록 불러오기
         NavigationView{
