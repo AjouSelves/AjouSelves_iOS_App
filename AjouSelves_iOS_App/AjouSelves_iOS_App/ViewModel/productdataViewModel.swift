@@ -68,17 +68,17 @@ class productDataViewModel: ObservableObject {
     var userJoinDetailUrl = "http://52.206.105.200:3000/user/join_detail"
     var userCreateDetailUrl = "http://52.206.105.200:3000/user/create_detail"
     
-    init() {
-        print("init productdataViewModel")
-        //authLogin(url: authLoginUrl) // 유저 로그인 -> 토큰 반환
-        //fetchRandomUserApi() // 랜덤유저api
-        //fetchUserAllUrl() // 전체 유저 데이터 불러오기
-        //fetchAuthRegisterUrl() // 회원가입
-        fetchProjUrl(url: projUrl) // 전체 프로젝트 데이터 불러오기
-        //projDelete(url: projDeleteUrl) // 특정 프로젝트 삭제
-        //fetchPostAll(url: postAllUrl) // 전체 커뮤니티 데이터 불러오기
-        //fetchUserCreateDetail()
-    }
+//    init() {
+//        print("init productdataViewModel")
+//        //authLogin(url: authLoginUrl) // 유저 로그인 -> 토큰 반환
+//        //fetchRandomUserApi() // 랜덤유저api
+//        //fetchUserAllUrl() // 전체 유저 데이터 불러오기
+//        //fetchAuthRegisterUrl() // 회원가입
+//        fetchProjUrl(url: projUrl) // 전체 프로젝트 데이터 불러오기
+//        //projDelete(url: projDeleteUrl) // 특정 프로젝트 삭제
+//        //fetchPostAll(url: postAllUrl) // 전체 커뮤니티 데이터 불러오기
+//        //fetchUserCreateDetail()
+//    }
     
     func refreshProj(){
         fetchProjUrl(url: projUrl)
