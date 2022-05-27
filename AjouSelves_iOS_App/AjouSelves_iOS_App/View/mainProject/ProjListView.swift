@@ -20,6 +20,8 @@ struct ProjListView : View {
     var body: some View {
         HStack{
             thumbnailView(imageUrl: prdData.profileImgUrl)
+                .frame(width: 130, height: 130)
+                .clipped()
             VStack(alignment: .leading, spacing: 5){
                 Text("\(prdData.description_category)")
                     //.fontWeight(.heavy)
@@ -38,10 +40,11 @@ struct ProjListView : View {
 //                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
 //                    .minimumScaleFactor(0.5)
                 HStack{
-                    Text("350%")
+                    Text("\(prdData.cal_joinPer)% 달성!")
+                        .foregroundColor(Color.red)
                         .font(.system(size: 20))
                         
-                    Text("\(prdData.description_minnum)명 참여") // 지금까지 몇명이 참여했는지에 대한 데이터 필요
+                    Text("\(prdData.description_curnum)명 참여!") // 지금까지 몇명이 참여했는지에 대한 데이터 필요
                         //.fontWeight(.heavy)
                         .font(.system(size: 15))
                         .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)

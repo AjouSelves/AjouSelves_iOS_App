@@ -19,6 +19,8 @@ class productDataViewModel: ObservableObject {
     @Published var productDatas = [productData]()
     @Published var projectAllDataParcings = [projectAllDataParcing]()
     @Published var postAllDatas = [postAllData]()
+    @Published var userCreateDetails = [userCreateDetail]()
+    @Published var userJoinDetails = [userJoinDetail]()
     @Published var userToken: String = "" // UserDefaults를 사용하기전 토큰 저장 레거시
     
     //MARK: for register
@@ -42,7 +44,6 @@ class productDataViewModel: ObservableObject {
     //MARK: - 상태저장형재들
     var registerCheck: Bool = false // 회원의 입력 항목중 빈 항목이 있다면 true로 체크
     var registerisSuccess: Bool = false // 회원가입이 성공적으로 이루어져 success를 받으면 true
-    var registerFinish: Bool = false // 회원가입이 끝난 후 창이 꺼지면 안내 메시지 출력
     var loginisSuccess: Bool = false // 로그인을 성공하면 true
     
     //MARK: - URL -> lowerCamelCase
@@ -76,10 +77,15 @@ class productDataViewModel: ObservableObject {
         fetchProjUrl(url: projUrl) // 전체 프로젝트 데이터 불러오기
         //projDelete(url: projDeleteUrl) // 특정 프로젝트 삭제
         //fetchPostAll(url: postAllUrl) // 전체 커뮤니티 데이터 불러오기
+        //fetchUserCreateDetail()
     }
     
     func refreshProj(){
         fetchProjUrl(url: projUrl)
+    }
+    
+    func refreshCreateProj(){
+        fetchUserCreateDetail()
     }
     
     func fetchRandomUserApi(){
@@ -133,18 +139,18 @@ class productDataViewModel: ObservableObject {
                 print(error)
             }
         }
-//        .responseJSON(){ response in
-//            //print(response)
-//            //print("\(self.checkProjIndex)번 째 proj") // checking index
-//            //self.checkProjIndex+=1 // checking index
-//        }
+        //        .responseJSON(){ response in
+        //            //print(response)
+        //            //print("\(self.checkProjIndex)번 째 proj") // checking index
+        //            //self.checkProjIndex+=1 // checking index
+        //        }
     }
     
     func projDelete(url: String){
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
-                    "Accept": "application/json",
-                    "Content-Type": "application/json" ]
+            "Accept": "application/json",
+            "Content-Type": "application/json" ]
         AF.request(url, method: .delete, parameters: nil, headers: tokenHeader).validate(statusCode: 200..<300)
             .responseString() { response in
                 print(response)
@@ -163,34 +169,34 @@ class productDataViewModel: ObservableObject {
                    parameters: param,
                    encoding: URLEncoding.default,
                    headers: nil)
-            .validate(statusCode: 200..<300)
-//            .responseJSON(){ response in
-//                print("response!!!",response)
-//            }
-            // response로 날아온 userToken을 string으로 변환 후 잘라서 published 변수에 저장
-            .response{ response in
-                switch response.result {
-                case .success(_):
-                    print("login success")
-                    self.loginisSuccess = true
-                    if let data = response.data, let success = String(data: data, encoding: .utf8) {
-                        let testText = success.split(separator: "\"")
-                        //self.userToken = String(testText[9]) // UserDefaults를 사용하기전 토큰 저장 레거시
-                        UserDefaults.standard.set(String(testText[9]), forKey: "userToken")
-                        print("OriginUserToken: ", UserDefaults.standard.string(forKey: "userToken"))
-                    }
-                    
-                case .failure(let error):
-                    print(error)
+        .validate(statusCode: 200..<300)
+        //            .responseJSON(){ response in
+        //                print("response!!!",response)
+        //            }
+        // response로 날아온 userToken을 string으로 변환 후 잘라서 published 변수에 저장
+        .response{ response in
+            switch response.result {
+            case .success(_):
+                print("login success")
+                self.loginisSuccess = true
+                if let data = response.data, let success = String(data: data, encoding: .utf8) {
+                    let testText = success.split(separator: "\"")
+                    //self.userToken = String(testText[9]) // UserDefaults를 사용하기전 토큰 저장 레거시
+                    UserDefaults.standard.set(String(testText[9]), forKey: "userToken")
+                    print("OriginUserToken: ", UserDefaults.standard.string(forKey: "userToken"))
                 }
-//                if let data = response.data, let success = String(data: data, encoding: .utf8) {
-//                    let testText = success.split(separator: "\"")
-//                    //print(success)
-//                    //print("split!!!",testText[9])
-//                    print(response)
-//                    //self.userToken = String(testText[9])
-//                }
+                
+            case .failure(let error):
+                print(error)
             }
+            //                if let data = response.data, let success = String(data: data, encoding: .utf8) {
+            //                    let testText = success.split(separator: "\"")
+            //                    //print(success)
+            //                    //print("split!!!",testText[9])
+            //                    print(response)
+            //                    //self.userToken = String(testText[9])
+            //                }
+        }
     }
     
     func fetchPostAll(url: String){
@@ -266,7 +272,6 @@ class productDataViewModel: ObservableObject {
             "account" : "\(account)",
             "profilelink" : "\(profilelink)"
         ]
-        
         if registerCheck == false {
             AF.request(authRegisterUrl, method: .post, parameters: param, headers: nil)
                 .validate(statusCode: 200..<300)
@@ -274,7 +279,6 @@ class productDataViewModel: ObservableObject {
                     switch response.result {
                     case .success(let value):
                         self.registerisSuccess = true
-                        self.registerFinish = true
                         print("success")
                     case .failure(let error):
                         print("fail", error)
@@ -283,7 +287,7 @@ class productDataViewModel: ObservableObject {
         }
     }
     
-    func userJoinDetail(){
+    func fetchUserJoinDetail(){
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)", //UserDefaults에 저장한 토큰 불러오기
             "Accept": "application/json",
@@ -293,9 +297,19 @@ class productDataViewModel: ObservableObject {
             .responseJSON { response in
                 
             }
+            .responseDecodable(of: [userJoinDetail].self) { response in
+                switch response.result {
+                case .success(let value):
+                    //print("value!!!", value)
+                    self.userJoinDetails = value
+                    //print(self.projectAllDataParcings)
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
     
-    func userCreateDetail(){
+    func fetchUserCreateDetail(){
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)", //UserDefaults에 저장한 토큰 불러오기
             "Accept": "application/json",
@@ -304,6 +318,16 @@ class productDataViewModel: ObservableObject {
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 
+            }
+            .responseDecodable(of: [userCreateDetail].self) { response in
+                switch response.result {
+                case .success(let value):
+                    //print("value!!!", value)
+                    self.userCreateDetails = value
+                    //print(self.projectAllDataParcings)
+                case .failure(let error):
+                    print(error)
+                }
             }
     }
 }

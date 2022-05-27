@@ -24,6 +24,9 @@ class sellingViewModel: ObservableObject {
     @Published var required: [String] = [""]
     @Published var photoData: UIImage = UIImage()
     
+    var projAddCheck: Bool = true
+    var projAddSuccess: Bool = false
+    
     //var productdataViewModels = productdataViewModel()
     //var productVM = productDataViewModel()
     
@@ -90,4 +93,36 @@ class sellingViewModel: ObservableObject {
         print("MultipartFormData",param)
     }
     
+    func projAddConfirm() {
+        self.projAddCheck = true
+        self.projAddSuccess = false
+        if title.isEmpty == true {
+            print("title is Empty")
+            self.projAddCheck = false
+        }
+        else if explained.isEmpty == true {
+            print("explained is Empty")
+            self.projAddCheck = false
+        }
+        else if min_num == 0 {
+            print("min_num is Empty")
+            self.projAddCheck = false
+        }
+        else if category.isEmpty == true {
+            print("category is Empty")
+            self.projAddCheck = false
+        }
+        else if required.isEmpty == true {
+            print("required is Empty")
+            self.projAddCheck = false
+        }
+        else if photoData == nil {
+            print("photoData is Empty")
+            self.projAddCheck = false
+        }
+        
+        if projAddCheck == true {
+            projAddSuccess
+        }
+    }
 }

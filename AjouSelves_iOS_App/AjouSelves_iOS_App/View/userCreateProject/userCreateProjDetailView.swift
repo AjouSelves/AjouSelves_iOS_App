@@ -1,44 +1,28 @@
 //
-//  projDetailView.swift
+//  userCreateProjDetailView.swift
 //  AjouSelves_iOS_App
 //
-//  Created by Minhyun Cho on 2022/05/13.
+//  Created by Minhyun Cho on 2022/05/26.
 //
 
-import Foundation
 import SwiftUI
 
-struct projDetailView: View {
+struct userCreateProjDetailView: View {
     @ObservedObject var productDataVM = productDataViewModel()
     
-    var projDeleteUrl = "http://52.206.105.200:3000/proj/delete/" // 특정 프로젝트 삭제
+    var prdData: userCreateDetail
     
-    var prdData: projectAllDataParcing
-    
-    init(_ prdData : projectAllDataParcing) {
+    init(_ prdData : userCreateDetail) {
         self.prdData = prdData
     }
-    
     var body: some View {
-        //        return GeometryReader { proxy in
-        //                    ScrollView(.horizontal) {
-        //                        HStack(spacing: 0) {
-        //                            projImgView(imageUrl: prdData.profileImgUrl)
-        //                            .frame(width: proxy.size.width, height: proxy.size.height)
-        //                        }
-        //                    }
-        //        }
-        ////                    }.onAppear {
-        ////                        UIScrollView.appearance().isPagingEnabled = true
-        ////                    }
-        
         VStack{
             ScrollView{
-                ScrollView(.horizontal) {
-                    projImgView(imageUrl: prdData.profileImgUrl)
-                }
-                Divider()
-                Spacer()
+//                ScrollView(.horizontal) {
+//                    projImgView(imageUrl: prdData.profileImgUrl)
+//                }
+//                Divider()
+//                Spacer()
                 VStack(alignment: .leading){
                     Text("\(prdData.description_category)")
                         .font(.system(size: 20))
@@ -82,27 +66,27 @@ struct projDetailView: View {
                 }
             }
             Spacer()
-            Button(action:{
+            Button(action: {
                 print("Clicked 펀딩참여")
             }, label: {
                 Text("이 펀딩에 참여하기")
             })
-            .toolbar{
-                ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button(action: {
-                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
-                    }, label:{
-                        Image(systemName: "trash")
-                    })
-                }
-            }
+//            .toolbar{
+//                ToolbarItemGroup(placement: .navigationBarTrailing) {
+//                    Button(action: {
+//                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
+//                    }, label:{
+//                        Image(systemName: "trash")
+//                    })
+//                }
+//            }
         }
         .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 
-struct projDetailView_Previews: PreviewProvider {
+struct userCreateProjDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        projDetailView(projectAllDataParcing.getDummy())
+        userCreateProjDetailView(userCreateDetail.getDummy())
     }
 }
