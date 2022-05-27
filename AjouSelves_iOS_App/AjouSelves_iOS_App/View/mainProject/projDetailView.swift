@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 struct projDetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var productDataVM = productDataViewModel()
-    
-    var projDeleteUrl = "http://52.206.105.200:3000/proj/delete/" // 특정 프로젝트 삭제
+    @State var fundingClicked: Bool = false
     
     var prdData: projectAllDataParcing
     
@@ -34,7 +34,6 @@ struct projDetailView: View {
         
         VStack{
             ScrollView{
-                Divider()
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
                 }
@@ -81,22 +80,28 @@ struct projDetailView: View {
                         .minimumScaleFactor(0.5)
                         .padding()
                 }
+                Button(action: {
+                    print("Clicked 펀딩참여")
+                    self.fundingClicked = true
+                    productDataVM.projJoin(id: prdData.description_projid)
+                }, label: {
+                    Text("이 펀딩에 참여하기")
+                }).alert(isPresented: $fundingClicked, content: {
+                    Alert(title: Text("축하합니다🎉"), message: Text("펀딩에 성공하셨습니다!"), dismissButton: .default(Text("확인"), action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }))
+                })
             }
-            Spacer()
-            Button(action: {
-                print("Clicked 펀딩참여")
-            }, label: {
-                Text("이 펀딩에 참여하기")
-            })
-            .toolbar{
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
-                    }, label:{
-                        Image(systemName: "trash")
-                    })
-                }
-            }
+            
+//            .toolbar{
+//                ToolbarItemGroup(placement: .navigationBarTrailing) {
+//                    Button(action: {
+//                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
+//                    }, label:{
+//                        Image(systemName: "trash")
+//                    })
+//                }
+//            }
         }
         .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
