@@ -6,25 +6,33 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct communityView: View {
     
     //MARK: 테스팅
     @ObservedObject var ProductDataViewModel = productDataViewModel()
     
+    init() {
+        ProductDataViewModel.refreshPostAll()
+    }
+    
     var body: some View {
         NavigationView {
-            List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
-                //ProjListView(adata)
-                //print(adata)
+            List(ProductDataViewModel.postAllDatas, id: \.self) { adata in
                 NavigationLink(
-                    destination: Text("Test"),
+                    destination: communityDetailView(adata),
                         label: {
-                            //Text("Test")
-                            ProjListView(adata)
+                            communityListView(adata)
                         })
             }
-            .padding(-15)
+            .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
+            // iOS 15부터 지원...
+            .refreshable {
+                //productDataViewModel.init()
+                ProductDataViewModel.refreshPostAll()
+            }
+            //.padding(-15)
         }
     }
 }
