@@ -34,6 +34,7 @@ struct projDetailView: View {
         
         VStack{
             ScrollView{
+                Divider()
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
                 }
@@ -82,13 +83,13 @@ struct projDetailView: View {
                 }
             }
             Spacer()
-            Button(action:{
+            Button(action: {
                 print("Clicked 펀딩참여")
             }, label: {
                 Text("이 펀딩에 참여하기")
             })
             .toolbar{
-                ToolbarItemGroup(placement: .navigationBarTrailing){
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
                         productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
                     }, label:{
