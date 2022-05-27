@@ -13,7 +13,7 @@ struct mypageView: View {
     
     var body: some View {
         VStack{
-            NavigationView{
+            NavigationView {
                 VStack{
                     NavigationLink(destination: {
                         createProjView()
@@ -27,6 +27,9 @@ struct mypageView: View {
                         Text("내가 참여한 굿즈")
                     })
                 }
+                .navigationBarTitle("마이페이지", displayMode: .inline)
+                .navigationBarHidden(true)
+                //.navigationBarBackButtonHidden(true)
             }
 //            Button(action: {
 //                self.viewrouter.currentPage = "ContentView"
@@ -35,6 +38,7 @@ struct mypageView: View {
 //                Text("로그아웃 테스트")
 //            })
         }
+        .setTabBarVisibility(isHidden: false) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 

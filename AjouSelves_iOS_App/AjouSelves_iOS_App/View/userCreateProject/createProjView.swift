@@ -10,38 +10,30 @@ import SwiftUI
 struct createProjView: View {
     @ObservedObject var ProductDataViewModel = productDataViewModel()
     
+    init( ){
+        ProductDataViewModel.refreshCreateProj()
+    }
+    
     var body: some View {
-//        NavigationView{
-//            List(ProductDataViewModel.userCreateDetails, id: \.self) { adata in
-//                NavigationLink(
-//                    destination: userCreateProjDetailView(adata),
-//                        label: {
-//                            userCreateProjListView(adata)
-//                        })
-//            }
-//            .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
-//            // iOS 15부터 지원...
-//            .refreshable {
-//                //productDataViewModel.init()
-//                ProductDataViewModel.refreshCreateProj()
-//            }
-//        }
         NavigationView {
-            List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
-                //ProjListView(adata)
-                //print(adata)
+            List(ProductDataViewModel.userCreateDetails, id: \.self) { adata in
                 NavigationLink(
-                    destination: projDetailView(adata),
+                    destination: userCreateProjDetailView(adata),
                         label: {
-                            //Text("Test")
-                            ProjListView(adata)
+                            userCreateProjListView(adata)
                         })
             }
+            .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
+            // iOS 15부터 지원...
+            .refreshable {
+                ProductDataViewModel.refreshCreateProj()
+//                ProductDataViewModel.refreshProj()
+            }
             .padding(-15)
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

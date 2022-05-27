@@ -39,88 +39,165 @@ struct registerView: View {
     
     var body: some View {
         VStack {
-            Group{
-                Text("성명").frame(alignment:.leading)
-                TextField("성명을 입력해주세요.", text: $name)
-                    .textFieldStyle(.roundedBorder)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
+            Form{
+                Section(header: Text("성명")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("성명을 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
                 
-                Text("이메일").frame(alignment:.leading)
-                TextField("이메일 주소를 입력해주세요.", text: $email)
-                    .textFieldStyle(.roundedBorder)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-            }
-            Group{
-                Text("비밀번호").frame(alignment:.leading)
-                TextField("사용하실 비밀번호를 입력해주세요.", text: $password)
-                    .textFieldStyle(.roundedBorder)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-
+                Section(header: Text("이메일")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("이메일 주소를 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
                 
+                Section(header: Text("비밀번호")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("사용하실 비밀번호를 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
                 
-    //            TextField("성별", value: $sex, formatter: numFormatter)
-    //                .textFieldStyle(.roundedBorder)
-    //                .disableAutocorrection(true)
+                Section(header: Text("이메일")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("이메일 주소를 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
                 
-                TextField("휴대폰번호 - 빼고 입력해주세요", text: $phonenumber)
-                    .textFieldStyle(.roundedBorder)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
+                Section(header: Text("휴대폰 번호")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("휴대폰번호 - 빼고 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
                 
-                TextField("닉네임", text: $nickname)
-                    .textFieldStyle(.roundedBorder)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-            }
-            
-//            HStack{
-//                Button(action: {
-//                    print("재학생")
-//                }, label: {
-//                    Text("재학생")
-//                })
-//                Button(action: {
-//                    print("졸업생")
-//                }, label: {
-//                    Text("휴학생")
-//                })
-//                Button(action: {
-//                    print("")
-//                }, label: {
-//                    Text("확인")
-//                })
-//            }
-            
-//            TextField("재학상태", text: $status)
-//                .textFieldStyle(.roundedBorder)
-//                .disableAutocorrection(true)
-            
-//            TextField("socialtype", text: $socialtype)
-//                .textFieldStyle(.roundedBorder)
-//                .disableAutocorrection(true)
-            
-            // 생년월일 입력
-            DatePicker("Please enter a date", selection: $wakeUp,
+                Section(header: Text("닉네임")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("사용하실 닉네임을 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
+                
+                Section(header: Text("생년월일")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    DatePicker("Please enter a date", selection: $wakeUp,
                                displayedComponents: .date)
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .labelsHidden()
-            
-            HStack{
-                TextField("은행명", text: $bank)
-                    .textFieldStyle(.roundedBorder)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-                TextField("계좌번호", text: $account)
-                    .textFieldStyle(.roundedBorder)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .labelsHidden()
+                    Text("생년월일을 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
+                
+                Section(header: Text("은행명")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("사용하실 은행의 이름을 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
+                
+                Section(header: Text("계좌번호")
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20))
+                        + Text("*")
+                    .foregroundColor(Color.red)
+                    .font(.system(size: 20))
+                ){
+                    TextField("클릭하고 입력" , text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    Text("위에 입력하신 은행의 계좌번호를 입력해주세요👆")
+                        .foregroundColor(Color.gray)
+                        .font(.system(size: 13))
+                }
             }
-//            TextField("profilelink", text: $profilelink)
-//                .textFieldStyle(.roundedBorder)
-//                .disableAutocorrection(true)
+            .background(Color.white)
+            .onAppear(perform: {
+                UITableView.appearance().backgroundColor = UIColor.clear
+                UITableViewCell.appearance().backgroundColor = UIColor.clear
+            })
             
             Button(action: {
                 productdataVM.name = name
@@ -138,18 +215,19 @@ struct registerView: View {
                 productdataVM.account = account
                 productdataVM.wakeUp = wakeUp
                 productdataVM.registConfirm()
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    if productdataVM.registerisSuccess == true {
-                        print("dismiss")
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                }
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//                    if productdataVM.registerisSuccess == true {
+//                        print("dismiss")
+//                    }
+//                }
             }, label: {
                 Text("등록").bold()
             }).alert(isPresented: $productdataVM.registerCheck, content: {
                 Alert(title: Text("경고"), message: Text("입력을 다시 확인하여 주십시오"), dismissButton: .default(Text("확인")))
             }).alert(isPresented: $productdataVM.registerisSuccess, content: {
-                Alert(title: Text("축하합니다"), message: Text("회원가입에 성공하셨습니다"), dismissButton: .default(Text("로그인하러 가기")))
+                Alert(title: Text("축하합니다"), message: Text("회원가입에 성공하셨습니다"), dismissButton: .default(Text("로그인하러 가기")){
+                    self.presentationMode.wrappedValue.dismiss()
+                })
             })
             
         }

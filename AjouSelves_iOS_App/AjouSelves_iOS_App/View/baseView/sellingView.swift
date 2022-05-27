@@ -13,6 +13,8 @@ import PhotosUI
 
 //MARK: - 텍스트필드, 사진
 struct sellingView : View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode> // 창 자동 종료를 위한 Environment
+    
     @State private var showingImagePicker = false
     @State var pickedImage: Image?
     @State var isChecked: Bool = false
@@ -63,7 +65,7 @@ struct sellingView : View {
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .onAppear() {
-                                            //sellingVM.projAddSingle(imageData: item.photo)
+                                            //sellingVM.projAdd_Photo(imageData: item.photo)
                                             sellingVM.photoData = item.photo!
                                         }
                                 }
@@ -186,10 +188,12 @@ struct sellingView : View {
                         sellingVM.min_num = min_num
                         sellingVM.category = category
                         sellingVM.required = required
-                        //sellingVM.projAddSingle(imageData: selectedPhoto)
                         sellingVM.projAddConfirm()
-                        if sellingVM.projAddSuccess == true {
-                            sellingVM.projAddSingle()
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                            if sellingVM.projAddSuccess == true {
+                                sellingVM.projAdd_Photo()
+                                self.isChecked = true
+                            }
                         }
                     } label: {
                         Text("굿즈 등록🤙").bold()
@@ -209,6 +213,11 @@ struct sellingView : View {
                     // Handle didSelectItems value here...
                     showSheet = false
                 }
+            })
+            .alert(isPresented: $isChecked, content: {
+                Alert(title: Text("등록 완료!"), message: Text("펀딩이 정상적으로 등록되었습니다!"), dismissButton: .default(Text("확인")){
+                    self.presentationMode.wrappedValue.dismiss() // 확인 버튼을 누르면 창 자동 종료
+                })
             })
         }
         .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화

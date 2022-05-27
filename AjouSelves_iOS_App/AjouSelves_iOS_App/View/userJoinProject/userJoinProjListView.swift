@@ -1,16 +1,17 @@
 //
-//  userCreateProjListView.swift
+//  userJoinProjListView.swift
 //  AjouSelves_iOS_App
 //
-//  Created by Minhyun Cho on 2022/05/26.
+//  Created by Minhyun Cho on 2022/05/28.
 //
 
 import SwiftUI
 
-struct userCreateProjListView: View {
-    var prdData : userCreateDetail
+struct userJoinProjListView: View {
+    
+    var prdData : userJoinDetail
 
-    init(_ prdData : userCreateDetail) {
+    init(_ prdData : userJoinDetail) {
         self.prdData = prdData
     }
     
@@ -52,8 +53,8 @@ struct userCreateProjListView: View {
     }
 }
 
-struct userCreateProjListView_Previews: PreviewProvider {
+struct userJoiinProjListView_Previews: PreviewProvider {
     static var previews: some View {
-        userCreateProjListView(userCreateDetail.getDummy())
+        userJoinProjListView(userJoinDetail.getDummy())
     }
 }
