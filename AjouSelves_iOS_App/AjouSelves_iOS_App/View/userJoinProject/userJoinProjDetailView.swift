@@ -1,39 +1,25 @@
 //
-//  projDetailView.swift
+//  userJoinProjDetailView.swift
 //  AjouSelves_iOS_App
 //
-//  Created by Minhyun Cho on 2022/05/13.
+//  Created by Minhyun Cho on 2022/05/28.
 //
 
-import Foundation
 import SwiftUI
 
-struct projDetailView: View {
+struct userJoinProjDetailView: View {
     @ObservedObject var productDataVM = productDataViewModel()
     
-    var projDeleteUrl = "http://52.206.105.200:3000/proj/delete/" // 특정 프로젝트 삭제
+    var projDeleteUrl = "http://goodsbyus.com/api/proj/delete/" // 특정 프로젝트 삭제
     
-    var prdData: projectAllDataParcing
+    var prdData: userJoinDetail
     
-    init(_ prdData : projectAllDataParcing) {
+    init(_ prdData : userJoinDetail) {
         self.prdData = prdData
     }
-    
     var body: some View {
-        //        return GeometryReader { proxy in
-        //                    ScrollView(.horizontal) {
-        //                        HStack(spacing: 0) {
-        //                            projImgView(imageUrl: prdData.profileImgUrl)
-        //                            .frame(width: proxy.size.width, height: proxy.size.height)
-        //                        }
-        //                    }
-        //        }
-        ////                    }.onAppear {
-        ////                        UIScrollView.appearance().isPagingEnabled = true
-        ////                    }
-        
         VStack{
-            ScrollView{
+            ScrollView {
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
                 }
@@ -82,13 +68,13 @@ struct projDetailView: View {
                 }
             }
             Spacer()
-            Button(action:{
+            Button(action: {
                 print("Clicked 펀딩참여")
             }, label: {
                 Text("이 펀딩에 참여하기")
             })
             .toolbar{
-                ToolbarItemGroup(placement: .navigationBarTrailing){
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
                         productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
                     }, label:{
@@ -101,8 +87,8 @@ struct projDetailView: View {
     }
 }
 
-struct projDetailView_Previews: PreviewProvider {
+struct userJoinProjDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        projDetailView(projectAllDataParcing.getDummy())
+        userJoinProjDetailView(userJoinDetail.getDummy())
     }
 }

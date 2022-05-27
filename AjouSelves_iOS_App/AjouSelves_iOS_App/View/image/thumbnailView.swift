@@ -17,7 +17,9 @@ struct thumbnailView: View {
         URLImage(imageUrl) { image in
             image
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                //.aspectRatio(contentMode: .fit).clipped(antialiased: true)
+                //.aspectRatio(contentMode: .fill).clipped(antialiased: true)
+                .aspectRatio(contentMode: .fill)
         }
         .frame(width: 130, height: 130)
     }

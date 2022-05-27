@@ -46,7 +46,7 @@ struct ContentView: View {
                         productdataVM.loginEmail = userId
                         productdataVM.loginPassword = userPassword
                         productdataVM.authLogin(url: productdataVM.authLoginUrl)
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
                             if productdataVM.loginisSuccess == true {
                                 print("login!!!")
                                 self.viewrouter.currentPage = "tabView"

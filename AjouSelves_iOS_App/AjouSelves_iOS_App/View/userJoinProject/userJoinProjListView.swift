@@ -1,25 +1,25 @@
 //
-//  ProjListView.swift
+//  userJoinProjListView.swift
 //  AjouSelves_iOS_App
 //
-//  Created by Minhyun Cho on 2022/05/04.
+//  Created by Minhyun Cho on 2022/05/28.
 //
 
-import Foundation
 import SwiftUI
 
-struct ProjListView : View {
+struct userJoinProjListView: View {
     
-    var prdData : projectAllDataParcing
+    var prdData : userJoinDetail
 
-    
-    init(_ prdData : projectAllDataParcing) {
+    init(_ prdData : userJoinDetail) {
         self.prdData = prdData
     }
     
     var body: some View {
         HStack{
             thumbnailView(imageUrl: prdData.profileImgUrl)
+                .frame(width: 130, height: 130)
+                .clipped()
             VStack(alignment: .leading, spacing: 5){
                 Text("\(prdData.description_category)")
                     //.fontWeight(.heavy)
@@ -38,10 +38,11 @@ struct ProjListView : View {
 //                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
 //                    .minimumScaleFactor(0.5)
                 HStack{
-                    Text("350%")
+                    Text("\(prdData.cal_joinPer)% 달성!")
+                        .foregroundColor(Color.red)
                         .font(.system(size: 20))
                         
-                    Text("\(prdData.description_minnum)명 참여") // 지금까지 몇명이 참여했는지에 대한 데이터 필요
+                    Text("\(prdData.description_curnum)명 참여!") // 지금까지 몇명이 참여했는지에 대한 데이터 필요
                         //.fontWeight(.heavy)
                         .font(.system(size: 15))
                         .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
@@ -52,10 +53,8 @@ struct ProjListView : View {
     }
 }
 
-
-
-struct ProjListView_Previews: PreviewProvider {
+struct userJoiinProjListView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjListView(projectAllDataParcing.getDummy())
+        userJoinProjListView(userJoinDetail.getDummy())
     }
 }
