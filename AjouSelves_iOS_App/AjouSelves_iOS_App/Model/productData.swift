@@ -128,7 +128,7 @@ struct projectAllDataParcing: Codable, Hashable {
     
     var profileImgUrl : URL { // 연산 프로퍼티
         get {
-            URL(string: "http://52.206.105.200:3000\(url ?? "/photo/1650014537158-aa.png")")!
+            URL(string: "http://goodsbyus.com\(url ?? "/photo/1650014537158-aa.png")")!
         }
 //        get {
 //            URL(string: "http://52.206.105.200:3000/photo/1650014537158-aa.png")!
@@ -169,43 +169,79 @@ struct projectAllDataParcing: Codable, Hashable {
     }
 }
 
-struct postAllData: Codable {
+struct postAllData: Codable, Hashable {
     let title: String?
     let explained: String?
     let created_at: String?
     let userid: Int?
     let nickname: String?
     let url: String?
+    
+    var profileImgUrl : URL { // 연산 프로퍼티
+        get {
+            URL(string: "http://goodsbyus.com\(url ?? "/photo/1650014537158-aa.png")")!
+        }
+//        get {
+//            URL(string: "http://52.206.105.200:3000/photo/1650014537158-aa.png")!
+//        }
+    }
+    var description_photos: URL {
+        return profileImgUrl
+    }
+    var description_title: String {
+        return "\(title!)"
+    }
+    var description_nickname: String {
+        return "\(nickname!)"
+    }
+    var description_userid: String {
+        return "\(userid!)"
+    }
+    var description_created_at: String {
+        return "\(created_at!)"
+    }
+    var description_explained: String {
+        return "\(explained!)"
+    }
+    static func getDummy() -> Self {
+        return postAllData(title: "아주대학교 커뮤니티", explained: "1985년 처음 발매 된 에어 조던의 첫번째 모델이자, 나이키와 자회사인 조던 브랜드(Jordan Brand)의 상징이 된 신발. 아름다운 디자인, 거기에 신발의 주인공인 마이클 조던의 엄청난 활약으로 인해 아디다스, 컨버스[3]가 주도하고 있던 농구화 시장을 주도하는 데 성공한다. 이후로도 모두가 갖고 싶어하는 패션화로 거듭 났으며 여기에 나이키의 의도적인 수량 제한 정책과 최고의 셀럽들과 함께하는 콜라보레이션을 통해서 농구화로써의 기능성이 떨어진 지금에도 엄청난 매출을 자랑하는 모델이 되었다. 출시 당시 명칭은 Air Jordan이었으며 1986년에 Air Jordan 2가 공개되면서 숫자 넘버링이 붙기 시작했다.", created_at: "", userid: 1, nickname: "Minion", url: "")
+    }
+    
 }
 
-struct userCreateDetail: Codable, Hashable {
+struct userJoinDetail: Codable, Hashable {
     let projid: Int?
-    let userid: Int?
     let title: String?
     let state: Int?
     let category: String?
+//    let created_at: Date?
+    let userid: Int?
+    let nickname: String?
+    let profilelink: String?
     let min_num: Int?
     let cur_num: Int?
-    let required: String?
     let explained: String?
-    let paylink: String?
-    let created_at: Date?
+    let url: String?
+    //let required: String?
     
-//    var profileImgUrl : URL { // 연산 프로퍼티
+    var profileImgUrl : URL { // 연산 프로퍼티
+        get {
+            URL(string: "http://goodsbyus.com\(url ?? "/photo/1650014537158-aa.png")")!
+        }
 //        get {
-//            URL(string: "http://52.206.105.200:3000\(url ?? "/photo/1650014537158-aa.png")")!
+//            URL(string: "http://52.206.105.200:3000/photo/1650014537158-aa.png")!
 //        }
-////        get {
-////            URL(string: "http://52.206.105.200:3000/photo/1650014537158-aa.png")!
-////        }
-//    }
-//
-//    var description_photos: URL {
-//        return profileImgUrl
-//    }
+    }
+
+    var description_photos: URL {
+        return profileImgUrl
+    }
     
     var description_title: String {
         return "\(title!)"
+    }
+    var description_nickname: String {
+        return "\(nickname!)"
     }
     var description_category: String {
         return "\(category!)"
@@ -227,10 +263,68 @@ struct userCreateDetail: Codable, Hashable {
     }
     
     static func getDummy() -> Self {
-        return userCreateDetail(projid: 1, userid: 1, title: "나이키 조던1", state: 1, category: "신발", min_num: 100, cur_num: 0, required: "required section", explained: "1985년 처음 발매 된 에어 조던의 첫번째 모델이자, 나이키와 자회사인 조던 브랜드(Jordan Brand)의 상징이 된 신발. 아름다운 디자인, 거기에 신발의 주인공인 마이클 조던의 엄청난 활약으로 인해 아디다스, 컨버스[3]가 주도하고 있던 농구화 시장을 주도하는 데 성공한다. 이후로도 모두가 갖고 싶어하는 패션화로 거듭 났으며 여기에 나이키의 의도적인 수량 제한 정책과 최고의 셀럽들과 함께하는 콜라보레이션을 통해서 농구화로써의 기능성이 떨어진 지금에도 엄청난 매출을 자랑하는 모델이 되었다. 출시 당시 명칭은 Air Jordan이었으며 1986년에 Air Jordan 2가 공개되면서 숫자 넘버링이 붙기 시작했다.", paylink: "nil", created_at: nil)
+        return userJoinDetail(projid: 1, title: "아주대학교 굿즈", state: 1, category: "인형",  userid: 1, nickname: "Minion", profilelink: "kakao.com/1234", min_num: 10, cur_num: 0, explained: "1985년 처음 발매 된 에어 조던의 첫번째 모델이자, 나이키와 자회사인 조던 브랜드(Jordan Brand)의 상징이 된 신발. 아름다운 디자인, 거기에 신발의 주인공인 마이클 조던의 엄청난 활약으로 인해 아디다스, 컨버스[3]가 주도하고 있던 농구화 시장을 주도하는 데 성공한다. 이후로도 모두가 갖고 싶어하는 패션화로 거듭 났으며 여기에 나이키의 의도적인 수량 제한 정책과 최고의 셀럽들과 함께하는 콜라보레이션을 통해서 농구화로써의 기능성이 떨어진 지금에도 엄청난 매출을 자랑하는 모델이 되었다. 출시 당시 명칭은 Air Jordan이었으며 1986년에 Air Jordan 2가 공개되면서 숫자 넘버링이 붙기 시작했다.", url: "/photo/1653665712857-photo.jpeg")
     }
 }
 
-struct userJoinDetail: Codable, Hashable {
+struct projJoinId: Codable {
+    let status: String?
+    let text: String?
+}
 
+struct userCreateDetail: Codable, Hashable {
+    let projid: Int?
+    let title: String?
+    let state: Int?
+    let category: String?
+//    let created_at: Date?
+    let userid: Int?
+    let nickname: String?
+    let profilelink: String?
+    let min_num: Int?
+    let cur_num: Int?
+    let explained: String?
+    let url: String?
+    //let required: String?
+    
+    var profileImgUrl : URL { // 연산 프로퍼티
+        get {
+            URL(string: "http://goodsbyus.com\(url ?? "/photo/1650014537158-aa.png")")!
+        }
+//        get {
+//            URL(string: "http://52.206.105.200:3000/photo/1650014537158-aa.png")!
+//        }
+    }
+
+    var description_photos: URL {
+        return profileImgUrl
+    }
+    var description_title: String {
+        return "\(title!)"
+    }
+    var description_nickname: String {
+        return "\(nickname!)"
+    }
+    var description_category: String {
+        return "\(category!)"
+    }
+    var description_minnum: String {
+        return "\(min_num!)"
+    }
+    var description_curnum: String {
+        return "\(cur_num!)"
+    }
+    var description_projid: String {
+        return "\(projid!)"
+    }
+    var description_explained: String {
+        return "\(explained!)"
+    }
+    var cal_joinPer: String {
+        return String(format: "%.0f",round((Float(cur_num!)/Float(min_num!))*100))
+    }
+    
+    static func getDummy() -> Self {
+        return userCreateDetail(projid: 1, title: "아주대학교 굿즈", state: 1, category: "인형",  userid: 1, nickname: "Minion", profilelink: "kakao.com/1234", min_num: 10, cur_num: 0, explained: "1985년 처음 발매 된 에어 조던의 첫번째 모델이자, 나이키와 자회사인 조던 브랜드(Jordan Brand)의 상징이 된 신발. 아름다운 디자인, 거기에 신발의 주인공인 마이클 조던의 엄청난 활약으로 인해 아디다스, 컨버스[3]가 주도하고 있던 농구화 시장을 주도하는 데 성공한다. 이후로도 모두가 갖고 싶어하는 패션화로 거듭 났으며 여기에 나이키의 의도적인 수량 제한 정책과 최고의 셀럽들과 함께하는 콜라보레이션을 통해서 농구화로써의 기능성이 떨어진 지금에도 엄청난 매출을 자랑하는 모델이 되었다. 출시 당시 명칭은 Air Jordan이었으며 1986년에 Air Jordan 2가 공개되면서 숫자 넘버링이 붙기 시작했다.", url: "/photo/1653665712857-photo.jpeg")
+    }
 }
