@@ -31,6 +31,8 @@
 		8668972D2806DAA40042ED35 /* sellingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668972C2806DAA40042ED35 /* sellingViewModel.swift */; };
 		866A0017283F92730078E77D /* userCreateProjListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0016283F92730078E77D /* userCreateProjListView.swift */; };
 		866A0019283F967B0078E77D /* userCreateProjDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0018283F967B0078E77D /* userCreateProjDetailView.swift */; };
+		866A00272840BCBC0078E77D /* communityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A00262840BCBC0078E77D /* communityListView.swift */; };
+		866A00292840BCC90078E77D /* communityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A00282840BCC90078E77D /* communityDetailView.swift */; };
 		86886E2D27FECD3F00B22E1D /* sellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86886E2C27FECD3F00B22E1D /* sellingView.swift */; };
 		869F06E227D77F3D0034001A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F06E127D77F3D0034001A /* AppDelegate.swift */; };
 		869F06E427D77F3D0034001A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869F06E327D77F3D0034001A /* SceneDelegate.swift */; };
@@ -66,6 +68,8 @@
 		8668972C2806DAA40042ED35 /* sellingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sellingViewModel.swift; sourceTree = "<group>"; };
 		866A0016283F92730078E77D /* userCreateProjListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCreateProjListView.swift; sourceTree = "<group>"; };
 		866A0018283F967B0078E77D /* userCreateProjDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCreateProjDetailView.swift; sourceTree = "<group>"; };
+		866A00262840BCBC0078E77D /* communityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityListView.swift; sourceTree = "<group>"; };
+		866A00282840BCC90078E77D /* communityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityDetailView.swift; sourceTree = "<group>"; };
 		86886E2C27FECD3F00B22E1D /* sellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sellingView.swift; sourceTree = "<group>"; };
 		869F06DE27D77F3D0034001A /* AjouSelves_iOS_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AjouSelves_iOS_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869F06E127D77F3D0034001A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		865D53A427F1F3F100CE2258 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				866A00252840BC9E0078E77D /* communituView */,
 				866A001E283F9B8B0078E77D /* baseView */,
 				866A001D283F9B680078E77D /* image */,
 				866A001C283F9B5A0078E77D /* mainProject */,
@@ -175,7 +180,6 @@
 			children = (
 				869F06E527D77F3D0034001A /* ContentView.swift */,
 				865D53AF27F2FEFC00CE2258 /* tabView.swift */,
-				865D53A727F2FE4100CE2258 /* communityView.swift */,
 				865D53A927F2FE4A00CE2258 /* mypageView.swift */,
 				865D53AB27F2FE5300CE2258 /* settingView.swift */,
 				86886E2C27FECD3F00B22E1D /* sellingView.swift */,
@@ -184,6 +188,16 @@
 				86672398283F73E00091AA33 /* processPopUpView.swift */,
 			);
 			path = baseView;
+			sourceTree = "<group>";
+		};
+		866A00252840BC9E0078E77D /* communituView */ = {
+			isa = PBXGroup;
+			children = (
+				865D53A727F2FE4100CE2258 /* communityView.swift */,
+				866A00262840BCBC0078E77D /* communityListView.swift */,
+				866A00282840BCC90078E77D /* communityDetailView.swift */,
+			);
+			path = communituView;
 			sourceTree = "<group>";
 		};
 		869F06D527D77F3D0034001A = {
@@ -369,6 +383,7 @@
 			files = (
 				862452E3283E996900FBAE06 /* createProjView.swift in Sources */,
 				869F06E227D77F3D0034001A /* AppDelegate.swift in Sources */,
+				866A00272840BCBC0078E77D /* communityListView.swift in Sources */,
 				866A0017283F92730078E77D /* userCreateProjListView.swift in Sources */,
 				869F06E427D77F3D0034001A /* SceneDelegate.swift in Sources */,
 				862452E1283E981000FBAE06 /* joinProjView.swift in Sources */,
@@ -389,6 +404,7 @@
 				86CED0CE2834D87200CE295B /* TabBarAccessor.swift in Sources */,
 				8642C684282185520069FB46 /* ProjListView.swift in Sources */,
 				866A0019283F967B0078E77D /* userCreateProjDetailView.swift in Sources */,
+				866A00292840BCC90078E77D /* communityDetailView.swift in Sources */,
 				86D15F8B282CF8BD00035DE1 /* registerView.swift in Sources */,
 				869F06E627D77F3D0034001A /* ContentView.swift in Sources */,
 				86CED0C82832447F00CE295B /* projImgView.swift in Sources */,
