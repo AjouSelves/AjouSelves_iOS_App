@@ -13,9 +13,8 @@ import UIKit
 
 class sellingViewModel: ObservableObject {
     
-    var projAddUrl = "http://52.206.105.200:3000/proj/add"
-    var projAddSingleUrl = "http://52.206.105.200:3000/proj/add/single"
-    var projAddMultiUrl = "http://52.206.105.200:3000/proj/add/multi"
+    var projAddUrl = "http://goodsbyus.com/api/proj/add"
+    var projAdd_PhotoUrl = "http://goodsbyus.com/api/proj/add_photo"
     
     @Published var title: String = ""
     @Published var explained: String = ""
@@ -50,7 +49,7 @@ class sellingViewModel: ObservableObject {
             }
     }
     
-    func projAddSingle(){
+    func projAdd_Photo(){
         
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
@@ -79,21 +78,24 @@ class sellingViewModel: ObservableObject {
                 MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
             }
             
-        }, to: projAddSingleUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
+        }, to: projAdd_PhotoUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
+        .responseJSON { response in
+            print("JSON", response)
+        }
             .responseString { response in
             switch response.result {
             case .success(_):
-                print(response)
+                print("String", response)
                 print("photo send success")
                 
             case .failure(let error):
                 print(error)
             }
         }
-        print("MultipartFormData",param)
     }
     
     func projAddConfirm() {
+        print("projAddConfirm clicked")
         self.projAddCheck = true
         self.projAddSuccess = false
         if title.isEmpty == true {
@@ -122,7 +124,7 @@ class sellingViewModel: ObservableObject {
         }
         
         if projAddCheck == true {
-            projAddSuccess
+            projAddSuccess = true
         }
     }
 }
