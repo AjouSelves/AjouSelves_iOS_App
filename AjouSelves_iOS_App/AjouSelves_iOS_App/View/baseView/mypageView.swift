@@ -16,24 +16,24 @@ struct mypageView: View {
             NavigationView{
                 VStack{
                     NavigationLink(destination: {
-                        joinProjView()
+                        createProjView()
                     }, label: {
                         Text("내가 생성한 굿즈")
                     })
                     
                     NavigationLink(destination: {
-                        createProjView()
+                        joinProjView()
                     }, label: {
                         Text("내가 참여한 굿즈")
                     })
                 }
             }
-            Button(action: {
-                self.viewrouter.currentPage = "ContentView"
-                startView(viewrouter: viewRouter())
-            }, label: {
-                Text("로그아웃 테스트")
-            })
+//            Button(action: {
+//                self.viewrouter.currentPage = "ContentView"
+//                startView(viewrouter: viewRouter())
+//            }, label: {
+//                Text("로그아웃 테스트")
+//            })
         }
     }
 }

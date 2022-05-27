@@ -148,7 +148,7 @@ struct registerView: View {
                 Text("등록").bold()
             }).alert(isPresented: $productdataVM.registerCheck, content: {
                 Alert(title: Text("경고"), message: Text("입력을 다시 확인하여 주십시오"), dismissButton: .default(Text("확인")))
-            }).alert(isPresented: $productdataVM.registerFinish, content: {
+            }).alert(isPresented: $productdataVM.registerisSuccess, content: {
                 Alert(title: Text("축하합니다"), message: Text("회원가입에 성공하셨습니다"), dismissButton: .default(Text("로그인하러 가기")))
             })
             

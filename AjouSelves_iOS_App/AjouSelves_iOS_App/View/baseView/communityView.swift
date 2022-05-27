@@ -26,7 +26,6 @@ struct communityView: View {
             }
             .padding(-15)
         }
-        
     }
 }
 
