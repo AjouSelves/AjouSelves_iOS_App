@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct userCreateProjListView: View {
-    
     var prdData : userCreateDetail
 
     init(_ prdData : userCreateDetail) {
@@ -17,9 +16,9 @@ struct userCreateProjListView: View {
     
     var body: some View {
         HStack{
-//            thumbnailView(imageUrl: prdData.profileImgUrl)
-//                .frame(width: 130, height: 130)
-//                .clipped()
+            thumbnailView(imageUrl: prdData.profileImgUrl)
+                .frame(width: 130, height: 130)
+                .clipped()
             VStack(alignment: .leading, spacing: 5){
                 Text("\(prdData.description_category)")
                     //.fontWeight(.heavy)

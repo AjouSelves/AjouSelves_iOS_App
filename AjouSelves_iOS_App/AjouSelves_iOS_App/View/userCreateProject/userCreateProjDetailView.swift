@@ -10,6 +10,8 @@ import SwiftUI
 struct userCreateProjDetailView: View {
     @ObservedObject var productDataVM = productDataViewModel()
     
+    var projDeleteUrl = "http://goodsbyus.com/api/proj/delete/" // 특정 프로젝트 삭제
+    
     var prdData: userCreateDetail
     
     init(_ prdData : userCreateDetail) {
@@ -18,11 +20,11 @@ struct userCreateProjDetailView: View {
     var body: some View {
         VStack{
             ScrollView{
-//                ScrollView(.horizontal) {
-//                    projImgView(imageUrl: prdData.profileImgUrl)
-//                }
-//                Divider()
-//                Spacer()
+                ScrollView(.horizontal) {
+                    projImgView(imageUrl: prdData.profileImgUrl)
+                }
+                Divider()
+                Spacer()
                 VStack(alignment: .leading){
                     Text("\(prdData.description_category)")
                         .font(.system(size: 20))
@@ -71,16 +73,17 @@ struct userCreateProjDetailView: View {
             }, label: {
                 Text("이 펀딩에 참여하기")
             })
-//            .toolbar{
-//                ToolbarItemGroup(placement: .navigationBarTrailing) {
-//                    Button(action: {
-//                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
-//                    }, label:{
-//                        Image(systemName: "trash")
-//                    })
-//                }
-//            }
+            .toolbar{
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
+                    }, label:{
+                        Image(systemName: "trash")
+                    })
+                }
+            }
         }
+        //.navigationBarBackButtonHidden(true)
         .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
