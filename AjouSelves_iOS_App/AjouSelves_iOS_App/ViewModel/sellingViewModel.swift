@@ -13,9 +13,8 @@ import UIKit
 
 class sellingViewModel: ObservableObject {
     
-    var projAddUrl = "http://52.206.105.200:3000/proj/add"
-    var projAddSingleUrl = "http://52.206.105.200:3000/proj/add/single"
-    var projAddMultiUrl = "http://52.206.105.200:3000/proj/add/multi"
+    var projAddUrl = "http://goodsbyus.com/api/proj"
+    var projAdd_PhotoUrl = "http://goodsbyus.com/api/proj/photo"
     
     @Published var title: String = ""
     @Published var explained: String = ""
@@ -23,6 +22,9 @@ class sellingViewModel: ObservableObject {
     @Published var category: String = ""
     @Published var required: [String] = [""]
     @Published var photoData: UIImage = UIImage()
+    
+    var projAddCheck: Bool = true
+    var projAddSuccess: Bool = false
     
     //var productdataViewModels = productdataViewModel()
     //var productVM = productDataViewModel()
@@ -47,7 +49,7 @@ class sellingViewModel: ObservableObject {
             }
     }
     
-    func projAddSingle(){
+    func projAdd_Photo(){
         
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
@@ -76,18 +78,53 @@ class sellingViewModel: ObservableObject {
                 MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
             }
             
-        }, to: projAddSingleUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
+        }, to: projAdd_PhotoUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
+        .responseJSON { response in
+            print("JSON", response)
+        }
             .responseString { response in
             switch response.result {
             case .success(_):
-                print(response)
+                print("String", response)
                 print("photo send success")
                 
             case .failure(let error):
                 print(error)
             }
         }
-        print("MultipartFormData",param)
     }
     
+    func projAddConfirm() {
+        print("projAddConfirm clicked")
+        self.projAddCheck = true
+        self.projAddSuccess = false
+        if title.isEmpty == true {
+            print("title is Empty")
+            self.projAddCheck = false
+        }
+        else if explained.isEmpty == true {
+            print("explained is Empty")
+            self.projAddCheck = false
+        }
+        else if min_num == 0 {
+            print("min_num is Empty")
+            self.projAddCheck = false
+        }
+        else if category.isEmpty == true {
+            print("category is Empty")
+            self.projAddCheck = false
+        }
+        else if required.isEmpty == true {
+            print("required is Empty")
+            self.projAddCheck = false
+        }
+        else if photoData == nil {
+            print("photoData is Empty")
+            self.projAddCheck = false
+        }
+        
+        if projAddCheck == true {
+            projAddSuccess = true
+        }
+    }
 }
