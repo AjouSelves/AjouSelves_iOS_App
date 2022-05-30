@@ -11,22 +11,22 @@ struct joinProjView: View {
     @ObservedObject var ProductDataViewModel = productDataViewModel()
     
     init( ){
-        ProductDataViewModel.refreshCreateProj()
+        ProductDataViewModel.refreshJoinProj()
     }
     
     var body: some View {
         NavigationView {
-            List(ProductDataViewModel.userCreateDetails, id: \.self) { adata in
+            List(ProductDataViewModel.userJoinDetails, id: \.self) { adata in
                 NavigationLink(
-                    destination: userCreateProjDetailView(adata),
+                    destination: userJoinProjDetailView(adata),
                         label: {
-                            userCreateProjListView(adata)
+                            userJoinProjListView(adata)
                         })
             }
             .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
             // iOS 15부터 지원...
             .refreshable {
-                ProductDataViewModel.refreshCreateProj()
+                ProductDataViewModel.refreshJoinProj()
 //                ProductDataViewModel.refreshProj()
             }
             .padding(-15)

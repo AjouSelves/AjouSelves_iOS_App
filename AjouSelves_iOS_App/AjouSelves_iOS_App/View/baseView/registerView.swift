@@ -26,7 +26,7 @@ struct registerView: View {
     @State var sex: Int  = 0
     @State var phonenumber: String = ""
     @State var nickname: String = ""
-    @State var status: String = "재학생"
+    @State var status: String = ""
     @State var socialtype: String = "local"
     @State var birth: String = ""
     @State var address: String = "dummy"
@@ -65,7 +65,7 @@ struct registerView: View {
                     .foregroundColor(Color.red)
                     .font(.system(size: 20))
                 ){
-                    TextField("클릭하고 입력" , text: $name)
+                    TextField("클릭하고 입력" , text: $email)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
@@ -82,7 +82,7 @@ struct registerView: View {
                     .foregroundColor(Color.red)
                     .font(.system(size: 20))
                 ){
-                    TextField("클릭하고 입력" , text: $name)
+                    SecureField("클릭하고 입력" , text: $password)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
@@ -91,7 +91,7 @@ struct registerView: View {
                         .font(.system(size: 13))
                 }
                 
-                Section(header: Text("이메일")
+                Section(header: Text("재학상태")
                     .bold()
                     .foregroundColor(Color.black)
                     .font(.system(size: 20))
@@ -99,11 +99,11 @@ struct registerView: View {
                     .foregroundColor(Color.red)
                     .font(.system(size: 20))
                 ){
-                    TextField("클릭하고 입력" , text: $name)
+                    TextField("클릭하고 입력" , text: $status)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
-                    Text("이메일 주소를 입력해주세요👆")
+                    Text("재학생 / 휴학생 / 타대생 / 졸업생👆")
                         .foregroundColor(Color.gray)
                         .font(.system(size: 13))
                 }
@@ -116,7 +116,7 @@ struct registerView: View {
                     .foregroundColor(Color.red)
                     .font(.system(size: 20))
                 ){
-                    TextField("클릭하고 입력" , text: $name)
+                    TextField("클릭하고 입력" , text: $phonenumber)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
@@ -133,7 +133,7 @@ struct registerView: View {
                     .foregroundColor(Color.red)
                     .font(.system(size: 20))
                 ){
-                    TextField("클릭하고 입력" , text: $name)
+                    TextField("클릭하고 입력" , text: $nickname)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
@@ -167,7 +167,7 @@ struct registerView: View {
                     .foregroundColor(Color.red)
                     .font(.system(size: 20))
                 ){
-                    TextField("클릭하고 입력" , text: $name)
+                    TextField("클릭하고 입력" , text: $bank)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
@@ -184,7 +184,7 @@ struct registerView: View {
                     .foregroundColor(Color.red)
                     .font(.system(size: 20))
                 ){
-                    TextField("클릭하고 입력" , text: $name)
+                    TextField("클릭하고 입력" , text: $account)
                         .textFieldStyle(.roundedBorder)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)

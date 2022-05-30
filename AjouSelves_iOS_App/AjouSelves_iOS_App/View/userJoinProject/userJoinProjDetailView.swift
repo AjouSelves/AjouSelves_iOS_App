@@ -12,9 +12,9 @@ struct userJoinProjDetailView: View {
     
     var projDeleteUrl = "http://goodsbyus.com/api/proj/delete/" // 특정 프로젝트 삭제
     
-    var prdData: userJoinDetail
+    var prdData: userJoin.userJoinDetail
     
-    init(_ prdData : userJoinDetail) {
+    init(_ prdData : userJoin.userJoinDetail) {
         self.prdData = prdData
     }
     var body: some View {
@@ -69,19 +69,10 @@ struct userJoinProjDetailView: View {
             }
             Spacer()
             Button(action: {
-                print("Clicked 펀딩참여")
+                productDataVM.projLeave(id: prdData.description_projid)
             }, label: {
-                Text("이 펀딩에 참여하기")
+                Text("이 펀딩에 참여 해제하기")
             })
-            .toolbar{
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
-                    }, label:{
-                        Image(systemName: "trash")
-                    })
-                }
-            }
         }
         .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
@@ -89,6 +80,6 @@ struct userJoinProjDetailView: View {
 
 struct userJoinProjDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        userJoinProjDetailView(userJoinDetail.getDummy())
+        userJoinProjDetailView(userJoin.userJoinDetail.getDummy())
     }
 }

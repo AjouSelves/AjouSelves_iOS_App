@@ -58,7 +58,7 @@ struct homeView: View {
             }.toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
                     NavigationLink(
-                        destination: Text("검색"),
+                        destination: searchView(),
                             label: {
                                 Image(systemName: "magnifyingglass")
                     })
@@ -68,7 +68,7 @@ struct homeView: View {
                                 Image(systemName: "plus")
                     })
                     NavigationLink(
-                        destination: Text("알림센터"),
+                        destination: Text("아직 알림이 없군요🔔"),
                             label: {
                                 Image(systemName: "bell")
                     })

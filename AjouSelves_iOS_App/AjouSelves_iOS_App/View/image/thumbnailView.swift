@@ -28,7 +28,7 @@ struct thumbnailView: View {
 struct MainImgView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let url = URL(string: "https://randomuser.me/api/portraits/women/21.jpg")!
+        let url = URL(string: "http://goodsbyus.com/photo/1653782114124-b1-1_04.png")!
         
         thumbnailView(imageUrl: url)
     }
