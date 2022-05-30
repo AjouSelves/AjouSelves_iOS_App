@@ -29,7 +29,6 @@
 		866A0037284553A90078E77D /* communityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0036284553A90078E77D /* communityListView.swift */; };
 		866A0039284553CB0078E77D /* communityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0038284553CB0078E77D /* communityDetailView.swift */; };
 		866A003B284553D60078E77D /* communityAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A003A284553D60078E77D /* communityAddView.swift */; };
-		866A0042284554A10078E77D /* processPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0041284554A10078E77D /* processPopUpView.swift */; };
 		866A0044284554AE0078E77D /* userDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0043284554AE0078E77D /* userDataView.swift */; };
 		866A0046284554DB0078E77D /* searchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0045284554DB0078E77D /* searchView.swift */; };
 		866A0048284555510078E77D /* joinProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A0047284555510078E77D /* joinProjView.swift */; };
@@ -71,7 +70,6 @@
 		866A0036284553A90078E77D /* communityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityListView.swift; sourceTree = "<group>"; };
 		866A0038284553CB0078E77D /* communityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityDetailView.swift; sourceTree = "<group>"; };
 		866A003A284553D60078E77D /* communityAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityAddView.swift; sourceTree = "<group>"; };
-		866A0041284554A10078E77D /* processPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = processPopUpView.swift; sourceTree = "<group>"; };
 		866A0043284554AE0078E77D /* userDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDataView.swift; sourceTree = "<group>"; };
 		866A0045284554DB0078E77D /* searchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchView.swift; sourceTree = "<group>"; };
 		866A0047284555510078E77D /* joinProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = joinProjView.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				865D53AB27F2FE5300CE2258 /* settingView.swift */,
 				86D15F8A282CF8BD00035DE1 /* registerView.swift */,
 				86372640282E5114005AC48C /* startView.swift */,
-				866A0041284554A10078E77D /* processPopUpView.swift */,
 				866A0043284554AE0078E77D /* userDataView.swift */,
 			);
 			path = BaseView;
@@ -415,7 +412,6 @@
 				865D53A827F2FE4100CE2258 /* communityView.swift in Sources */,
 				866A004C284555640078E77D /* userJoinProjDetailView.swift in Sources */,
 				865D53B027F2FEFC00CE2258 /* tabView.swift in Sources */,
-				866A0042284554A10078E77D /* processPopUpView.swift in Sources */,
 				865D53AC27F2FE5300CE2258 /* settingView.swift in Sources */,
 				866A0048284555510078E77D /* joinProjView.swift in Sources */,
 				8668972D2806DAA40042ED35 /* sellingViewModel.swift in Sources */,
