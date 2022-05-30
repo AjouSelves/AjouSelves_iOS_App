@@ -45,7 +45,7 @@ struct ContentView: View {
                     Button(action: {
                         productdataVM.loginEmail = userId
                         productdataVM.loginPassword = userPassword
-                        productdataVM.authLogin(url: productdataVM.authLoginUrl)
+                        productdataVM.authLogin()
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
                             if productdataVM.loginisSuccess == true {
                                 print("login!!!")

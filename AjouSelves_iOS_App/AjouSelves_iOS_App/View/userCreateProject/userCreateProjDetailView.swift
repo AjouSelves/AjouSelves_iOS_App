@@ -10,11 +10,11 @@ import SwiftUI
 struct userCreateProjDetailView: View {
     @ObservedObject var productDataVM = productDataViewModel()
     
-    var projDeleteUrl = "http://goodsbyus.com/api/proj/delete/" // 특정 프로젝트 삭제
+    var projDeleteUrl = "http://goodsbyus.com/api/proj/" // 특정 프로젝트 삭제
     
-    var prdData: userCreateDetail
+    var prdData: userCreate.userCreateDetail
     
-    init(_ prdData : userCreateDetail) {
+    init(_ prdData : userCreate.userCreateDetail) {
         self.prdData = prdData
     }
     var body: some View {
@@ -90,6 +90,6 @@ struct userCreateProjDetailView: View {
 
 struct userCreateProjDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        userCreateProjDetailView(userCreateDetail.getDummy())
+        userCreateProjDetailView(userCreate.userCreateDetail.getDummy())
     }
 }

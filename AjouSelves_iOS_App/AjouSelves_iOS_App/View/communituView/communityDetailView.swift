@@ -10,9 +10,9 @@ import SwiftUI
 struct communityDetailView: View {
     @ObservedObject var productDataVM = productDataViewModel()
     
-    var prdData: postAllData
+    var prdData: postStruct.postAllData
     
-    init(_ prdData : postAllData) {
+    init(_ prdData : postStruct.postAllData) {
         self.prdData = prdData
     }
     
@@ -54,6 +54,6 @@ struct communityDetailView: View {
 
 struct communityDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        communityDetailView(postAllData.getDummy())
+        communityDetailView(postStruct.postAllData.getDummy())
     }
 }

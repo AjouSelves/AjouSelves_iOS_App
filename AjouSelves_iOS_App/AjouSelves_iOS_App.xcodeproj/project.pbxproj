@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		64C7FBCD44996556C6C2B2E1 /* Pods_AjouSelves_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4464B9CAD3A9F627DE948904 /* Pods_AjouSelves_iOS_App.framework */; };
+		86053469284567A3006ABA64 /* searchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86053468284567A3006ABA64 /* searchView.swift */; };
+		8605346B284567DA006ABA64 /* userDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605346A284567DA006ABA64 /* userDataView.swift */; };
+		8605346D28456811006ABA64 /* communityAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605346C28456811006ABA64 /* communityAddView.swift */; };
 		862452E1283E981000FBAE06 /* joinProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862452E0283E981000FBAE06 /* joinProjView.swift */; };
 		862452E3283E996900FBAE06 /* createProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862452E2283E996900FBAE06 /* createProjView.swift */; };
 		86372639282E45C3005AC48C /* projDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372638282E45C3005AC48C /* projDetailView.swift */; };
@@ -50,6 +53,9 @@
 
 /* Begin PBXFileReference section */
 		4464B9CAD3A9F627DE948904 /* Pods_AjouSelves_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AjouSelves_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86053468284567A3006ABA64 /* searchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchView.swift; sourceTree = "<group>"; };
+		8605346A284567DA006ABA64 /* userDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDataView.swift; sourceTree = "<group>"; };
+		8605346C28456811006ABA64 /* communityAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityAddView.swift; sourceTree = "<group>"; };
 		862452E0283E981000FBAE06 /* joinProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = joinProjView.swift; sourceTree = "<group>"; };
 		862452E2283E996900FBAE06 /* createProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createProjView.swift; sourceTree = "<group>"; };
 		86372638282E45C3005AC48C /* projDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projDetailView.swift; sourceTree = "<group>"; };
@@ -192,6 +198,8 @@
 				86D15F8A282CF8BD00035DE1 /* registerView.swift */,
 				86372640282E5114005AC48C /* startView.swift */,
 				86672398283F73E00091AA33 /* processPopUpView.swift */,
+				86053468284567A3006ABA64 /* searchView.swift */,
+				8605346A284567DA006ABA64 /* userDataView.swift */,
 			);
 			path = baseView;
 			sourceTree = "<group>";
@@ -202,6 +210,7 @@
 				865D53A727F2FE4100CE2258 /* communityView.swift */,
 				866A00262840BCBC0078E77D /* communityListView.swift */,
 				866A00282840BCC90078E77D /* communityDetailView.swift */,
+				8605346C28456811006ABA64 /* communityAddView.swift */,
 			);
 			path = communituView;
 			sourceTree = "<group>";
@@ -413,10 +422,13 @@
 				8642C684282185520069FB46 /* ProjListView.swift in Sources */,
 				866A0019283F967B0078E77D /* userCreateProjDetailView.swift in Sources */,
 				866A00292840BCC90078E77D /* communityDetailView.swift in Sources */,
+				86053469284567A3006ABA64 /* searchView.swift in Sources */,
+				8605346B284567DA006ABA64 /* userDataView.swift in Sources */,
 				86D15F8B282CF8BD00035DE1 /* registerView.swift in Sources */,
 				869F06E627D77F3D0034001A /* ContentView.swift in Sources */,
 				86CED0C82832447F00CE295B /* projImgView.swift in Sources */,
 				865D53AA27F2FE4A00CE2258 /* mypageView.swift in Sources */,
+				8605346D28456811006ABA64 /* communityAddView.swift in Sources */,
 				86403192283654C70043B2A7 /* PhotoPicker.swift in Sources */,
 				86672399283F73E00091AA33 /* processPopUpView.swift in Sources */,
 			);

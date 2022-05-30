@@ -9,9 +9,9 @@ import SwiftUI
 
 struct userJoinProjListView: View {
     
-    var prdData : userJoinDetail
+    var prdData : userJoin.userJoinDetail
 
-    init(_ prdData : userJoinDetail) {
+    init(_ prdData : userJoin.userJoinDetail) {
         self.prdData = prdData
     }
     
@@ -55,6 +55,6 @@ struct userJoinProjListView: View {
 
 struct userJoiinProjListView_Previews: PreviewProvider {
     static var previews: some View {
-        userJoinProjListView(userJoinDetail.getDummy())
+        userJoinProjListView(userJoin.userJoinDetail.getDummy())
     }
 }

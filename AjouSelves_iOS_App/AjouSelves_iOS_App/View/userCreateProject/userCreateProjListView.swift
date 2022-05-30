@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct userCreateProjListView: View {
-    var prdData : userCreateDetail
+    var prdData : userCreate.userCreateDetail
 
-    init(_ prdData : userCreateDetail) {
+    init(_ prdData : userCreate.userCreateDetail) {
         self.prdData = prdData
     }
     
@@ -54,6 +54,6 @@ struct userCreateProjListView: View {
 
 struct userCreateProjListView_Previews: PreviewProvider {
     static var previews: some View {
-        userCreateProjListView(userCreateDetail.getDummy())
+        userCreateProjListView(userCreate.userCreateDetail.getDummy())
     }
 }

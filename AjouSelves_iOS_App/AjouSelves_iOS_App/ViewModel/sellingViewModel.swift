@@ -13,8 +13,8 @@ import UIKit
 
 class sellingViewModel: ObservableObject {
     
-    var projAddUrl = "http://goodsbyus.com/api/proj/add"
-    var projAdd_PhotoUrl = "http://goodsbyus.com/api/proj/add_photo"
+    var projAddUrl = "http://goodsbyus.com/api/proj"
+    var projAdd_PhotoUrl = "http://goodsbyus.com/api/proj/photo"
     
     @Published var title: String = ""
     @Published var explained: String = ""

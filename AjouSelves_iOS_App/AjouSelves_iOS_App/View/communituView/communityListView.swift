@@ -9,9 +9,9 @@ import SwiftUI
 
 struct communityListView: View {
     
-    var prdData : postAllData
+    var prdData : postStruct.postAllData
 
-    init(_ prdData : postAllData) {
+    init(_ prdData : postStruct.postAllData) {
         self.prdData = prdData
     }
     
@@ -50,6 +50,6 @@ struct communityListView: View {
 
 struct communityListView_Previews: PreviewProvider {
     static var previews: some View {
-        communityListView(postAllData.getDummy())
+        communityListView(postStruct.postAllData.getDummy())
     }
 }
