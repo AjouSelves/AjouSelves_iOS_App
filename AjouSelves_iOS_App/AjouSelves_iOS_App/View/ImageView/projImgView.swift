@@ -17,7 +17,8 @@ struct projImgView: View {
         URLImage(imageUrl) { image in
             image
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                //.aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)//.clipped(antialiased: true) // 사진 정방향으로 잘라서 보여줌
         }
         .frame(width: 400, height: 400)
     }
