@@ -12,10 +12,37 @@ struct homeView: View {
     
     @ObservedObject var ProductDataViewModel = productDataViewModel()
     @State var isPresent: Bool = false
+    @State var processImgDisabled: Bool = false
+    
+    init() {
+        ProductDataViewModel.refreshProj()
+    }
     
     var body: some View {
         //펀딩 목록 불러오기
         NavigationView{
+//            Image("메인배너")
+//                .resizable()
+//                .scaledToFit()
+            
+//            TabView {
+//                ForEach(1..<4) { i in
+//                    ZStack {
+//                        Image("프로세스_\(i)").resizable()
+//                    }.clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+//                }
+//                .padding()
+//                Button(action: {
+//                    processImgDisabled = true
+//                }, label: {
+//                    Text("확인했습니다!")
+//                })
+//            }
+//            .tabViewStyle(PageTabViewStyle())
+//            .disabled(processImgDisabled)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            Image("메인배너")
+            //processPopUpView().disabled(processImgDisabled)
             List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
                 NavigationLink(
                     destination: projDetailView(adata),
@@ -28,17 +55,10 @@ struct homeView: View {
             .refreshable {
                 //productDataViewModel.init()
                 ProductDataViewModel.refreshProj()
-            }
-
-//            .alert(isPresented: $isPresent, content: {
-//                Alert(title: Text("좋아요"), message: Text("하셨습니다!"), dismissButton: .default(Text("OK")))
-//            })
-            //.navigationTitle("펀딩 목록")
-            //.navigationBarTitleDisplayMode(.automatic)
-            .toolbar{
+            }.toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
                     NavigationLink(
-                        destination: Text("검색"),
+                        destination: searchView(),
                             label: {
                                 Image(systemName: "magnifyingglass")
                     })
@@ -48,38 +68,27 @@ struct homeView: View {
                                 Image(systemName: "plus")
                     })
                     NavigationLink(
-                        destination: Text("알림센터"),
+                        destination: Text("아직 알림이 없군요🔔"),
                             label: {
                                 Image(systemName: "bell")
                     })
                 }
                 ToolbarItem(placement: .navigationBarLeading){
-//                    Button(action: {
-//                        print("Clicked4")
-//                    }, label: {
-//                        Text("아주대")
-//                            .font(.title2)
-//                            .bold()
-//                            .foregroundColor(Color.black)
-//
-//                    })
                     Button(action: {
                         print("Clicked4")
                     }, label: {
-                        Image("")
+                        Image("로고_PNG2")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 170, height: 170, alignment: .leading)
                     })
                 }
             }
-            //.frame(height: 700)
-            // .border(Color.blue) // Title밑 Tabview밑의 파란 줄Spacer()
             .padding(-15)
         }
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarTitle("", displayMode: .inline)
+//        .navigationBarHidden(true)
+//        .navigationBarBackButtonHidden(true)
     }
 }
 
