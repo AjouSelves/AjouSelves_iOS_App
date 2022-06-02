@@ -27,27 +27,27 @@ struct mypageView: View {
                         Text("내가 참여한 굿즈")
                     })
                     
-                        Button(action: {
-                            self.viewrouter.currentPage = "ContentView"
-                            mypageView(viewrouter: viewRouter())
-                        }, label: {
-                            Text("로그아웃 테스트")
-                        })
-                        Button(action: {
-                            print("회원정보 수정 Clicked")
-                        }, label: {
-                            Text("회원정보 수정")
-                        })
-                        Button(action: {
-                            print("회원 탈퇴 Clicked")
-                        }, label: {
-                            Text("회원 탈퇴")
-                        })
+//                    Button(action: {
+//                        self.viewrouter.currentPage1 = "ContentView"
+//                        self.viewrouter.currentPage = "ContentView"
+//                    }, label: {
+//                        Text("로그아웃 테스트")
+//                    })
                     
+                    Button(action: {
+                        print("회원정보 수정 Clicked")
+                    }, label: {
+                        Text("회원정보 수정")
+                    })
+                    
+                    Button(action: {
+                        print("회원 탈퇴 Clicked")
+                    }, label: {
+                        Text("회원 탈퇴")
+                    })
                 }
-                .navigationBarTitle("마이페이지", displayMode: .inline)
+                .navigationBarTitle("마이페이지")
                 .navigationBarHidden(true)
-                //.navigationBarBackButtonHidden(true)
             }
         }
         .setTabBarVisibility(isHidden: false)
