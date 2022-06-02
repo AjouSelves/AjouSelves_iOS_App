@@ -36,7 +36,7 @@ struct projDetailView: View {
             ScrollView{
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
-                }
+                }.clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                 Divider()
                 Spacer()
                 VStack(alignment: .leading){
