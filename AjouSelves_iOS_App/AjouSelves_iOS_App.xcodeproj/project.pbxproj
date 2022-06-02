@@ -11,6 +11,7 @@
 		86053469284567A3006ABA64 /* searchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86053468284567A3006ABA64 /* searchView.swift */; };
 		8605346B284567DA006ABA64 /* userDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605346A284567DA006ABA64 /* userDataView.swift */; };
 		8605346D28456811006ABA64 /* communityAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605346C28456811006ABA64 /* communityAddView.swift */; };
+		8605347028465BCE006ABA64 /* QRAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605346F28465BCE006ABA64 /* QRAddView.swift */; };
 		862452E1283E981000FBAE06 /* joinProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862452E0283E981000FBAE06 /* joinProjView.swift */; };
 		862452E3283E996900FBAE06 /* createProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862452E2283E996900FBAE06 /* createProjView.swift */; };
 		86372639282E45C3005AC48C /* projDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86372638282E45C3005AC48C /* projDetailView.swift */; };
@@ -56,6 +57,7 @@
 		86053468284567A3006ABA64 /* searchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchView.swift; sourceTree = "<group>"; };
 		8605346A284567DA006ABA64 /* userDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDataView.swift; sourceTree = "<group>"; };
 		8605346C28456811006ABA64 /* communityAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = communityAddView.swift; sourceTree = "<group>"; };
+		8605346F28465BCE006ABA64 /* QRAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRAddView.swift; sourceTree = "<group>"; };
 		862452E0283E981000FBAE06 /* joinProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = joinProjView.swift; sourceTree = "<group>"; };
 		862452E2283E996900FBAE06 /* createProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createProjView.swift; sourceTree = "<group>"; };
 		86372638282E45C3005AC48C /* projDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projDetailView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				862452E2283E996900FBAE06 /* createProjView.swift */,
 				866A0016283F92730078E77D /* userCreateProjListView.swift */,
 				866A0018283F967B0078E77D /* userCreateProjDetailView.swift */,
+				8605346F28465BCE006ABA64 /* QRAddView.swift */,
 			);
 			path = userCreateProject;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				86CED0CE2834D87200CE295B /* TabBarAccessor.swift in Sources */,
 				8642C684282185520069FB46 /* ProjListView.swift in Sources */,
 				866A0019283F967B0078E77D /* userCreateProjDetailView.swift in Sources */,
+				8605347028465BCE006ABA64 /* QRAddView.swift in Sources */,
 				866A00292840BCC90078E77D /* communityDetailView.swift in Sources */,
 				86053469284567A3006ABA64 /* searchView.swift in Sources */,
 				8605346B284567DA006ABA64 /* userDataView.swift in Sources */,
