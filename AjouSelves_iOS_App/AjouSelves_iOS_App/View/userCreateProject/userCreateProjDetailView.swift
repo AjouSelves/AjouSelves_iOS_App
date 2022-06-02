@@ -67,23 +67,25 @@ struct userCreateProjDetailView: View {
                         .padding()
                 }
             }
-            Spacer()
-            Button(action: {
-                print("Clicked 펀딩참여")
-            }, label: {
-                Text("이 펀딩에 참여하기")
-            })
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
-                    }, label:{
-                        Image(systemName: "trash")
-                    })
+                    HStack{
+                        Button(action: {
+                            productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
+                        }, label:{
+                            Image(systemName: "trash")
+                        })
+                        NavigationLink (destination: {
+                            QRAddView()
+                        }, label: {
+                            Image(systemName: "pencil")
+                        })
+                    }
                 }
+                
             }
         }
-        //.navigationBarBackButtonHidden(true)
+        //.navigationBarTitle("")
         .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
