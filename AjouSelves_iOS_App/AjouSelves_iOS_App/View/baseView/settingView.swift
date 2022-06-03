@@ -12,21 +12,19 @@ var ver: String = "v0.0.7"
 
 struct settingView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                Button(action: {
-                    print("\(UserDefaults.standard.string(forKey: "userToken"))")
+        VStack {
+            Button(action: {
+                print("\(UserDefaults.standard.string(forKey: "userToken"))")
+            }, label: {
+                Image(systemName: "bell")
+            })
+            NavigationLink(
+                destination: {
+                    Text("약관")
                 }, label: {
-                    Image(systemName: "bell")
+                    Text("약관")
                 })
-                NavigationLink(
-                    destination: {
-                        Text("약관")
-                    }, label: {
-                        Text("약관")
-                    })
-                Text("버전: \(ver)")
-            }
+            Text("버전: \(ver)")
         }
     }
 }
