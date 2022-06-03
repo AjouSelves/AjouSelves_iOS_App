@@ -7,30 +7,44 @@
 
 import SwiftUI
 
+enum toolbarState {
+    case home, community, mypage, setting
+}
+
 struct tabView: View {
-    
     @State var uiTabarController: UITabBarController?
+    @State var toolBarConttoller: UIToolbar?
+    @State var stateOfMemu: toolbarState = .home
     @ObservedObject var viewrouter: viewRouter
     
+    //    init() {
+    //        UIToolbar.appearance().barTintColor = .white
+    //    }
+    
     var body: some View {
-        ZStack{
-            TabView{
+        //toolBarConttoller?.backgroundColor = .white
+        NavigationView{
+            TabView(selection: $stateOfMemu){
                 homeView()
+                    .tag(toolbarState.home)
                     .tabItem{
                         Label("홈", systemImage: "house")
                     }
                 
                 communityView()
+                    .tag(toolbarState.community)
                     .tabItem{
                         Label("커뮤니티", systemImage: "person.3")
                     }
                 
                 mypageView(viewrouter: viewRouter())
+                    .tag(toolbarState.mypage)
                     .tabItem{
                         Label("마이페이지", systemImage: "person")
                     }
                 
                 settingView()
+                    .tag(toolbarState.setting)
                     .tabItem{
                         Label("설정", systemImage: "gear")
                     }
