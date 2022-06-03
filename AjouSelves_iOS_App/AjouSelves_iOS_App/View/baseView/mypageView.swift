@@ -13,7 +13,7 @@ struct mypageView: View {
     
     var body: some View {
         VStack{
-            NavigationView {
+            //NavigationView {
                 VStack{
                     NavigationLink(destination: {
                         createProjView()
@@ -46,11 +46,11 @@ struct mypageView: View {
                         Text("회원 탈퇴")
                     })
                 }
-                .navigationBarTitle("마이페이지")
-                .navigationBarHidden(true)
-            }
+//                .navigationBarTitle("마이페이지")
+//                .navigationBarHidden(true)
+            //}
         }
-        .setTabBarVisibility(isHidden: false)
+        //.setTabBarVisibility(isHidden: false)
     }
 }
 
