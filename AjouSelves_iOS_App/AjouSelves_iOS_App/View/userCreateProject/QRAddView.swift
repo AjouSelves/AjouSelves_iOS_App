@@ -83,7 +83,7 @@ struct QRAddView: View {
                 //                }
                 //            }
             }
-            .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+            //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
         }
         .background(Color.white)
         .onAppear(perform: {
