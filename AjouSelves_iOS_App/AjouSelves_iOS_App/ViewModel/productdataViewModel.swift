@@ -15,7 +15,9 @@ enum ActiveAlert {
     case success, fail
 }
 
-class productDataViewModel: ObservableObject {
+//test
+
+class productdataViewModel: ObservableObject {
     
     //MARK: - Properties
     var subscription = Set<AnyCancellable>() // 메모리 관리

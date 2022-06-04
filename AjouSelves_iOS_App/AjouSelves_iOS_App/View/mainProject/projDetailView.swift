@@ -10,7 +10,7 @@ import SwiftUI
 
 struct projDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var productDataVM = productDataViewModel()
+    @ObservedObject var productDataVM = productdataViewModel()
     @State var fundingClicked: Bool = false
     @State var shareClicked: Bool = false
     

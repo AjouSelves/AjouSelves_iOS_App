@@ -69,7 +69,7 @@ struct tabView: View {
                             Text("굿즈")
                         })
                     NavigationLink(
-                        destination: communityAddView(productdataVM: productDataViewModel()),
+                        destination: communityAddView(productdataVM: productdataViewModel()),
                         label: {
                             //Image(systemName: "plus")
                             Text("커뮤니티")

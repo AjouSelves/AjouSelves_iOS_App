@@ -17,7 +17,7 @@ struct QRAddView: View {
     @State var link: String = ""
     @ObservedObject var mediaItems = PickedMediaItems()
     
-    @ObservedObject var productVM = productDataViewModel()
+    @ObservedObject var productVM = productdataViewModel()
     
     var body: some View {
         VStack {

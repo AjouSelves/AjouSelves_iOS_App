@@ -22,7 +22,7 @@ struct communityAddView: View {
     @State var category: String = ""
     @State var required: [String] = [""]
     
-    @ObservedObject var productdataVM: productDataViewModel
+    @ObservedObject var productdataVM: productdataViewModel
     
     //MARK: - [Testing] 사진추가
     @State private var showSheet = false
@@ -169,6 +169,6 @@ struct communityAddView: View {
 
 struct communityAddView_Previews: PreviewProvider {
     static var previews: some View {
-        communityAddView(productdataVM: productDataViewModel())
+        communityAddView(productdataVM: productdataViewModel())
     }
 }

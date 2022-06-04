@@ -11,7 +11,7 @@ import SwiftUI
 struct registerView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var productdataVM: productDataViewModel
+    @ObservedObject var productdataVM: productdataViewModel
     
     //숫자 입력 formatter
     let numFormatter: NumberFormatter = {
@@ -274,6 +274,6 @@ struct registerView: View {
 
 struct registerView_Previews: PreviewProvider {
     static var previews: some View {
-        registerView(productdataVM: productDataViewModel())
+        registerView(productdataVM: productdataViewModel())
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import URLImage
 
 struct homeView: View {
-    @ObservedObject var ProductDataViewModel = productDataViewModel()
+    @ObservedObject var ProductDataViewModel = productdataViewModel()
     @State var isPresent: Bool = false
     @State var processImgDisabled: Bool = false
     

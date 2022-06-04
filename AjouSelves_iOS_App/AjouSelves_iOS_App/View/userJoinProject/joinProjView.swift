@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct joinProjView: View {
-    @ObservedObject var ProductDataViewModel = productDataViewModel()
+    @ObservedObject var ProductDataViewModel = productdataViewModel()
     
     init( ){
         ProductDataViewModel.refreshJoinProj()

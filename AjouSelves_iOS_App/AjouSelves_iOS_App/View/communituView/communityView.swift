@@ -10,7 +10,7 @@ import URLImage
 
 struct communityView: View {
     //MARK: 테스팅
-    @ObservedObject var ProductDataViewModel = productDataViewModel()
+    @ObservedObject var ProductDataViewModel = productdataViewModel()
     
     init() {
         ProductDataViewModel.refreshPostAll()

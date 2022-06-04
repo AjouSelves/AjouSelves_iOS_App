@@ -16,7 +16,7 @@ struct ContentView: View {
     @State private var willMoveToNextScreen = false
     @State var isLoginFail: Bool = false
     
-    @ObservedObject var productdataVM: productDataViewModel
+    @ObservedObject var productdataVM: productdataViewModel
     @ObservedObject var viewrouter: viewRouter
     
     //var RegisterView = registerView()
@@ -61,7 +61,7 @@ struct ContentView: View {
                 HStack{
                     Text("아직 굿즈바이어스 계정이 없으신가요?").foregroundColor(Color.gray)
                     NavigationLink(destination: {
-                        registerView(productdataVM: productDataViewModel())
+                        registerView(productdataVM: productdataViewModel())
                     }, label: {
                         Text("회원가입")
                     })
@@ -110,6 +110,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(productdataVM: productDataViewModel(), viewrouter: viewRouter())
+        ContentView(productdataVM: productdataViewModel(), viewrouter: viewRouter())
     }
 }

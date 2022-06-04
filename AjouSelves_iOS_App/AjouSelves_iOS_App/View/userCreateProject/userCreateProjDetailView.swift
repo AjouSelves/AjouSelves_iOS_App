@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct userCreateProjDetailView: View {
-    @ObservedObject var productDataVM = productDataViewModel()
+    @ObservedObject var productDataVM = productdataViewModel()
     
     var projDeleteUrl = "http://goodsbyus.com/api/proj/" // 특정 프로젝트 삭제
     

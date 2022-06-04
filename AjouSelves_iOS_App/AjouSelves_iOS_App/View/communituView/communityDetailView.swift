@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct communityDetailView: View {
-    @ObservedObject var productDataVM = productDataViewModel()
+    @ObservedObject var productDataVM = productdataViewModel()
     
     var prdData: postStruct.postAllData
     
