@@ -15,8 +15,6 @@ enum ActiveAlert {
     case success, fail
 }
 
-//test
-
 class productdataViewModel: ObservableObject {
     
     //MARK: - Properties
