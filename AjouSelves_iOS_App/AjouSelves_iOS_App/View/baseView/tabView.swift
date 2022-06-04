@@ -49,6 +49,70 @@ struct tabView: View {
                         Label("설정", systemImage: "gear")
                     }
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing){
+                    NavigationLink(
+                        destination: searchView(),
+                        label: {
+                            Image(systemName: "magnifyingglass")
+                        })
+                    
+//                    Menu{
+//
+//                    } label: {
+//                        Image(systemName: "plus")
+//                    }
+                    NavigationLink(
+                        destination: sellingView(sellingVM: sellingViewModel()),
+                        label: {
+                            //Image(systemName: "plus")
+                            Text("굿즈")
+                        })
+                    NavigationLink(
+                        destination: communityAddView(productdataVM: productDataViewModel()),
+                        label: {
+                            //Image(systemName: "plus")
+                            Text("커뮤니티")
+                        })
+                    
+                    //                    Button(action: {}, label: {
+                    //                        if self.stateOfMemu == .home {
+                    //                            NavigationLink(
+                    //                                destination: sellingView(sellingVM: sellingViewModel()),
+                    //                                label: {
+                    //                                    Image(systemName: "plus")
+                    //                                })
+                    //                        } else {
+                    //                            NavigationLink(
+                    //                                destination: communityAddView(productdataVM: productDataViewModel()),
+                    //                                label: {
+                    //                                    Image(systemName: "plus")
+                    //                                })
+                    //                        }
+                    //                    })
+                    
+                    //                    NavigationLink(
+                    //                        destination: sellingView(sellingVM: sellingViewModel()),
+                    //                        label: {
+                    //                            Image(systemName: "plus")
+                    //                        })
+                    NavigationLink(
+                        destination: Text("아직 알림이 없군요🔔"),
+                        label: {
+                            Image(systemName: "bell")
+                        })
+                }
+                ToolbarItem(placement: .navigationBarLeading){
+                    Button(action: {
+                        print("Clicked4")
+                    }, label: {
+                        Image("로고_PNG2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 170, height: 170, alignment: .leading)
+                    })
+                }
+            }
         }
     }
 }
