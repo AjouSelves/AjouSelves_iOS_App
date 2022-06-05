@@ -67,11 +67,15 @@ struct QRAddView: View {
                         .font(.system(size: 13))
                 }
                 Button {
-                    
+                    print("펀딩(사진1) 등록 버튼 clicked")
+                    productVM.QRlink = link
+                    productVM.projPayQr()
+//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+//
+//                    }
                 } label: {
                     Text("굿즈 등록🤙").bold()
                 }
-                
                 //            .alert(isPresented: $showAlert) {
                 //                switch isChecked {
                 //                case .success:
