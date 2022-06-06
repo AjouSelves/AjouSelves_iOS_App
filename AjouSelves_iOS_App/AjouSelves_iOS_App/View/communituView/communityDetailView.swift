@@ -19,7 +19,7 @@ struct communityDetailView: View {
     var body: some View {
         VStack{
             ScrollView{
-                Divider()
+                Spacer(minLength: 100)
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
                 }
@@ -48,7 +48,8 @@ struct communityDetailView: View {
                 }
             }
         }
-        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+        .ignoresSafeArea()
+        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 

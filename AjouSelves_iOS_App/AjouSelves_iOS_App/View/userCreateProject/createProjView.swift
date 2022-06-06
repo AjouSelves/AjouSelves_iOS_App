@@ -23,7 +23,7 @@ struct createProjView: View {
                     userCreateProjListView(adata)
                 })
         }
-        //.setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
+        .setTabBarVisibility(isHidden: true) // 다시 뷰로 돌아오면 TabBar활성화
         // iOS 15부터 지원...
         .refreshable {
             ProductDataViewModel.refreshCreateProj()
