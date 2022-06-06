@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct mypageView: View {
+    
+    @ObservedObject var viewrouter: viewRouter
+    
     var body: some View {
         VStack{
-            NavigationView {
+            //NavigationView {
                 VStack{
                     NavigationLink(destination: {
                         createProjView()
@@ -24,6 +27,13 @@ struct mypageView: View {
                         Text("내가 참여한 굿즈")
                     })
                     
+//                    Button(action: {
+//                        self.viewrouter.currentPage1 = "ContentView"
+//                        self.viewrouter.currentPage = "ContentView"
+//                    }, label: {
+//                        Text("로그아웃 테스트")
+//                    })
+                    
                     Button(action: {
                         print("회원정보 수정 Clicked")
                     }, label: {
@@ -36,34 +46,16 @@ struct mypageView: View {
                         Text("회원 탈퇴")
                     })
                 }
-                .padding(-15)
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing){
-                        NavigationLink(
-                            destination: Text("아직 알림이 없군요🔔"),
-                            label: {
-                                Image(systemName: "bell")
-                            })
-                    }
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action: {
-                            print("Clicked4")
-                        }, label: {
-                            Image("로고_PNG2")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 170, height: 170, alignment: .leading)
-                        })
-                    }
-                }
-                .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
-            }
+//                .navigationBarTitle("마이페이지")
+//                .navigationBarHidden(true)
+            //}
         }
+        //.setTabBarVisibility(isHidden: false)
     }
 }
 
 struct mypageView_Previews: PreviewProvider {
     static var previews: some View {
-        mypageView()
+        mypageView(viewrouter: viewRouter())
     }
 }
