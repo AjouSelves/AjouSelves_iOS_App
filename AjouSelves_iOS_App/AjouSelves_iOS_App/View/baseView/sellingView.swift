@@ -26,6 +26,7 @@ struct sellingView : View {
     @State var min_num: Int = 0
     @State var category: String = ""
     @State var required: [String] = [""]
+    @State var amount: Int = 0
     
     @ObservedObject var sellingVM: sellingViewModel
     
@@ -144,6 +145,23 @@ struct sellingView : View {
                                 .foregroundColor(Color.gray)
                                 .font(.system(size: 13))
                         }
+                        Section(header: Text("가격")
+                            .bold()
+                            .foregroundColor(Color.black)
+                            .font(.system(size: 20))
+                                + Text("*")
+                            .foregroundColor(Color.red)
+                            .font(.system(size: 20))
+                        ){
+                            TextField("펀딩 가격을 입력해 주세요." , value: $amount, formatter: numFormatter)
+                                .textFieldStyle(.roundedBorder)
+                                .keyboardType(.decimalPad)
+                                .disableAutocorrection(true)
+                                .background(Color.clear)
+                            Text("굿즈의 가격을 입력해 주세요👆")
+                                .foregroundColor(Color.gray)
+                                .font(.system(size: 13))
+                        }
                         Section(header: Text("카테고리")
                             .bold()
                             .foregroundColor(Color.black)
@@ -178,6 +196,7 @@ struct sellingView : View {
                         sellingVM.explained = explained
                         sellingVM.min_num = min_num
                         sellingVM.category = category
+                        sellingVM.amount = amount
                         sellingVM.required = required
                         sellingVM.projAddConfirm()
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
