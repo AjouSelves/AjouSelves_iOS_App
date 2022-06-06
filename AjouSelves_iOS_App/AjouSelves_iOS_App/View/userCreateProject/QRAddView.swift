@@ -74,7 +74,7 @@ struct QRAddView: View {
 //
 //                    }
                 } label: {
-                    Text("굿즈 등록🤙").bold()
+                    Text("결제 등록🤙").bold()
                 }
                 //            .alert(isPresented: $showAlert) {
                 //                switch isChecked {
