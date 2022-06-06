@@ -10,8 +10,9 @@ import SwiftUI
 
 struct projDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var productDataVM = productDataViewModel()
+    @ObservedObject var productDataVM = productdataViewModel()
     @State var fundingClicked: Bool = false
+    @State var shareClicked: Bool = false
     
     var prdData: projectAllDataParcing
     
@@ -32,78 +33,149 @@ struct projDetailView: View {
         ////                        UIScrollView.appearance().isPagingEnabled = true
         ////                    }
         
-        VStack{
-            ScrollView{
+        ScrollView{
+            VStack{
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
-                }
-                Divider()
-                Spacer()
+                }.clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                 VStack(alignment: .leading){
-                    Text("\(prdData.description_category)")
-                        .font(.system(size: 20))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(Color.gray)
-                    
-                    Text("\(prdData.description_title)")
-                        .font(.system(size: 40))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                    Text("모인 인원")
-                        .font(.system(size: 20))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(Color.gray)
-                    Text("\(prdData.description_curnum)명")
-                        .font(.system(size: 35))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                    
-                }.frame(width: 350, height: 70, alignment: .leading).padding()
-                Divider()
-                VStack(alignment: .leading){
-                    Text("펀딩완료 최소 인원")
-                        .font(.system(size: 20))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(Color.gray)
-                    Text("\(prdData.description_minnum)명")
-                        .font(.system(size: 35))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                }.frame(width: 350, height:30, alignment: .leading).padding()
-                Divider()
-                VStack(alignment: .leading){
-                    Text("\(prdData.description_explained)")
-                        .font(.system(size: 15))
-                        .minimumScaleFactor(0.5)
-                        .padding()
-                }
-                Button(action: {
-                    print("Clicked 펀딩참여")
-                    self.fundingClicked = true
-                    productDataVM.projJoin(id: prdData.description_projid)
-                }, label: {
-                    Text("이 펀딩에 참여하기")
-                }).alert(isPresented: $fundingClicked, content: {
-                    Alert(title: Text("축하합니다🎉"), message: Text("펀딩에 성공하셨습니다!"), dismissButton: .default(Text("확인"), action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }))
-                })
+                    Group{
+                        Group{
+                            HStack{
+                                Text("제목")
+                                    .font(.system(size: 15))
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.5)
+                                    .foregroundColor(Color.gray)
+                                Text("*")
+                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 20))
+                            }
+                            Text("\(prdData.description_title)")
+                                .font(.system(size: 25))
+                                .bold()
+                                .lineLimit(4)
+                                .minimumScaleFactor(0.5)
+                                .multilineTextAlignment(.leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Divider()
+                            HStack{
+                                Text("가격")
+                                    .font(.system(size: 15))
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.5)
+                                    .foregroundColor(Color.gray)
+                                Text("*")
+                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 20))
+                            }
+                            Text("\(prdData.description_minnum)명")
+                                .font(.system(size: 20))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.5)
+                            Spacer(minLength: 20)
+                            HStack{
+                                Text("목표 펀딩 인원")
+                                    .font(.system(size: 15))
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.5)
+                                    .foregroundColor(Color.gray)
+                                Text("*")
+                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 20))
+                            }
+                            Text("\(prdData.description_minnum)명")
+                                .font(.system(size: 20))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.5)
+                        }
+                        Spacer(minLength: 20)
+                        HStack{
+                            Text("현재 펀딩 인원")
+                                .font(.system(size: 15))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.5)
+                                .foregroundColor(Color.red)
+                            Text("*")
+                                .foregroundColor(Color.red)
+                                .font(.system(size: 15))
+                        }
+                        HStack{
+                            Text("\(prdData.description_curnum)명")
+                                .font(.system(size: 20))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.5)
+                            Text("\(prdData.cal_joinPer)% 달성!")
+                                .font(.system(size: 25))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.5)
+                                .foregroundColor(Color.red)
+                                .font(.system(size: 20))
+                        }
+                        Spacer(minLength: 20)
+                    }
+                    Group{
+                        HStack{
+                            Text("카테고리")
+                                .font(.system(size: 15))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.5)
+                                .foregroundColor(Color.gray)
+                            Text("*")
+                                .foregroundColor(Color.red)
+                                .font(.system(size: 20))
+                        }
+                        Text("\(prdData.description_category)")
+                            .font(.system(size: 20))
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.5)
+                        Spacer(minLength: 20)
+                        HStack{
+                            Text("굿즈 상세 설명")
+                                .font(.system(size: 15))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.5)
+                                .foregroundColor(Color.gray)
+                            Text("*")
+                                .foregroundColor(Color.red)
+                                .font(.system(size: 20))
+                        }
+                        Text("\(prdData.description_explained)")
+                            .font(.system(size: 15))
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(1000)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(width: 350, height: .infinity)
+                        Spacer()
+                        Divider()
+                        HStack{
+                            Button(action: {
+                                self.fundingClicked = true
+                                productDataVM.projJoin(id: prdData.description_projid)
+                            }, label: {
+                                Text("펀딩하기👍")
+                            }).alert(isPresented: $fundingClicked, content: {
+                                Alert(title: Text("축하합니다🎉"), message: Text("펀딩에 성공하셨습니다!"), dismissButton: .default(Text("확인"), action: {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }))
+                            })
+                            Spacer()
+                            Button(action: {
+                                self.shareClicked = true
+                            }, label: {
+                                Label("공유", systemImage: "square.and.arrow.up")
+                            }).alert(isPresented: $shareClicked, content: {
+                                Alert(title: Text("죄송합니다"), message: Text("추가될 예정입니다."), dismissButton: .default(Text("참아보기"), action: {
+                                    //self.presentationMode.wrappedValue.dismiss()
+                                }))
+                            })
+                        }
+                        Spacer(minLength: 50)
+                    }
+                }.frame(width: 350, height: .infinity, alignment: .leading).padding()
             }
-            
-//            .toolbar{
-//                ToolbarItemGroup(placement: .navigationBarTrailing) {
-//                    Button(action: {
-//                        productDataVM.projDelete(url: projDeleteUrl+"\(prdData.description_projid)")
-//                    }, label:{
-//                        Image(systemName: "trash")
-//                    })
-//                }
-//            }
         }
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 

@@ -15,7 +15,7 @@ enum ActiveAlert {
     case success, fail
 }
 
-class productDataViewModel: ObservableObject {
+class productdataViewModel: ObservableObject {
     
     //MARK: - Properties
     var subscription = Set<AnyCancellable>() // 메모리 관리
@@ -32,7 +32,11 @@ class productDataViewModel: ObservableObject {
     @Published var userGets = [userGet]()
     @Published var userToken: String = "" // UserDefaults를 사용하기전 토큰 저장 레거시
     @Published var photoData: UIImage = UIImage() // 커뮤니티 사진 등록
+    
+    
+    //MARK: for QR
     @Published var QRPhoto: UIImage = UIImage()
+    @Published var QRlink: String = ""
     
     //MARK: for register
     @Published var email: String = ""
@@ -91,6 +95,8 @@ class productDataViewModel: ObservableObject {
     var projLeaveIdUrl = "http://goodsbyus.com/api/proj/leave/"
     
     var userUrl = "http://goodsbyus.com/api/user"
+    
+    var projPayQrUrl = "http://goodsbyus.com/api/projpay/qr/"
     
     
     //MARK: - legacy
@@ -451,7 +457,6 @@ class productDataViewModel: ObservableObject {
     
     //MARK: - 커뮤니티 게시글 체크
     func postAddConfirm() {
-        print("projAddConfirm clicked")
         self.postAddCheck = true
         self.postAddSuccess = false
         if title.isEmpty == true {
@@ -469,5 +474,36 @@ class productDataViewModel: ObservableObject {
         if postAddCheck == true {
             postAddSuccess = true
         }
+    }
+    
+    func projPayQr() {
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
+            "Accept": "application/json",
+            "Content-Type": "multipart/form-data" ]
+
+        let param: [String: Any] = [
+            "paylink": "\(QRlink)",
+            "photo" : "null"
+        ]
+        AF.upload(multipartFormData: { MultipartFormData in
+            for (key,value) in param {
+                MultipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+            }
+            
+            if let image = self.QRPhoto.jpegData(compressionQuality: 0.1) {
+                MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
+            }
+            
+        }, to: projPayQrUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
+            .responseString { response in
+            switch response.result {
+            case .success(let value):
+                print("SUCCESS: projPayQr function: ", value)
+            case .failure(let error):
+                print("ERROR: projPayQr function: ", error)
+            }
+        }
+
     }
 }

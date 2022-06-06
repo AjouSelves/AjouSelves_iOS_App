@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct userJoinProjDetailView: View {
-    @ObservedObject var productDataVM = productDataViewModel()
+    @ObservedObject var productDataVM = productdataViewModel()
     
     var projDeleteUrl = "http://goodsbyus.com/api/proj/delete/" // 특정 프로젝트 삭제
     
@@ -74,7 +74,7 @@ struct userJoinProjDetailView: View {
                 Text("이 펀딩에 참여 해제하기")
             })
         }
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 

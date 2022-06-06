@@ -22,7 +22,7 @@ struct communityAddView: View {
     @State var category: String = ""
     @State var required: [String] = [""]
     
-    @ObservedObject var productdataVM: productDataViewModel
+    @ObservedObject var productdataVM: productdataViewModel
     
     //MARK: - [Testing] 사진추가
     @State private var showSheet = false
@@ -155,7 +155,7 @@ struct communityAddView: View {
                 })
             })
         }
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
     
     fileprivate func getMediaImageName(using item: PhotoPickerModel) -> String {
@@ -169,6 +169,6 @@ struct communityAddView: View {
 
 struct communityAddView_Previews: PreviewProvider {
     static var previews: some View {
-        communityAddView(productdataVM: productDataViewModel())
+        communityAddView(productdataVM: productdataViewModel())
     }
 }

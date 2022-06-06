@@ -17,7 +17,8 @@ struct sellingView : View {
     
     @State private var showingImagePicker = false
     @State var pickedImage: Image?
-    @State var isChecked: Bool = false
+    @State var isChecked: ActiveAlert = .fail
+    @State var showAlert: Bool = false
     
     //MARK: - [proj] pjor/add
     @State var title: String = ""
@@ -25,6 +26,7 @@ struct sellingView : View {
     @State var min_num: Int = 0
     @State var category: String = ""
     @State var required: [String] = [""]
+    @State var amount: Int = 0
     
     @ObservedObject var sellingVM: sellingViewModel
     
@@ -69,32 +71,22 @@ struct sellingView : View {
                                             sellingVM.photoData = item.photo!
                                         }
                                 }
-                                //                                else if item.mediaType == .video {
-                                //                                    if let url = item.url {
-                                //                                        VideoPlayer(player: AVPlayer(url: url))
-                                //                                            .frame(minHeight: 200)
-                                //                                    } else { EmptyView() }
-                                //                                }
-                                
-                                //                                Image(systemName: getMediaImageName(using: item)) // 상단 사진아이콘 추가
-                                //                                    .resizable()
-                                //                                    .aspectRatio(contentMode: .fit)
-                                //                                    .frame(width: 24, height: 24)
-                                //                                    .padding(4)
-                                //                                    .background(Color.black.opacity(0.5))
-                                //                                    .foregroundColor(.white)
+//                                else if item.mediaType == .video {
+//                                    if let url = item.url {
+//                                        VideoPlayer(player: AVPlayer(url: url))
+//                                            .frame(minHeight: 200)
+//                                    } else { EmptyView() }
+//                                }
+
+//                                Image(systemName: getMediaImageName(using: item)) // 상단 사진아이콘 추가
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .frame(width: 24, height: 24)
+//                                    .padding(4)
+//                                    .background(Color.black.opacity(0.5))
+//                                    .foregroundColor(.white)
                             }
                         }
-                        //                        .navigationBarItems(leading: Button(action: {
-                        //                            mediaItems.deleteAll()
-                        //                        }, label: {
-                        //                            Image(systemName: "trash")
-                        //                                .foregroundColor(.red)
-                        //                        }), trailing: Button(action: {
-                        //                            showSheet = true
-                        //                        }, label: {
-                        //                            Image(systemName: "plus")
-                        //                        }))
                         Text("굿즈의 사진을 등록해 주세요👆")
                             .foregroundColor(Color.gray)
                             .font(.system(size: 13))
@@ -153,6 +145,23 @@ struct sellingView : View {
                                 .foregroundColor(Color.gray)
                                 .font(.system(size: 13))
                         }
+                        Section(header: Text("가격")
+                            .bold()
+                            .foregroundColor(Color.black)
+                            .font(.system(size: 20))
+                                + Text("*")
+                            .foregroundColor(Color.red)
+                            .font(.system(size: 20))
+                        ){
+                            TextField("펀딩 가격을 입력해 주세요." , value: $amount, formatter: numFormatter)
+                                .textFieldStyle(.roundedBorder)
+                                .keyboardType(.decimalPad)
+                                .disableAutocorrection(true)
+                                .background(Color.clear)
+                            Text("굿즈의 가격을 입력해 주세요👆")
+                                .foregroundColor(Color.gray)
+                                .font(.system(size: 13))
+                        }
                         Section(header: Text("카테고리")
                             .bold()
                             .foregroundColor(Color.black)
@@ -187,13 +196,18 @@ struct sellingView : View {
                         sellingVM.explained = explained
                         sellingVM.min_num = min_num
                         sellingVM.category = category
+                        sellingVM.amount = amount
                         sellingVM.required = required
                         sellingVM.projAddConfirm()
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
                             if sellingVM.projAddSuccess == true {
                                 sellingVM.projAdd_Photo()
-                                self.isChecked = true
+                                self.isChecked = .success
                             }
+                            else {
+                                self.isChecked = .fail
+                            }
+                            self.showAlert = true
                         }
                     } label: {
                         Text("굿즈 등록🤙").bold()
@@ -214,13 +228,18 @@ struct sellingView : View {
                     showSheet = false
                 }
             })
-            .alert(isPresented: $isChecked, content: {
-                Alert(title: Text("등록 완료!"), message: Text("펀딩이 정상적으로 등록되었습니다!"), dismissButton: .default(Text("확인")){
-                    self.presentationMode.wrappedValue.dismiss() // 확인 버튼을 누르면 창 자동 종료
-                })
-            })
+            .alert(isPresented: $showAlert) {
+                switch isChecked {
+                case .success:
+                    return Alert(title: Text("등록 완료!"), message: Text("펀딩이 정상적으로 등록되었습니다!"), dismissButton: .default(Text("확인")){
+                        self.presentationMode.wrappedValue.dismiss() // 확인 버튼을 누르면 창 자동 종료
+                    })
+                case .fail:
+                    return Alert(title: Text("등록 실패"), message: Text("펀딩 등록에 실패하였습니다"), dismissButton: .default(Text("확인")))
+                }
+            }
         }
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
     
     fileprivate func getMediaImageName(using item: PhotoPickerModel) -> String {

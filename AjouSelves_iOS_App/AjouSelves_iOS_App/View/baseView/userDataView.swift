@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct userDataView: View {
-    @ObservedObject var productdataVM = productDataViewModel()
+    @ObservedObject var productdataVM = productdataViewModel()
     
     var prdData : userGet
 

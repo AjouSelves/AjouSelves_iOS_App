@@ -13,10 +13,10 @@ struct ContentView: View {
     
     @State var userId: String = ""
     @State var userPassword: String = ""
-    
     @State private var willMoveToNextScreen = false
+    @State var isLoginFail: Bool = false
     
-    @ObservedObject var productdataVM: productDataViewModel
+    @ObservedObject var productdataVM: productdataViewModel
     @ObservedObject var viewrouter: viewRouter
     
     //var RegisterView = registerView()
@@ -46,10 +46,11 @@ struct ContentView: View {
                         productdataVM.loginEmail = userId
                         productdataVM.loginPassword = userPassword
                         productdataVM.authLogin()
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.3) {
                             if productdataVM.loginisSuccess == true {
-                                print("login!!!")
                                 self.viewrouter.currentPage = "tabView"
+                            } else {
+                                self.isLoginFail = true
                             }
                         }
                     }, label: {
@@ -59,12 +60,11 @@ struct ContentView: View {
                 Spacer()
                 HStack{
                     Text("아직 굿즈바이어스 계정이 없으신가요?").foregroundColor(Color.gray)
-                    NavigationLink(destination: registerView(productdataVM: productDataViewModel())) {
+                    NavigationLink(destination: {
+                        registerView(productdataVM: productdataViewModel())
+                    }, label: {
                         Text("회원가입")
-                            .navigationTitle("")
-                            .navigationBarHidden(true)
-                            .navigationBarBackButtonHidden(true)
-                    }
+                    })
                 }
                 Divider()
                 
@@ -98,17 +98,18 @@ struct ContentView: View {
                         .frame(width:150)
                 }
                 Spacer()
+                    .alert(isPresented: $isLoginFail, content: {
+                        Alert(title: Text("로그인 실패"), message: Text("다시 시도하여 주십시오."), dismissButton: .default(Text("확인")))
+                    })
             }
-            .navigationTitle("")
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+            //.navigationTitle("메인화면")
+            //.navigationBarHidden(true)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(productdataVM: productDataViewModel(), viewrouter: viewRouter())
+        ContentView(productdataVM: productdataViewModel(), viewrouter: viewRouter())
     }
 }

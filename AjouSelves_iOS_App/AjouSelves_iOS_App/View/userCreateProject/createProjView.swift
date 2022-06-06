@@ -8,32 +8,29 @@
 import SwiftUI
 
 struct createProjView: View {
-    @ObservedObject var ProductDataViewModel = productDataViewModel()
+    @ObservedObject var ProductDataViewModel = productdataViewModel()
     
     init( ){
         ProductDataViewModel.refreshCreateProj()
     }
     
     var body: some View {
-        NavigationView {
-            List(ProductDataViewModel.userCreateDetails, id: \.self) { adata in
-                NavigationLink(
-                    destination: userCreateProjDetailView(adata),
-                        label: {
-                            userCreateProjListView(adata)
-                        })
-            }
-            .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
-            // iOS 15부터 지원...
-            .refreshable {
-                ProductDataViewModel.refreshCreateProj()
-//                ProductDataViewModel.refreshProj()
-            }
-            .padding(-15)
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+        
+        List(ProductDataViewModel.userCreateDetails, id: \.self) { adata in
+            NavigationLink(
+                destination: userCreateProjDetailView(adata)
+                ,label: {
+                    userCreateProjListView(adata)
+                })
         }
+        //.setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
+        // iOS 15부터 지원...
+        .refreshable {
+            ProductDataViewModel.refreshCreateProj()
+            //                ProductDataViewModel.refreshProj()
+        }
+        .navigationBarTitle("리스트", displayMode: .inline)
+        .padding(-15)
     }
 }
 
