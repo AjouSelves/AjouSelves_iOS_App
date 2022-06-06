@@ -24,27 +24,27 @@ struct tabView: View {
     var body: some View {
         //toolBarConttoller?.backgroundColor = .white
         NavigationView{
-            TabView(selection: $stateOfMemu){
+            TabView{
                 homeView()
-                    .tag(toolbarState.home)
+                    //.tag(toolbarState.home)
                     .tabItem{
                         Label("홈", systemImage: "house")
                     }
                 
                 communityView()
-                    .tag(toolbarState.community)
+                    //.tag(toolbarState.community)
                     .tabItem{
                         Label("커뮤니티", systemImage: "person.3")
                     }
                 
                 mypageView(viewrouter: viewRouter())
-                    .tag(toolbarState.mypage)
+                    //.tag(toolbarState.mypage)
                     .tabItem{
                         Label("마이페이지", systemImage: "person")
                     }
                 
                 settingView()
-                    .tag(toolbarState.setting)
+                    //.tag(toolbarState.setting)
                     .tabItem{
                         Label("설정", systemImage: "gear")
                     }
@@ -113,6 +113,8 @@ struct tabView: View {
                     })
                 }
             }
+            .navigationBarTitle("메인")
+            .navigationTitle("메인2")
         }
     }
 }
