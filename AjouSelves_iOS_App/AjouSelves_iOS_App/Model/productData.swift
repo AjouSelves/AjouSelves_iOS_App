@@ -32,6 +32,7 @@ struct projectAllDataParcing: Codable, Hashable {
     let category: String?
     let min_num: Int?
     let cur_num: Int?
+    let amount: Int?
     let required: String?
     let explained: String?
     let nickname: String?
@@ -67,8 +68,26 @@ struct projectAllDataParcing: Codable, Hashable {
     var description_category: String {
         return "\(category!)"
     }
+    var description_state: String {
+        switch state{
+        case 1:
+            return "모집중"
+        case 2:
+            return "결제중"
+        case 3:
+            return "작업중"
+        case 4:
+            return "프로젝트 끝"
+        default:
+            return "이스터에그 발견!🥚"
+        }
+        
+    }
     var description_minnum: String {
         return "\(min_num!)"
+    }
+    var description_amount: Int {
+        return amount!
     }
     var description_curnum: String {
         return "\(cur_num!)"
@@ -84,7 +103,7 @@ struct projectAllDataParcing: Codable, Hashable {
     }
     
     static func getDummy() -> Self {
-        return projectAllDataParcing(title: "아주대학교 굿즈를 여기서 등록할 수 있습니다 제목이어디까지가능할까여asdasdasd", state: 1, category: "의류", min_num: 50, cur_num: 13, required: "수량", explained: "1985년 처음 발매 된 에어 조던의 첫번째 모델이자, 나이키와 자회사인 조던 브랜드(Jordan Brand)의 상징이 된 신발. 아름다운 디자인, 거기에 신발의 주인공인 마이클 조던의 엄청난 활약으로 인해 아디다스, 컨버스[3]가 주도하고 있던 농구화 시장을 주도하는 데 성공한다. 이후로도 모두가 갖고 싶어하는 패션화로 거듭 났으며 여기에 나이키의 의도적인 수량 제한 정책과 최고의 셀럽들과 함께하는 콜라보레이션을 통해서 농구화로써의 기능성이 떨어진 지금에도 엄청난 매출을 자랑하는 모델이 되었다. 출시 당시 명칭은 Air Jordan이었으며 1986년에 Air Jordan 2가 공개되면서 숫자 넘버링이 붙기 시작했다.", nickname: "조민현", userid: 1, profilelink: "nil", url: "/photo/1654094009801-soccer.png", projid: 1)
+        return projectAllDataParcing(title: "아주대학교 굿즈를 여기서 등록할 수 있습니다 제목이어디까지가능할까여asdasdasd", state: 2, category: "의류", min_num: 50, cur_num: 13, amount: 0, required: "수량", explained: "1985년 처음 발매 된 에어 조던의 첫번째 모델이자, 나이키와 자회사인 조던 브랜드(Jordan Brand)의 상징이 된 신발. 아름다운 디자인, 거기에 신발의 주인공인 마이클 조던의 엄청난 활약으로 인해 아디다스, 컨버스[3]가 주도하고 있던 농구화 시장을 주도하는 데 성공한다. 이후로도 모두가 갖고 싶어하는 패션화로 거듭 났으며 여기에 나이키의 의도적인 수량 제한 정책과 최고의 셀럽들과 함께하는 콜라보레이션을 통해서 농구화로써의 기능성이 떨어진 지금에도 엄청난 매출을 자랑하는 모델이 되었다. 출시 당시 명칭은 Air Jordan이었으며 1986년에 Air Jordan 2가 공개되면서 숫자 넘버링이 붙기 시작했다.", nickname: "조민현", userid: 1, profilelink: "nil", url: "/photo/1654094009801-soccer.png", projid: 1)
     }
 }
 
