@@ -40,39 +40,56 @@ struct projDetailView: View {
                 }.clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                 VStack(alignment: .leading){
                     Group{
-                        HStack{
-                            Text("제목")
-                                .font(.system(size: 15))
+                        Group{
+                            HStack{
+                                Text("제목")
+                                    .font(.system(size: 15))
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.5)
+                                    .foregroundColor(Color.gray)
+                                Text("*")
+                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 20))
+                            }
+                            Text("\(prdData.description_title)")
+                                .font(.system(size: 25))
+                                .bold()
+                                .lineLimit(4)
+                                .minimumScaleFactor(0.5)
+                                .multilineTextAlignment(.leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Divider()
+                            HStack{
+                                Text("가격")
+                                    .font(.system(size: 15))
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.5)
+                                    .foregroundColor(Color.gray)
+                                Text("*")
+                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 20))
+                            }
+                            Text("\(prdData.description_minnum)명")
+                                .font(.system(size: 20))
                                 .lineLimit(2)
                                 .minimumScaleFactor(0.5)
-                                .foregroundColor(Color.gray)
-                            Text("*")
-                                .foregroundColor(Color.red)
+                            Spacer(minLength: 20)
+                            HStack{
+                                Text("목표 펀딩 인원")
+                                    .font(.system(size: 15))
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.5)
+                                    .foregroundColor(Color.gray)
+                                Text("*")
+                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 20))
+                            }
+                            Text("\(prdData.description_minnum)명")
                                 .font(.system(size: 20))
-                        }
-                        Text("\(prdData.description_title)")
-                            .font(.system(size: 25))
-                            .bold()
-                            .lineLimit(4)
-                            .minimumScaleFactor(0.5)
-                            .multilineTextAlignment(.leading)
-                            .fixedSize(horizontal: false, vertical: true)
-                        Divider()
-                        HStack{
-                            Text("목표 펀딩 인원")
-                                .font(.system(size: 15))
                                 .lineLimit(2)
                                 .minimumScaleFactor(0.5)
-                                .foregroundColor(Color.gray)
-                            Text("*")
-                                .foregroundColor(Color.red)
-                                .font(.system(size: 20))
                         }
-                        Text("\(prdData.description_minnum)명")
-                            .font(.system(size: 20))
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.5)
-                        Spacer()
+                        Spacer(minLength: 20)
                         HStack{
                             Text("현재 펀딩 인원")
                                 .font(.system(size: 15))
@@ -95,7 +112,7 @@ struct projDetailView: View {
                                 .foregroundColor(Color.red)
                                 .font(.system(size: 20))
                         }
-                        Spacer()
+                        Spacer(minLength: 20)
                     }
                     Group{
                         HStack{
@@ -112,6 +129,7 @@ struct projDetailView: View {
                             .font(.system(size: 20))
                             .lineLimit(2)
                             .minimumScaleFactor(0.5)
+                        Spacer(minLength: 20)
                         HStack{
                             Text("굿즈 상세 설명")
                                 .font(.system(size: 15))

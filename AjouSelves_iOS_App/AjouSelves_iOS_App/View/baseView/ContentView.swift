@@ -102,8 +102,8 @@ struct ContentView: View {
                         Alert(title: Text("로그인 실패"), message: Text("다시 시도하여 주십시오."), dismissButton: .default(Text("확인")))
                     })
             }
-            .navigationTitle("메인화면")
-            .navigationBarHidden(true)
+            //.navigationTitle("메인화면")
+            //.navigationBarHidden(true)
         }
     }
 }
