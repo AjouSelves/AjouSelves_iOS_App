@@ -18,7 +18,7 @@ class sellingViewModel: ObservableObject {
     
     @Published var title: String = ""
     @Published var explained: String = ""
-    
+    @Published var amount: Int = 0
     @Published var min_num: Int = 0
     @Published var category: String = ""
     @Published var required: [String] = [""]
@@ -64,6 +64,7 @@ class sellingViewModel: ObservableObject {
             "explained" : explained,
             "min_num" : min_num,
             "category" : category,
+            "amount" : amount,
             "required" : "test_required",
             "photo" : "null"
         ]
@@ -76,7 +77,7 @@ class sellingViewModel: ObservableObject {
             //                MultipartFormData.append(image, withName: "photo", fileName: "\(image).png", mimeType: "image/png")
             //            }
             
-            if let image = self.photoData.jpegData(compressionQuality: 0.3) {
+            if let image = self.photoData.jpegData(compressionQuality: 0.1) {
                 MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
             }
             
@@ -119,6 +120,11 @@ class sellingViewModel: ObservableObject {
             print("min_num is Empty")
             self.projAddCheck = false
             self.projEmptyName = "펀딩 최소 인원"
+        }
+        else if amount == 0 {
+            print("amount is Empty")
+            self.projAddCheck = false
+            self.projEmptyName = "가격"
         }
         else if category.isEmpty == true {
             print("category is Empty")
