@@ -58,6 +58,8 @@ struct searchView: View {
             UITableView.appearance().backgroundColor = UIColor.clear
             UITableViewCell.appearance().backgroundColor = UIColor.clear
         })
+        .ignoresSafeArea()
+        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar활성화
     }
 }
 
