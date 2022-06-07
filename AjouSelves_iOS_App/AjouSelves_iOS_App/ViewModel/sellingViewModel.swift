@@ -77,7 +77,7 @@ class sellingViewModel: ObservableObject {
             //                MultipartFormData.append(image, withName: "photo", fileName: "\(image).png", mimeType: "image/png")
             //            }
             
-            if let image = self.photoData.jpegData(compressionQuality: 0.1) {
+            if let image = self.photoData.jpegData(compressionQuality: 1) {
                 MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
             }
             

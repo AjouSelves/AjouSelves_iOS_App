@@ -11,7 +11,7 @@ import URLImage
 struct homeView: View {
     @ObservedObject var ProductDataViewModel = productdataViewModel()
     @State var isPresent: Bool = false
-    @State var processImgDisabled: Bool = false
+    @State var showmodal = true
     
     init() {
         ProductDataViewModel.refreshProj()
@@ -60,6 +60,9 @@ struct homeView: View {
                             .frame(width: 170, height: 170, alignment: .leading)
                     })
                 }
+            }
+            .sheet(isPresented: self.$showmodal){
+                processPopUpView()
             }
         }
     }
