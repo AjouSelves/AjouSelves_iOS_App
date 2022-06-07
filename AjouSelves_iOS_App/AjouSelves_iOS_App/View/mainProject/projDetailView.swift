@@ -51,7 +51,7 @@ struct projDetailView: View {
                                     .foregroundColor(Color.red)
                                     .font(.system(size: 20))
                             }
-                            Text("\(prdData.description_title)")
+                            Text("\(prdData.description_amount)")
                                 .font(.system(size: 25))
                                 .bold()
                                 .lineLimit(4)

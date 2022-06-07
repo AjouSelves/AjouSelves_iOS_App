@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-var ver: String = "v0.1.0"
+var ver: String = "v0.1.1"
 
 struct settingView: View {
     var body: some View {

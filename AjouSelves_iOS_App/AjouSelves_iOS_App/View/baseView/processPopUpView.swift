@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct processPopUpView: View {
+    
+    //프로퍼티 래퍼
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         TabView {
             ForEach(1..<4) { i in
@@ -17,8 +21,7 @@ struct processPopUpView: View {
             }
             .padding()
             Button(action: {
-                homeView().processImgDisabled = true
-                print(homeView().processImgDisabled)
+                self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("확인했습니다!")
             })

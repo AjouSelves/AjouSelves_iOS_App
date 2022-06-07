@@ -11,50 +11,60 @@ import URLImage
 struct homeView: View {
     @ObservedObject var ProductDataViewModel = productdataViewModel()
     @State var isPresent: Bool = false
-    @State var processImgDisabled: Bool = false
+    @State var showmodal = true
     
     init() {
         ProductDataViewModel.refreshProj()
     }
     
     var body: some View {
-        //펀딩 목록 불러오기
-        //            Image("메인배너")
-        //                .resizable()
-        //                .scaledToFit()
-        
-        //            TabView {
-        //                ForEach(1..<4) { i in
-        //                    ZStack {
-        //                        Image("프로세스_\(i)").resizable()
-        //                    }.clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-        //                }
-        //                .padding()
-        //                Button(action: {
-        //                    processImgDisabled = true
-        //                }, label: {
-        //                    Text("확인했습니다!")
-        //                })
-        //            }
-        //            .tabViewStyle(PageTabViewStyle())
-        //            .disabled(processImgDisabled)
-        //            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        //            Image("메인배너")
-        //            processPopUpView().disabled(processImgDisabled)
-        
-        List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
-            NavigationLink(
-                destination: projDetailView(adata),
-                label: {
-                    ProjListView(adata)
-                })
+        NavigationView{
+            List(ProductDataViewModel.projectAllDataParcings, id: \.self) { adata in
+                NavigationLink(
+                    destination: projDetailView(adata),
+                    label: {
+                        ProjListView(adata)
+                    })
+            }
+            .setTabBarVisibility(isHidden: false) // 다시 뷰로 돌아오면 TabBar활성화
+            // iOS 15부터 지원...
+            .refreshable {
+                ProductDataViewModel.refreshProj()
+            }
+            .padding(-15)
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing){
+                    NavigationLink(
+                        destination: searchView(),
+                        label: {
+                            Image(systemName: "magnifyingglass")
+                        })
+                    NavigationLink(
+                        destination: sellingView(sellingVM: sellingViewModel()),
+                        label: {
+                            Image(systemName: "plus")
+                        })
+                    NavigationLink(
+                        destination: Text("아직 알림이 없군요🔔"),
+                        label: {
+                            Image(systemName: "bell")
+                        })
+                }
+                ToolbarItem(placement: .navigationBarLeading){
+                    Button(action: {
+                        print("Clicked4")
+                    }, label: {
+                        Image("로고_PNG2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 170, height: 170, alignment: .leading)
+                    })
+                }
+            }
+            .sheet(isPresented: self.$showmodal){
+                processPopUpView()
+            }
         }
-        // iOS 15부터 지원...
-        .refreshable {
-            //productDataViewModel.init()
-            ProductDataViewModel.refreshProj()
-        }
-        .padding(-15)
     }
 }
 
