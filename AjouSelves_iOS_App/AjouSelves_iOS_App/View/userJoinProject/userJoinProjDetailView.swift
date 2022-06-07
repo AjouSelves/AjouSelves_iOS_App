@@ -19,7 +19,6 @@ struct userJoinProjDetailView: View {
     }
     var body: some View {
         VStack{
-            Spacer(minLength: 100)
             ScrollView {
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
@@ -67,16 +66,15 @@ struct userJoinProjDetailView: View {
                         .minimumScaleFactor(0.5)
                         .padding()
                 }
-                Button(action: {
-                    productDataVM.projLeave(id: prdData.description_projid)
-                }, label: {
-                    Text("이 펀딩에 참여 해제하기")
-                })
-                Spacer(minLength: 50)
             }
+            Spacer()
+            Button(action: {
+                productDataVM.projLeave(id: prdData.description_projid)
+            }, label: {
+                Text("이 펀딩에 참여 해제하기")
+            })
         }
-        .ignoresSafeArea()
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 

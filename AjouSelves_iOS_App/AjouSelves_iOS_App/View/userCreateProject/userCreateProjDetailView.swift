@@ -19,7 +19,6 @@ struct userCreateProjDetailView: View {
     }
     var body: some View {
         VStack{
-            Spacer(minLength: 100)
             ScrollView{
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
@@ -86,8 +85,8 @@ struct userCreateProjDetailView: View {
                 
             }
         }
-        .ignoresSafeArea()
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
+        //.navigationBarTitle("")
+        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 
