@@ -33,6 +33,11 @@ class productdataViewModel: ObservableObject {
     @Published var userToken: String = "" // UserDefaults를 사용하기전 토큰 저장 레거시
     @Published var photoData: UIImage = UIImage() // 커뮤니티 사진 등록
     
+    //MARK: for state
+    @Published var stateNum: Int = 0
+    
+    //MARK: for search
+    @Published var searchName: String = ""
     
     //MARK: for QR
     @Published var QRPhoto: UIImage = UIImage()
@@ -78,7 +83,7 @@ class productdataViewModel: ObservableObject {
     
     var postPhotoUrl = "http://goodsbyus.com/api/post/photo" // 커뮤니티 게시글 추가 (사진O)
     
-    var postUrl = "http://goodsbyus.com/api/post/" // 커뮤니티 게시글 추가 (사진X)
+    var postUrl = "http://goodsbyus.com/api/post" // 커뮤니티 게시글 추가 (사진X)
     
     var authRegisterUrl = "http://goodsbyus.com/api/auth/register" // 유저 데이터 삽입
     
@@ -98,34 +103,35 @@ class productdataViewModel: ObservableObject {
     
     var projPayQrUrl = "http://goodsbyus.com/api/projpay/qr/"
     
+    var projSearhbutitleUrl = "http://goodsbyus.com/api/proj/searchbytitle"
     
     //MARK: - legacy
-//    init() {
-//        print("init productdataViewModel")
-//        //authLogin(url: authLoginUrl) // 유저 로그인 -> 토큰 반환
-//        //fetchRandomUserApi() // 랜덤유저api
-//        //fetchUserAllUrl() // 전체 유저 데이터 불러오기
-//        //fetchAuthRegisterUrl() // 회원가입
-//        fetchProjUrl(url: projUrl) // 전체 프로젝트 데이터 불러오기
-//        //projDelete(url: projDeleteUrl) // 특정 프로젝트 삭제
-//        //fetchPostAll(url: postAllUrl) // 전체 커뮤니티 데이터 불러오기
-//        //fetchUserCreateDetail()
-//    }
+    //    init() {
+    //        print("init productdataViewModel")
+    //        //authLogin(url: authLoginUrl) // 유저 로그인 -> 토큰 반환
+    //        //fetchRandomUserApi() // 랜덤유저api
+    //        //fetchUserAllUrl() // 전체 유저 데이터 불러오기
+    //        //fetchAuthRegisterUrl() // 회원가입
+    //        fetchProjUrl(url: projUrl) // 전체 프로젝트 데이터 불러오기
+    //        //projDelete(url: projDeleteUrl) // 특정 프로젝트 삭제
+    //        //fetchPostAll(url: postAllUrl) // 전체 커뮤니티 데이터 불러오기
+    //        //fetchUserCreateDetail()
+    //    }
     
-//    func fetchUserAllUrl(){
-//        AF.request(userAllUrl,
-//                   method: .get,
-//                   parameters: nil,
-//                   encoding: URLEncoding.default,
-//                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
-//        .validate(statusCode: 200..<300)
-//        .responseDecodable(of: [userResponseData].self) { response in
-//            //print(response)
-//        }
-//        .responseJSON(){ response in
-//            //print(response)
-//        }
-//    }
+    //    func fetchUserAllUrl(){
+    //        AF.request(userAllUrl,
+    //                   method: .get,
+    //                   parameters: nil,
+    //                   encoding: URLEncoding.default,
+    //                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
+    //        .validate(statusCode: 200..<300)
+    //        .responseDecodable(of: [userResponseData].self) { response in
+    //            //print(response)
+    //        }
+    //        .responseJSON(){ response in
+    //            //print(response)
+    //        }
+    //    }
     
     //MARK: - 프로젝트 불러오기, 삭제
     func refreshProj(){
@@ -195,7 +201,7 @@ class productdataViewModel: ObservableObject {
         }
     }
     
-    //MARK: - 커뮤니티 게시글 불러오기
+    //MARK: - 커뮤니티 게시글 불러오기, 삭제
     func refreshPostAll() {
         fetchPostAll(url: self.postAllUrl)
     }
@@ -217,6 +223,16 @@ class productdataViewModel: ObservableObject {
                 case .failure(let error):
                     print("ERROR: fetchPostAll function: ", error)
                 }
+            }
+    }
+    func postDelete(url: String){
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
+            "Accept": "application/json",
+            "Content-Type": "application/json" ]
+        AF.request(url, method: .delete, parameters: nil, headers: tokenHeader).validate(statusCode: 200..<300)
+            .responseString() { response in
+                print(response)
             }
     }
     
@@ -415,7 +431,7 @@ class productdataViewModel: ObservableObject {
             "Accept": "application/json",
             "Content-Type": "multipart/form-data" ]
         
-        let param: Parameters = ["userid": 30, "title" : "\(title)", "explained" : "\(explained)"] //dummyData in required
+        let param: Parameters = ["userid": 1, "title" : "\(title)", "explained" : "\(explained)"] //dummyData in required
         AF.request(postUrl, method: .post, parameters: param, encoding: JSONEncoding.default, headers: tokenHeader)
             .responseString() { response in
                 print("RESPONSE postAddWithoutPhoto: ",response)
@@ -428,7 +444,7 @@ class productdataViewModel: ObservableObject {
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
             "Accept": "application/json",
             "Content-Type": "multipart/form-data" ]
-
+        
         let param: [String: Any] = [
             "userid": 30,
             "title" : "\(title)",
@@ -445,7 +461,7 @@ class productdataViewModel: ObservableObject {
             }
             
         }, to: postUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
-            .responseString { response in
+        .responseString { response in
             switch response.result {
             case .success(let value):
                 print("SUCCESS: postAddWithPhoto function", value)
@@ -476,12 +492,13 @@ class productdataViewModel: ObservableObject {
         }
     }
     
+    //MARK: - 프로젝트 QR 및 링크 등록
     func projPayQr() {
         let tokenHeader: HTTPHeaders = [
             "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
             "Accept": "application/json",
-            "Content-Type": "multipart/form-data" ]
-
+            "Content-Type": "application/json" ]
+        
         let param: [String: Any] = [
             "paylink": "\(QRlink)",
             "photo" : "null"
@@ -491,12 +508,12 @@ class productdataViewModel: ObservableObject {
                 MultipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
             }
             
-            if let image = self.QRPhoto.jpegData(compressionQuality: 0.1) {
+            if let image = self.QRPhoto.jpegData(compressionQuality: 0.5) {
                 MultipartFormData.append(image, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
             }
             
         }, to: projPayQrUrl, usingThreshold: UInt64.init(),method: .post, headers: tokenHeader)
-            .responseString { response in
+        .responseString { response in
             switch response.result {
             case .success(let value):
                 print("SUCCESS: projPayQr function: ", value)
@@ -504,6 +521,55 @@ class productdataViewModel: ObservableObject {
                 print("ERROR: projPayQr function: ", error)
             }
         }
-
+    }
+    
+    //MARK: - 프로젝트 상태 변경
+    func projState(url: String) {
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
+            "Accept": "application/json",
+            "Content-Type": "multipart/form-data" ]
+        
+        let param: [String: Int] = [
+            "state": stateNum
+        ]
+        AF.request(url, method: .put, parameters: param, headers: tokenHeader)
+            .responseString { response in
+                let test = response.value?.split(separator: "\"")
+                print(response)
+                print(test![3])
+                if test![3] != "fail" {
+                    switch response.result {
+                    case .success(_):
+                        print("String", response)
+                        print("projState change success")
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+    }
+    
+    //MARK: - 프로젝트 제목 검색
+    func projSearchbytitle() {
+        let tokenHeader: HTTPHeaders = [
+            "Authorization": "\(UserDefaults.standard.string(forKey: "userToken")!)",
+            "Accept": "application/json",
+            "Content-Type": "multipart/form-data" ]
+        
+        let param: [String: String] = [
+            "title": searchName
+        ]
+        AF.request(projSearhbutitleUrl, method: .post, parameters: param, headers: tokenHeader)
+            .responseString { response in
+                //let test = response.value?.split(separator: "\"")
+                print(response)
+                switch response.result {
+                case .success(_):
+                    print("response in projSearchbytitle: ", response)
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
 }
