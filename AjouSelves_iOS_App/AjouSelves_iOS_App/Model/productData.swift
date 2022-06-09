@@ -134,6 +134,9 @@ struct postStruct: Codable {
     //            URL(string: "http://goodsbyus.com/photo/1653782114124-b1-1_04.png")!
     //        }
         }
+        var description_postid: Int {
+            return postid!
+        }
         var description_photos: URL {
             return profileImgUrl
         }
