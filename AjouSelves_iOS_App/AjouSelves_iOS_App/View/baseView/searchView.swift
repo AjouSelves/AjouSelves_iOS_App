@@ -10,6 +10,15 @@ import SwiftUI
 struct searchView: View {
     @State var searchText: String = ""
     @State var userSearchList = UserDefaults.standard.array(forKey: "search") as? [String]
+    @ObservedObject var productVM = productdataViewModel()
+    
+    init(){
+        if(userSearchList?[0] == nil){
+            var emptyList = [String]()
+            emptyList.append("")
+            UserDefaults.standard.set(emptyList, forKey: "search")
+        }
+    }
     
     var body: some View {
         Form {
@@ -28,10 +37,11 @@ struct searchView: View {
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                     Button(action: {
+                        //MARK: 검색 기록 저장
                         if var searchArr = UserDefaults.standard.array(forKey: "search") as? [String] {
                             searchArr.insert("\(searchText)", at: 0)
-                            if (searchArr.count > 5) {
-                                searchArr.remove(at: 5)
+                            if (searchArr.count > 10) {
+                                searchArr.remove(at: 10)
                             }
                             UserDefaults.standard.set(searchArr, forKey: "search")
                         }
@@ -43,6 +53,11 @@ struct searchView: View {
                             UserDefaults.standard.set(newList, forKey: "search")
                         }
                         userSearchList = UserDefaults.standard.array(forKey: "search") as? [String]
+                        
+                        print("검색어는: ", searchText)
+                        productVM.searchName = searchText
+                        productVM.projSearchbytitle()
+                        
                     }, label: {
                         Image(systemName: "magnifyingglass")
                     })
@@ -62,10 +77,16 @@ struct searchView: View {
                 Text("이전 검색어👇")
                     .foregroundColor(Color.gray)
                     .font(.system(size: 13))
-                List(userSearchList!, id: \.self){ adata in
-                    Text("\(adata)")
-                        .foregroundColor(Color.gray)
-                        .font(.system(size: 13))
+                if userSearchList?.isEmpty != true {
+                    List(userSearchList! ?? [""], id: \.self){ adata in
+                        Button(action: {
+                            searchText = adata
+                        }, label: {
+                            Text("\(adata)")
+                                .foregroundColor(Color.gray)
+                                .font(.system(size: 13))
+                        })
+                    }
                 }
             }
         }
