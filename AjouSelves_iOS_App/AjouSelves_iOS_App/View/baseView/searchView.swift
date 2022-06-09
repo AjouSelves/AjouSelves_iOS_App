@@ -9,8 +9,20 @@ import SwiftUI
 
 struct searchView: View {
     @State var searchText: String = ""
+    @State var userSearchList = UserDefaults.standard.array(forKey: "search") as? [String]
+    @ObservedObject var productVM = productdataViewModel()
+    
+    init(){
+        if(userSearchList?[0] == nil){
+            var emptyList = [String]()
+            emptyList.append("")
+            UserDefaults.standard.set(emptyList, forKey: "search")
+        }
+    }
+    
     var body: some View {
         Form {
+            Spacer(minLength: 100)
             Section(header: Text("검색")
                 .bold()
                 .foregroundColor(Color.black)
@@ -25,7 +37,27 @@ struct searchView: View {
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                     Button(action: {
-                        print("searchClicked")
+                        //MARK: 검색 기록 저장
+                        if var searchArr = UserDefaults.standard.array(forKey: "search") as? [String] {
+                            searchArr.insert("\(searchText)", at: 0)
+                            if (searchArr.count > 10) {
+                                searchArr.remove(at: 10)
+                            }
+                            UserDefaults.standard.set(searchArr, forKey: "search")
+                        }
+                        else {
+                            var newList = [String]()
+                            
+                            newList.append("\(searchText)")
+                            
+                            UserDefaults.standard.set(newList, forKey: "search")
+                        }
+                        userSearchList = UserDefaults.standard.array(forKey: "search") as? [String]
+                        
+                        print("검색어는: ", searchText)
+                        productVM.searchName = searchText
+                        productVM.projSearchbytitle()
+                        
                     }, label: {
                         Image(systemName: "magnifyingglass")
                     })
@@ -45,18 +77,24 @@ struct searchView: View {
                 Text("이전 검색어👇")
                     .foregroundColor(Color.gray)
                     .font(.system(size: 13))
-                Text("굿즈바이어스")
-                    .foregroundColor(Color.gray)
-                    .font(.system(size: 13))
-                Text("아주대학교굿즈")
-                    .foregroundColor(Color.gray)
-                    .font(.system(size: 13))
+                if userSearchList?.isEmpty != true {
+                    List(userSearchList! ?? [""], id: \.self){ adata in
+                        Button(action: {
+                            searchText = adata
+                        }, label: {
+                            Text("\(adata)")
+                                .foregroundColor(Color.gray)
+                                .font(.system(size: 13))
+                        })
+                    }
+                }
             }
         }
         .background(Color.white)
         .onAppear(perform: {
             UITableView.appearance().backgroundColor = UIColor.clear
             UITableViewCell.appearance().backgroundColor = UIColor.clear
+            userSearchList = UserDefaults.standard.array(forKey: "search") as? [String]
         })
     }
 }
