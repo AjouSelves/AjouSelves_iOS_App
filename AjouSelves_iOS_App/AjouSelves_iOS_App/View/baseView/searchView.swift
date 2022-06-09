@@ -96,8 +96,6 @@ struct searchView: View {
             UITableViewCell.appearance().backgroundColor = UIColor.clear
             userSearchList = UserDefaults.standard.array(forKey: "search") as? [String]
         })
-        .ignoresSafeArea()
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar활성화
     }
 }
 

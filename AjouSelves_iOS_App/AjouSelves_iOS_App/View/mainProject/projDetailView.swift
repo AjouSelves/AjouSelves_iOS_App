@@ -21,8 +21,19 @@ struct projDetailView: View {
     }
     
     var body: some View {
+        //        return GeometryReader { proxy in
+        //                    ScrollView(.horizontal) {
+        //                        HStack(spacing: 0) {
+        //                            projImgView(imageUrl: prdData.profileImgUrl)
+        //                            .frame(width: proxy.size.width, height: proxy.size.height)
+        //                        }
+        //                    }
+        //        }
+        ////                    }.onAppear {
+        ////                        UIScrollView.appearance().isPagingEnabled = true
+        ////                    }
+        
         ScrollView{
-            Spacer(minLength: 100)
             VStack{
                 ScrollView(.horizontal) {
                     projImgView(imageUrl: prdData.profileImgUrl)
@@ -164,9 +175,7 @@ struct projDetailView: View {
                 }.frame(width: 350, height: .infinity, alignment: .leading).padding()
             }
         }
-        
-        .ignoresSafeArea()
-        .setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar활성화
+        //.setTabBarVisibility(isHidden: true) // 프로젝트 디테일 뷰로 들어가면 TabBar비활성화
     }
 }
 
