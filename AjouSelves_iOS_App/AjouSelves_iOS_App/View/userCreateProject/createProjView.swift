@@ -15,7 +15,6 @@ struct createProjView: View {
     }
     
     var body: some View {
-        
         List(ProductDataViewModel.userCreateDetails, id: \.self) { adata in
             NavigationLink(
                 destination: userCreateProjDetailView(adata)
