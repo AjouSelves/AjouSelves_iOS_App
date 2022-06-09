@@ -37,7 +37,7 @@ struct tabView: View {
                         Label("커뮤니티", systemImage: "person.3")
                     }
                 
-                mypageView(viewrouter: viewRouter())
+                mypageView()
                     //.tag(toolbarState.mypage)
                     .tabItem{
                         Label("마이페이지", systemImage: "person")
