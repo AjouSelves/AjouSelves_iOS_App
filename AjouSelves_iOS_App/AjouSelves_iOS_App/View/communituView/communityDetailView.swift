@@ -9,6 +9,9 @@ import SwiftUI
 
 struct communityDetailView: View {
     @ObservedObject var productDataVM = productdataViewModel()
+    @State var comment: String = ""
+    
+    var postDeleteUrl = "http://goodsbyus.com/api/post/" // 특정 프로젝트 삭제
     
     var prdData: postStruct.postAllData
     
@@ -45,6 +48,38 @@ struct communityDetailView: View {
                         .font(.system(size: 15))
                         .minimumScaleFactor(0.5)
                         .padding()
+                }
+                VStack(alignment: .leading){
+                    Text("댓글🙌")
+                    HStack{
+                        TextField("우리 모두 깨끗한 커뮤니티를 만들어요", text: $comment)
+                            .textFieldStyle(.roundedBorder)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                            .padding()
+                        Button(action: {
+                            print("전송")
+                        }, label: {
+                            Text("전송")
+                        }).padding()
+                    }
+                    Divider()
+                }.frame(width:350)
+            }
+            .toolbar{
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    HStack{
+                        Button(action: {
+                            productDataVM.postDelete(url: postDeleteUrl+"\(prdData.description_postid)")
+                        }, label:{
+                            Image(systemName: "trash")
+                        })
+//                        NavigationLink (destination: {
+//                            userCreateProjEditView(userCreate.userCreateDetail.getDummy())
+//                        }, label: {
+//                            Image(systemName: "pencil")
+//                        })
+                    }
                 }
             }
         }

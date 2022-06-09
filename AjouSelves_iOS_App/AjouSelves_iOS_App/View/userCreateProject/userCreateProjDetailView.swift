@@ -76,13 +76,12 @@ struct userCreateProjDetailView: View {
                             Image(systemName: "trash")
                         })
                         NavigationLink (destination: {
-                            QRAddView()
+                            userCreateProjEditView(userCreate.userCreateDetail.getDummy())
                         }, label: {
                             Image(systemName: "pencil")
                         })
                     }
                 }
-                
             }
         }
         //.navigationBarTitle("")
